@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deasfio 1 Funciones constructoras y clases</title>
+  </head>
+
+  <body>
+    <h1>Deasfio 1 Funciones constructoras y clases</h1>
+    <h2>FUNCIÓN CONSTRUCTORA</h2>
+
+    <script>
+
+      // Función Constructora
+      function Usuario (nombre, apellido, libros, mascotas) {
+
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.libros = libros;
+        this.mascotas = mascotas
+
+        this.getFullName = () => {
+            return `${this.nombre} ${this.apellido}`;
+        }
+
+        this.addMascota = (mascota) => {
+            this.mascotas.push(mascota);
+        }
+
+        this.getMascotas = () => {
+            return this.mascotas.length;
+        }
+
+        this.addBook = (book, autor) => {
+          this.libros.push({ nombre: book, autor: autor });
+        }
+
+        this.getBooks = () => {
+          return this.libros.map((elements) => elements.nombre);
+        }
+
+      }
+
+      let persona = new Usuario('Facundo','Bertonati', [], []);
+
+      // Muestro el nombre de la persona
+      console.log(persona.getFullName());
+
+      // Agrego mascotas a la persona
+      persona.addMascota("Cocodrilo");
+      persona.addMascota("Jirafa");
+
+      // Muestro la cantidad de mascotas que tiene la persona
+      console.log(
+        `${persona.getFullName()} tiene ${persona.getMascotas()} mascotas`
+      );
+
+      // Agrego libros a la persona
+      persona.addBook("El señor de los Anillos: La Comunidad del Anillo", "J. R. R. Tolkien");
+      persona.addBook("El señor de los Anillos: Las Dos Torres", "J. R. R. Tolkien");
+      persona.addBook("El señor de los Anillos: El Retorno del Rey", "J. R. R. Tolkien");
+
+      // Muestro array de libros que tiene la persona
+      console.log(persona.getBooks());
+      
+
+    </script>
+  </body>
+</html>
