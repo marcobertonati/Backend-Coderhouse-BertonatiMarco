@@ -56,18 +56,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function operacion(number1, number2, operator) {
     return __awaiter(this, void 0, void 0, function () {
-        var resultOperacion, resultSuma_1, resultResta_1;
+        var resultOperacion, valueResult, resultSuma_1, resultResta_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     resultOperacion = 0;
+                    valueResult = {
+                        value: null
+                    };
                     if (!(operator === "suma")) return [3 /*break*/, 2];
-                    console.log("Linea 4: Entr\u00F3 a " + operator);
                     return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./suma')); }).then(function (data) {
-                            // console.log(data)
                             resultSuma_1 = new data.Suma(number1, number2).resultado();
-                            // console.log(`Linea 10:El resultado de la suma es: ${resultSuma}`);
-                            return resultOperacion = resultSuma_1;
+                            // return resultOperacion = resultSuma;
+                            return valueResult = { value: resultSuma_1 };
                         })
                             .catch(function (e) { return e; })];
                 case 1:
@@ -75,23 +76,23 @@ function operacion(number1, number2, operator) {
                     _a.label = 2;
                 case 2:
                     if (!(operator === "resta")) return [3 /*break*/, 4];
-                    console.log("Linea 17: Entr\u00F3 a " + operator + " ");
                     return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./resta')); }).then(function (data) {
-                            // console.log(data)
                             resultResta_1 = new data.Resta(number1, number2).resultado();
-                            // console.log(`Linea 24: El resultado de la resta es: ${resultResta}`);
-                            return resultOperacion = resultResta_1;
+                            // return valueResult.value = resultResta;
+                            return valueResult = { value: resultResta_1 };
                         })
                             .catch(function (e) { return e; })];
                 case 3:
                     _a.sent();
                     _a.label = 4;
                 case 4:
-                    console.log(operator);
-                    if (operator !== "suma" || "resta") {
-                        console.log("Linea 31: La operaci\u00F3n " + operator + " no existe.");
+                    if (operator !== "suma") {
+                        if (operator !== "resta") {
+                            // console.log(`Linea 31: La operación ${operator} no existe.`);
+                            return [2 /*return*/, valueResult = { value: null }];
+                        }
                     }
-                    return [2 /*return*/, resultOperacion];
+                    return [2 /*return*/, valueResult];
             }
         });
     });
@@ -104,12 +105,43 @@ var casosDePruebas = [
     { valorUno: 1, valorDos: 5, operacion: "nope" }
 ];
 function operaciones(casos) {
-    var _loop_1 = function (i) {
-        operacion(casos[i].valorUno, casos[i].valorDos, casos[i].operacion)
-            .then(function (data) { return console.log("Este es el resultado de la cuenta \uD83D\uDC49 " + casos[i].valorUno + " " + casos[i].operacion + " " + casos[i].valorDos + " = " + data); });
-    };
-    for (var i = 0; i < casos.length; i++) {
-        _loop_1(i);
-    }
+    return __awaiter(this, void 0, void 0, function () {
+        var _loop_1, i;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _loop_1 = function (i) {
+                        return __generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0: return [4 /*yield*/, operacion(casos[i].valorUno, casos[i].valorDos, casos[i].operacion)
+                                        .then(function (data) {
+                                        if (data.value === null) {
+                                            console.log("La operaci\u00F3n \"" + casos[i].operacion + "\" no existe");
+                                        }
+                                        else {
+                                            console.log("Este es el resultado de la cuenta \uD83D\uDC49 " + casos[i].valorUno + " " + casos[i].operacion + " " + casos[i].valorDos + " = " + data.value);
+                                        }
+                                    })];
+                                case 1:
+                                    _b.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    };
+                    i = 0;
+                    _a.label = 1;
+                case 1:
+                    if (!(i < casos.length)) return [3 /*break*/, 4];
+                    return [5 /*yield**/, _loop_1(i)];
+                case 2:
+                    _a.sent();
+                    _a.label = 3;
+                case 3:
+                    i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
 }
 operaciones(casosDePruebas);

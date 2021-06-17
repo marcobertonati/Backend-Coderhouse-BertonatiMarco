@@ -1,40 +1,35 @@
 async function operacion(number1: number, number2: number, operator: string) {
-    let resultOperacion: number = 0;
+    // let resultOperacion: number = 0;
+    let valueResult: object = { value: null }
+
     if (operator === "suma") {
-        console.log(`Linea 4: Entró a ${operator}`)
         let resultSuma: number;
         await import('./suma')
             .then(data => {
-                // console.log(data)
                 resultSuma = new data.Suma(number1, number2).resultado();
-                // console.log(`Linea 10:El resultado de la suma es: ${resultSuma}`);
-                return resultOperacion = resultSuma;
-            })
-            .catch(e => e)
+                // return resultOperacion = resultSuma;
+                return valueResult = { value: resultSuma };
+            }).catch(e => e)
     }
 
     if (operator === "resta") {
-        console.log(`Linea 17: Entró a ${operator} `)
         let resultResta: number;
-
         await import('./resta')
             .then(data => {
-                // console.log(data)
                 resultResta = new data.Resta(number1, number2).resultado();
-                // console.log(`Linea 24: El resultado de la resta es: ${resultResta}`);
-                return resultOperacion = resultResta;
-            })
-            .catch(e => e)
+                // return valueResult.value = resultResta;
+                return valueResult = { value: resultResta };
+            }).catch(e => e)
     }
 
-    console.log(operator)
-    if (operator !== "suma" || "resta") {
-        console.log(`Linea 31: La operación ${operator} no existe.`);
+    if (operator !== "suma") {
+        if (operator !== "resta") {
+            // console.log(`Linea 31: La operación ${operator} no existe.`);
+            return valueResult = { value: null }
+        }
     }
-
-    return resultOperacion;
+    return valueResult;
 }
-
 
 const casosDePruebas: Object[] = [
     { valorUno: 1, valorDos: 8, operacion: "suma" },
@@ -44,10 +39,16 @@ const casosDePruebas: Object[] = [
     { valorUno: 1, valorDos: 5, operacion: "nope" }
 ];
 
-function operaciones(casos: Object[]) {
+async function operaciones(casos: Object[]) {
     for (let i = 0; i < casos.length; i++) {
-        operacion(casos[i].valorUno, casos[i].valorDos, casos[i].operacion)
-            .then(data => console.log(`Este es el resultado de la cuenta 👉 ${casos[i].valorUno} ${casos[i].operacion} ${casos[i].valorDos} = ${data}`));
+        await operacion(casos[i].valorUno, casos[i].valorDos, casos[i].operacion)
+            .then(data => {
+                if (data.value === null) {
+                    console.log(`La operación "${casos[i].operacion}" no existe`)
+                } else {
+                    console.log(`Este es el resultado de la cuenta 👉 ${casos[i].valorUno} ${casos[i].operacion} ${casos[i].valorDos} = ${data.value}`));
+            }
+}
     }
 }
 
