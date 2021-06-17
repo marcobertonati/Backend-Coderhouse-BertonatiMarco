@@ -22,11 +22,9 @@ async function operacion(number1: number, number2: number, operator: string) {
             }).catch(e => e)
     }
 
-    if (operator !== "suma") {
-        if (operator !== "resta") {
+    if (operator !== "suma" && operator !== "resta") {
             // console.log(`Linea 31: La operación ${operator} no existe.`);
             return valueResult = { value: null }
-        }
     }
     return valueResult;
 }

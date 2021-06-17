@@ -12,38 +12,56 @@
     <h2>FUNCIÓN CONSTRUCTORA</h2>
 
     <script>
-
       // Función Constructora
-      function Usuario (nombre, apellido, libros, mascotas) {
-
+      function Usuario(nombre, apellido, libros, mascotas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.libros = libros;
-        this.mascotas = mascotas
+        this.mascotas = mascotas;
 
-        this.getFullName = () => {
-            return `${this.nombre} ${this.apellido}`;
-        }
+        // this.getFullName = () => {
+        //     return `${this.nombre} ${this.apellido}`;
+        // }
 
-        this.addMascota = (mascota) => {
-            this.mascotas.push(mascota);
-        }
+        // this.addMascota = (mascota) => {
+        //     this.mascotas.push(mascota);
+        // }
 
-        this.getMascotas = () => {
-            return this.mascotas.length;
-        }
+        // this.getMascotas = () => {
+        //     return this.mascotas.length;
+        // }
 
-        this.addBook = (book, autor) => {
-          this.libros.push({ nombre: book, autor: autor });
-        }
+        // this.addBook = (book, autor) => {
+        //   this.libros.push({ nombre: book, autor: autor });
+        // }
 
-        this.getBooks = () => {
-          return this.libros.map((elements) => elements.nombre);
-        }
-
+        // this.getBooks = () => {
+        //   return this.libros.map((elements) => elements.nombre);
+        // }
       }
 
-      let persona = new Usuario('Facundo','Bertonati', [], []);
+      Usuario.prototype.getFullName = function() {
+        return `${this.nombre} ${this.apellido}`;
+      };
+
+      Usuario.prototype.addMascota = function (mascota) {
+        this.mascotas.push(mascota);
+      };
+
+      Usuario.prototype.getMascotas = function () {
+        return this.mascotas.length;
+      };
+
+      Usuario.prototype.addBook = function (book, autor) {
+        this.libros.push({ nombre: book, autor: autor });
+      };
+
+      Usuario.prototype.getBooks = function() {
+        return this.libros.map((elements) => elements.nombre);
+      };
+
+      // Instancio un nuevo usuario
+      let persona = new Usuario("Facundo", "Bertonati", [], []);
 
       // Muestro el nombre de la persona
       console.log(persona.getFullName());
@@ -51,6 +69,7 @@
       // Agrego mascotas a la persona
       persona.addMascota("Cocodrilo");
       persona.addMascota("Jirafa");
+      persona.addMascota("Perro");
 
       // Muestro la cantidad de mascotas que tiene la persona
       console.log(
@@ -58,14 +77,21 @@
       );
 
       // Agrego libros a la persona
-      persona.addBook("El señor de los Anillos: La Comunidad del Anillo", "J. R. R. Tolkien");
-      persona.addBook("El señor de los Anillos: Las Dos Torres", "J. R. R. Tolkien");
-      persona.addBook("El señor de los Anillos: El Retorno del Rey", "J. R. R. Tolkien");
+      persona.addBook(
+        "El señor de los Anillos: La Comunidad del Anillo",
+        "J. R. R. Tolkien"
+      );
+      persona.addBook(
+        "El señor de los Anillos: Las Dos Torres",
+        "J. R. R. Tolkien"
+      );
+      persona.addBook(
+        "El señor de los Anillos: El Retorno del Rey",
+        "J. R. R. Tolkien"
+      );
 
       // Muestro array de libros que tiene la persona
       console.log(persona.getBooks());
-      
-
     </script>
   </body>
 </html>

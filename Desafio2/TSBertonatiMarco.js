@@ -56,21 +56,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function operacion(number1, number2, operator) {
     return __awaiter(this, void 0, void 0, function () {
-        var resultOperacion, valueResult, resultSuma_1, resultResta_1;
+        var valueResult, resultSuma_1, resultResta_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    resultOperacion = 0;
-                    valueResult = {
-                        value: null
-                    };
+                    valueResult = { value: null };
                     if (!(operator === "suma")) return [3 /*break*/, 2];
                     return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./suma')); }).then(function (data) {
                             resultSuma_1 = new data.Suma(number1, number2).resultado();
                             // return resultOperacion = resultSuma;
                             return valueResult = { value: resultSuma_1 };
-                        })
-                            .catch(function (e) { return e; })];
+                        }).catch(function (e) { return e; })];
                 case 1:
                     _a.sent();
                     _a.label = 2;
@@ -80,17 +76,14 @@ function operacion(number1, number2, operator) {
                             resultResta_1 = new data.Resta(number1, number2).resultado();
                             // return valueResult.value = resultResta;
                             return valueResult = { value: resultResta_1 };
-                        })
-                            .catch(function (e) { return e; })];
+                        }).catch(function (e) { return e; })];
                 case 3:
                     _a.sent();
                     _a.label = 4;
                 case 4:
-                    if (operator !== "suma") {
-                        if (operator !== "resta") {
-                            // console.log(`Linea 31: La operación ${operator} no existe.`);
-                            return [2 /*return*/, valueResult = { value: null }];
-                        }
+                    if (operator !== "suma" && operator !== "resta") {
+                        // console.log(`Linea 31: La operación ${operator} no existe.`);
+                        return [2 /*return*/, valueResult = { value: null }];
                     }
                     return [2 /*return*/, valueResult];
             }
