@@ -1,7 +1,7 @@
 // Esta funcion NO IMPORTA - pensa que puede ser cualquier funcion asincrona
 // Como la importación del modulo
 const workToDo = async () => {
-    return new Promise((resolve, recect) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve('4 seconds after')
         }, 4000)
@@ -27,10 +27,11 @@ const thenFun = () => {
         console.log(resultOfPromise)
         console.log('End of thenFun')
     })
+    
+
 }
-​
-/* asyncFun()
-thenFun() */
+// asyncFun()
+// henFun()
 
 // Viendo esto trata de aplicar solamente async/await en el desafio 2
 

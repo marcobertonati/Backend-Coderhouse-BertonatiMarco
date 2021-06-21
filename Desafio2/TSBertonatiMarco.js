@@ -56,85 +56,79 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function operacion(number1, number2, operator) {
     return __awaiter(this, void 0, void 0, function () {
-        var valueResult, resultSuma_1, resultResta_1;
+        var valueResult, module, resultSuma, module, resultResta;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     valueResult = { value: null };
                     if (!(operator === "suma")) return [3 /*break*/, 2];
-                    return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./suma')); }).then(function (data) {
-                            resultSuma_1 = new data.Suma(number1, number2).resultado();
-                            // return resultOperacion = resultSuma;
-                            return valueResult = { value: resultSuma_1 };
-                        }).catch(function (e) { return e; })];
+                    return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./suma')); })];
                 case 1:
-                    _a.sent();
-                    _a.label = 2;
+                    module = _a.sent();
+                    resultSuma = new module.Suma(number1, number2).resultado();
+                    return [2 /*return*/, valueResult = { value: resultSuma }];
                 case 2:
                     if (!(operator === "resta")) return [3 /*break*/, 4];
-                    return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./resta')); }).then(function (data) {
-                            resultResta_1 = new data.Resta(number1, number2).resultado();
-                            // return valueResult.value = resultResta;
-                            return valueResult = { value: resultResta_1 };
-                        }).catch(function (e) { return e; })];
+                    return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./resta')); })];
                 case 3:
-                    _a.sent();
-                    _a.label = 4;
+                    module = _a.sent();
+                    resultResta = new module.Resta(number1, number2).resultado();
+                    return [2 /*return*/, valueResult = { value: resultResta }];
                 case 4:
-                    if (operator !== "suma" && operator !== "resta") {
-                        // console.log(`Linea 31: La operación ${operator} no existe.`);
-                        return [2 /*return*/, valueResult = { value: null }];
+                    if (operator !== "suma" && "resta") {
+                        return [2 /*return*/, valueResult = { value: "No existe la operaci\u00F3n \"" + operator + "\"" }];
                     }
                     return [2 /*return*/, valueResult];
             }
         });
     });
 }
-var casosDePruebas = [
-    { valorUno: 1, valorDos: 8, operacion: "suma" },
-    { valorUno: 6, valorDos: 3, operacion: "resta" },
-    { valorUno: 1, valorDos: 1, operacion: "suma" },
-    { valorUno: 1, valorDos: 5, operacion: "resta" },
-    { valorUno: 1, valorDos: 5, operacion: "nope" }
-];
-function operaciones(casos) {
+function operaciones() {
     return __awaiter(this, void 0, void 0, function () {
-        var _loop_1, i;
+        var operacionUno, operacionDos, operacionTres, operacionesAllAwait;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    _loop_1 = function (i) {
-                        return __generator(this, function (_b) {
-                            switch (_b.label) {
-                                case 0: return [4 /*yield*/, operacion(casos[i].valorUno, casos[i].valorDos, casos[i].operacion)
-                                        .then(function (data) {
-                                        if (data.value === null) {
-                                            console.log("La operaci\u00F3n \"" + casos[i].operacion + "\" no existe");
-                                        }
-                                        else {
-                                            console.log("Este es el resultado de la cuenta \uD83D\uDC49 " + casos[i].valorUno + " " + casos[i].operacion + " " + casos[i].valorDos + " = " + data.value);
-                                        }
-                                    })];
-                                case 1:
-                                    _b.sent();
-                                    return [2 /*return*/];
-                            }
-                        });
-                    };
-                    i = 0;
-                    _a.label = 1;
+                case 0: return [4 /*yield*/, operacion(1, 2, "suma")];
                 case 1:
-                    if (!(i < casos.length)) return [3 /*break*/, 4];
-                    return [5 /*yield**/, _loop_1(i)];
+                    operacionUno = _a.sent();
+                    console.log(operacionUno.value);
+                    return [4 /*yield*/, operacion(6, 20, "resta")];
                 case 2:
-                    _a.sent();
-                    _a.label = 3;
+                    operacionDos = _a.sent();
+                    console.log(operacionDos.value);
+                    return [4 /*yield*/, operacion(2, 3, "qwerty")];
                 case 3:
-                    i++;
-                    return [3 /*break*/, 1];
-                case 4: return [2 /*return*/];
+                    operacionTres = _a.sent();
+                    console.log(operacionTres.value);
+                    return [4 /*yield*/, Promise.all([operacion(4, 5, "suma"), operacion(30, 10, "resta"), operacion(20, 20, "asd")])];
+                case 4:
+                    operacionesAllAwait = _a.sent();
+                    operacionesAllAwait.forEach(function (e) { return console.log("El resultado es: " + e.value); });
+                    return [2 /*return*/];
             }
         });
     });
 }
-operaciones(casosDePruebas);
+operaciones();
+/*-----------------------------------------------*/
+// ABAJO EJERCICIOS DE OTRA FORMA RESULTA)
+// const casosDePruebas: Object[] = [
+//     { valorUno: 1, valorDos: 8, operacion: "suma" },
+//     // { valorUno: 6, valorDos: 3, operacion: "resta" },
+//     { valorUno: 1, valorDos: 1, operacion: "suma" },
+//     // { valorUno: 1, valorDos: 5, operacion: "resta" },
+//     // { valorUno: 1, valorDos: 5, operacion: "nope" }
+// ];
+// function operaciones(casos: Object[]) {
+//     for (let i = 0; i < casos.length; i++) {
+//         operacion(casos[i].valorUno, casos[i].valorDos, casos[i].operacion)
+//             .then(data => {
+//                 if (data.value === null) {
+//                     console.log(`La operación "${casos[i].operacion}" no existe`)
+//                 } else {
+//                     console.log(`Este es el resultado de la cuenta 👉 ${casos[i].valorUno} ${casos[i].operacion} ${casos[i].valorDos} = ${data.value}`));
+//             }
+// }
+//     }
+// }
+// operaciones(casosDePruebas);
