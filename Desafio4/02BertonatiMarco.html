@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+​
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 4: 01BertonatiMarco</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
+</head>
+
+<body>
+    <input type="text">
+    <span id="texto-espejo"></span>
+​
+    <script>
+        const { Observable, pipe } = rxjs
+        const { map, tap } = rxjs.operators
+
+        function espejoInput() {
+            return new Observable(suscriber => {
+
+                function event() {
+                    // Tomamos el texto que hay dentro del input
+                    let dato = document.querySelector('input').value;
+
+                    // Si escribe error entra acá
+                    if (dato == 'error') {
+                        suscriber.error('Error de entrada')
+                    }
+                    // Si escribe complete entra acá
+                    else if (dato == 'complete') {
+                        suscriber.complete()
+                    }
+                    // Si escribe algo que no sea error o complete entra acá
+                    else {
+                        suscriber.next(dato);
+            
+                    }
+                }
+                // Selecciono el input y le pongo un escuchador de eventos que cuando escuche cambio en el input ejecutará la función event;
+                document.querySelector('input').addEventListener('input', event)
+
+                return () => { //cuando finaliza el Observable
+                    // se va a limpiar el listener, deshabilitar el input y el texto va a tener nada
+                    console.log('Se dio de baja al observable')
+                    document.querySelector('input').removeEventListener('input', event)
+                    document.querySelector('input').disabled = true
+                    document.getElementById('texto-espejo').innerText = ''
+                }
+            })
+        }
+
+        let suscriptor = espejoInput().pipe(
+            map(texto => texto.split('')),
+            map(arrayText => arrayText.reverse()),
+            map(arrayTextEspejo => arrayTextEspejo.join('')),
+        )
+        .subscribe(
+            texto => {
+                document.getElementById('texto-espejo').innerText = texto //next nos devuelve el texto que está escribiendo y lo imprimimos en texto-espejo que es un SPAN.
+            },   
+            error => console.log(error), //error: al escribir error, se ejecuta el error
+            () => console.log('Al escribir "complete" se ejecuta esta función') //complete
+        )
+
+        setTimeout(() => {
+            console.log('Se ha desuscripto al observable del INPUT') 
+            suscriptor.unsubscribe()
+        }, 30000)
+    </script>
+</body>
+
+</html>

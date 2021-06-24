@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 4: 01BertonatiMarco</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
+</head>
+​
+<body>
+    <input type="text">
+    <span id="texto-espejo"></span>
+​
+    <script>
+
+
+        const { Observable } = rxjs;
+        
+        function espejoInput() {
+            
+            return new Observable(suscriptor => {
+
+                // Esta es la funcion que se va a ejecutar cuando detecte el evento "input" que sucede cuando hay cambios en el input
+                function event() {
+
+                     // Tomamos el texto que hay dentro del input
+                    let text = document.querySelector('input').value
+                    if (text === 'error') {
+                         // El usuario escribió error, por lo cual la suscripción entra en un error
+                        console.log('Escribio la palabra "error"')
+                        suscriptor.error('Se escribió "error" en el input')
+                    }
+                    else if (text === 'complete') {
+                        // El usuario escribió complete, por lo cual la suscripción se completa
+                        console.log('Escribio la palabra "complete"')
+                        suscriptor.complete()
+                    }
+                    else {
+                        let datoArray = text.split('').reverse().join('')
+                        // El método split() divide un objeto de tipo String en un array (vector) de cadenas mediante la separación de la cadena en subcadenas.
+                        // El método reverse() invierte el orden de los elementos de un array in place. El primer elemento pasa a ser el último y el último pasa a ser el primero.
+                        // El método join() une todos los elementos de una matriz (o un objeto similar a una matriz) en una cadena y devuelve esta cadena. Osea devuelve un string
+                        suscriptor.next(datoArray);
+                    }
+                }
+
+                // Selecciono el input y le pongo un escuchador de eventos que cuando escuche cambio en el input ejecutará la función event;
+                document.querySelector('input').addEventListener('input', event);
+
+                return () => { //cuando finaliza el Observable
+                    // se va a limpiar el listener, deshabilitar el input y el texto va a tener nada
+                    console.log('Se dio de baja al observable')
+                    document.querySelector('input').removeEventListener('input', event);
+                    document.querySelector('input').disabled = true;
+                    document.getElementById('texto-espejo').innerText = '';
+                }
+            })
+        }
+
+        // a obtener el input espejado, lo agrego al html
+        let suscriptor = espejoInput()
+            .subscribe(
+                textoInput => {
+                    document.getElementById('texto-espejo').innerText = textoInput //next nos devuelve el texto que está escribiendo y lo imprimimos en texto-espejo que es un SPAN.
+                },   
+                error => console.log(error), //error: al escribir error, se ejecuta el error
+                () => console.log('Al escribir "complete" se ejecuta esta función') //complete
+            )
+
+            
+        //setTimeout para desuscribir al observable    
+        setTimeout(() => {
+            console.log('Se ha desuscripto al observable del INPUT')
+            suscriptor.unsubscribe() // unsubscribe ejecuta el return del observable
+        }, 30000)
+    </script>
+
+
+</body>
+</html>
