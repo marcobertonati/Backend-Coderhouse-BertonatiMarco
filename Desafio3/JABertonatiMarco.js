@@ -18,18 +18,9 @@ function showParr(texto, quantyWordText, totalWords, timeInterval) {
   console.log("Salio de la función ShowParr");
 }
 
-showParr(
-  "Texto Uno",
-  0,
-  (totalWords) => {
-    showParr(
-      "Parrafo dos",
-      totalWords,
-      (totalWords) => {
-        showParr(
-          "Conclusión 3",
-          totalWords,
-          (totalWords) => {
+showParr("Texto Uno", 0, (totalWords) => {
+    showParr( "Parrafo dos", totalWords, (totalWords) => {
+        showParr( "Conclusión 3", totalWords, (totalWords) => {
             console.log(`Proceso terminado.`);
             console.log(`La cantidad de palabras total es ${totalWords}.`);
           },
