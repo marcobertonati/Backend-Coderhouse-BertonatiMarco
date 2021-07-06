@@ -1,0 +1,11 @@
+{
+  "name": "desafio-6-coderhouse",
+  "version": "1.0.0",
+  "description": "desafio 6 del curso de Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "marco bertonati",
+  "license": "ISC"
+}

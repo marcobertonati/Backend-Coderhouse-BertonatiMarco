@@ -1,0 +1,17 @@
+[
+	{
+		"name": "Pantalon Corto",
+		"price": 1000,
+		"url": "www.daffiti.com"
+	},
+	{
+		"name": "Camisa a cuadros",
+		"price": 2000,
+		"url": "www.daffiti.com"
+	},
+	{
+		"name": "Remera negra",
+		"price": 3000,
+		"url": "www.daffiti.com"
+	}
+]
