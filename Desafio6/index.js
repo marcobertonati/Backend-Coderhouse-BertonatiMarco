@@ -8,51 +8,55 @@ class Archivo {
   }
 
   async leer() {
-    await fs.readFile(this.file, this.encoding, (err, result) => {
-      if (err) {
-        const arrayEmpty = []
-        console.log(arrayEmpty);
-      } else {
-        const objetJSON = JSON.parse(result);
-        console.log(objetJSON);
-        return objetJSON;
-      }
-    });
-  }
-
-  async guardar() {
 
     try {
-
-        const arrayProductsJSON = await fs.promises.readFile(this.file, this.encoding)
-        const arrayProductsJS = JSON.parse(arrayProductsJSON);
-
-        let id = 1;
-        const newArrayWithID = arrayProductsJS.map(element => {
-            return {
-                ...element,
-                id: id++
-            }
-        });
-
-        await fs.promises.writeFile('productos.txt', JSON.stringify(newArrayWithID,null,'\t'))
-
+     const dataJSON = await fs.promises.readFile(this.file,this.encoding)
+     const datObject = JSON.parse(dataJSON);
+     console.log(datObject);
+     return datObject;
+      
     } catch (error) {
-        console.log(error)
-
+       console.log(error);
     }
 
   }
 
-  async borrar() {
-    await fs.unlink(this.file, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(`El archivo fue eliminado`);
-      }
-    });
+  async guardar(newProduct) {
+    
+    try {
+
+        const arrayProductsJSON = await fs.promises.readFile(this.file, this.encoding)
+        const arrayProductsJS = JSON.parse(arrayProductsJSON);
+        // console.log(arrayProductsJS)
+
+        let arrayLength = arrayProductsJS.length + 1;
+        // console.log(arrayLenght)
+
+        const newProducto = {
+          ...newProduct,
+          id: arrayLength
+        }
+        // console.log(newProducto)
+
+        const newArray = [...arrayProductsJS, newProducto]
+        await fs.promises.writeFile('productos.txt', JSON.stringify(newArray,null,'\t'))
+
+    } catch (error) {
+        console.log(error)
+    }
   }
+
+  async borrar() {
+
+    try {
+      await fs.promises.unlink(this.file);
+      console.log('El archivo fue eliminado')
+    } catch (error) {
+      console.log('OCURRIO UN ERROR')
+      console.log(error)
+    }
+  }
+
 }
 
 class Producto {
@@ -69,12 +73,11 @@ const archivoProducto = new Archivo('productos.txt')
 /* Funciones de prueba */
 // archivoProducto.leer();
 // archivoProducto.borrar();
-// archivoProducto.guardar();
 
 
 /* Productos para agregar */
-// const productoGorra = new Producto('Gorra', 700, 'www.daffiti.com')
-// const productoMedias = new Producto('Medias', 300, 'www.daffiti.com')
+// const camperaMarron = new Producto('campera marrón', 7000, 'www.daffiti.com')
+// archivoProducto.guardar(camperaMarron);
 
 
 
