@@ -40,15 +40,15 @@ let visitasItems = 0;
 let visitasItemRandom = 0;
 
 /*Rutas*/
-app.get("/items", (req, res) => {
-  archivoProducto
-    .leer()
-    .then((data) => {
-      visitasItems++;
-      res.send(data);
-    })
-
-    .catch((e) => console.log(e));
+app.get("/items", async (req, res) => {
+  try {
+    const items = await archivoProducto.leer()
+    visitasItems++
+    res.send(items)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send()
+  }
 });
 
 app.get("/item-random", (req, res) => {
