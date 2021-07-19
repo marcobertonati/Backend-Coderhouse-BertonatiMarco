@@ -4,7 +4,6 @@ const app = express();
 
 /*Cargo módulo Handlebars */
 const handlebars = require('express-handlebars');
-app.engine('handlebars', handlebars())
 
 /*Router */
 const routerProducts = express.Router();
@@ -15,10 +14,23 @@ const bodyParser = require("body-parser");
 /*Uso de Middlewares*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use('/api', routerProducts);
 
-app.set('view engine', 'handlebars');
-app.set('views', './views')
+app.engine(
+  'hbs',
+  handlebars({
+    extname: 'hbs', // Extension a utilizar
+    defaultLayout: 'main.hbs', // El layout que va a cargar en todas las paginas por default
+    layoutsDir: `./views/layouts`, // Donde se van a encontrar las layouts
+    partialsDir: `./views/partials/` // Donde se van a encontrar los partials
+  })
+)
+
+// Estableciendo el motor de plantilla que se utiliza
+app.set("view engine", "hbs");
+// Estableciendo el directorio donde se encuentran los archivos de plantillas
+app.set("views", "./views");
+
+app.use('/api', routerProducts);
 
 app.use('/static',express.static(__dirname + '/public'))
 
