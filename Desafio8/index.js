@@ -1,6 +1,8 @@
 /*Creo servidor */
 const express = require("express");
 const app = express();
+
+/*Middlewares importados */
 const bodyParser = require("body-parser");
 
 /*Middlewares*/
@@ -16,7 +18,7 @@ let listProducts = [];
 /*-----------------------*/
 
 /*Rutas*/
-app.get("/api/productos/listar", (req, res) => {
+app.get("/productos/listar", (req, res) => {
   if (listProducts.length <= 0) {
     console.log("No se encontraron productos");
     res.send({ error: "No hay productos cargados" });
@@ -26,7 +28,7 @@ app.get("/api/productos/listar", (req, res) => {
   }
 });
 
-app.get("/api/productos/listar/:id", (req, res) => {
+app.get("/productos/listar/:id", (req, res) => {
   const productCheck = listProducts.some(
     (product) => product.id == req.params.id
   );
@@ -40,7 +42,7 @@ app.get("/api/productos/listar/:id", (req, res) => {
   }
 });
 
-app.post("/api/productos/guardar", (req, res) => {
+app.post("/productos/guardar", (req, res) => {
   let newProductBody = req.body;
 
   if (listProducts.length == 0) {
@@ -67,10 +69,11 @@ app.post("/api/productos/guardar", (req, res) => {
   }
 });
 
-app.delete('/api/productos/borrar/:id', (req, res) => {
+app.delete('/productos/borrar/:id', (req, res) => {
     listProducts = listProducts.filter(product => product.id != req.params.id);
     res.send(`Se borró el producto`)
 })
+
 
 /*Ejecución de servidor*/
 const PORT = 8080;
