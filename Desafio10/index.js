@@ -16,8 +16,10 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use('/api', routerProducts);
+
 app.set('view engine', 'handlebars');
-app.set('views', './public/views')
+app.set('views', './views')
+
 app.use('/static',express.static(__dirname + '/public'))
 
 
@@ -77,7 +79,7 @@ routerProducts.post("/productos/guardar", (req, res) => {
     );
 
     listProducts.push(newProduct);
-    res.send(newProduct);
+    res.render('agregar-productos');
   }
 });
 
@@ -108,17 +110,21 @@ routerProducts.delete('/productos/borrar/:id', (req, res) => {
 
 /*Rutas vistas */
 app.get("/productos/vista", (req, res) => {
-  // if (listProducts.length <= 0) {
-  //   console.log("No se encontraron productos");
-  //   res.send({ error: "No hay productos cargados" });
-  // } else {
-  //   console.log("Se encontraron productos");
-  //   res.render('main', {title: 'Soy un título'})
-  // }
-  res.render('productos')
-
+  if (listProducts.length <= 0) {
+    console.log("No se encontraron productos");
+    // res.send({ error: "No hay productos cargados" });
+    let noProducts = { state: true, msg: "No hay productos cargados"}
+    res.render('productos', {noProducts})
+  } else {
+    console.log("Se encontraron productos");
+    // res.render('main', {title: 'Soy un título'})
+    res.render('productos', {listProducts})
+  }
 });
 
+app.get('/productos/agregar', (req,res) => {
+  res.render('agregar-productos');
+})
 
 
 /*Ruta de testing */
