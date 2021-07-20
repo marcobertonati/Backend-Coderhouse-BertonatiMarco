@@ -30,6 +30,7 @@ app.set("view engine", "hbs");
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
 
+
 app.use('/api', routerProducts);
 
 app.use('/static',express.static(__dirname + '/public'))
@@ -43,7 +44,7 @@ let listProducts = [];
 
 /*-----------------------*/
 
-/*Rutas*/
+/*Rutas del API*/
 routerProducts.get("/productos/listar", (req, res) => {
   if (listProducts.length <= 0) {
     console.log("No se encontraron productos");
@@ -124,7 +125,7 @@ app.get("/productos/vista", (req, res) => {
   if (listProducts.length <= 0) {
     console.log("No se encontraron productos");
     // res.send({ error: "No hay productos cargados" });
-    let noProducts = { state: true, msg: "No hay productos cargados"}
+    const noProducts = { state: true, msg: "No hay productos cargados"}
     res.render('productos', {noProducts})
   } else {
     console.log("Se encontraron productos");

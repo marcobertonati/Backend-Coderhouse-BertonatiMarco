@@ -1,4 +1,3 @@
-    <div>
       <h2>Lista de productos</h2>
 
       {{#if noProducts.state}}
@@ -22,7 +21,7 @@
                 <td>{{this.id}}</td>
                 <td>{{this.title}}</td>
                 <td>{{this.price}}</td>
-                <td><img src="" alt="" srcset="{{this.thumbnail}}"></td>
+                <td><img src="" alt="Imagen de {{this.title}}" srcset="{{this.thumbnail}}"></td>
                 <!--Imágenes desde https://www.iconfinder.com/iconsets/clothes-outfit-line-shop-aholic-->
               </tr>
             {{/each}}
@@ -30,4 +29,3 @@
           </tbody>
         </table>
       {{/if}}
-    </div>
