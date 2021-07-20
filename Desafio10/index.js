@@ -80,7 +80,7 @@ routerProducts.post("/productos/guardar", (req, res) => {
     );
 
     listProducts.push(newProduct);
-    res.send(newProduct);
+    res.redirect('../../productos/agregar');
 
   } else {
     let newProduct = new Product(
@@ -91,8 +91,7 @@ routerProducts.post("/productos/guardar", (req, res) => {
     );
 
     listProducts.push(newProduct);
-    res.render('agregar-productos');
-  }
+    res.redirect('../../productos/agregar');  }
 });
 
 routerProducts.put("/productos/actualizar/:id", (req, res) =>{
