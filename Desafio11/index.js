@@ -15,19 +15,9 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-/*Configuración del motor de plantilla */
-app.engine(
-  'hbs',
-  handlebars({
-    extname: 'hbs', // Extension a utilizar
-    defaultLayout: 'main.hbs', // El layout que va a cargar en todas las paginas por default
-    layoutsDir: `./views/layouts`, // Donde se van a encontrar las layouts
-    partialsDir: `./views/partials/` // Donde se van a encontrar los partials
-  })
-)
-
+/*Configuración del motor de plantillas */
 // Estableciendo el motor de plantilla que se utiliza
-app.set("view engine", "hbs");
+app.set("view engine", "pug");
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
 
@@ -127,11 +117,11 @@ app.get("/productos/vista", (req, res) => {
     console.log("No se encontraron productos");
     // res.send({ error: "No hay productos cargados" });
     const noProducts = { state: true, msg: "No hay productos cargados"}
-    res.render('productos', {noProducts})
+    res.render('lista-productos', noProducts)
   } else {
     console.log("Se encontraron productos");
     // res.render('main', {title: 'Soy un título'})
-    res.render('productos', {listProducts})
+    res.render('lista-productos', {listProducts})
   }
 });
 
@@ -142,9 +132,8 @@ app.get('/productos/agregar', (req,res) => {
 
 /*Ruta de testing */
 // app.get('/prueba', (req,res) => {
-//   res.send('Working')
+//   res.render('hello', {mensaje: "Soy el mensaje jaja"})
 // });
-
 
 /*Ejecución de servidor*/
 const PORT = 8080;
