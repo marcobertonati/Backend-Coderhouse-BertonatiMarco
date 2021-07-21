@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded());
 
 /*Configuración del motor de plantillas */
 // Estableciendo el motor de plantilla que se utiliza
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
 
@@ -116,17 +116,19 @@ app.get("/productos/vista", (req, res) => {
   if (listProducts.length <= 0) {
     console.log("No se encontraron productos");
     // res.send({ error: "No hay productos cargados" });
-    const noProducts = { state: true, msg: "No hay productos cargados"}
-    res.render('lista-productos', noProducts)
+    const listObject = { state: false, msg: "No hay productos cargados"}
+    res.render('./pages/lista', {listObject})
   } else {
     console.log("Se encontraron productos");
     // res.render('main', {title: 'Soy un título'})
-    res.render('lista-productos', {listProducts})
+    const listObject = { state: true, list: listProducts}
+    // console.log(listObject)
+    res.render('./pages/lista', {listObject})
   }
 });
 
 app.get('/productos/agregar', (req,res) => {
-  res.render('agregar-productos');
+  res.render('./pages/agregar');
 })
 
 
