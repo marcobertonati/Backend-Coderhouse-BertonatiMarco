@@ -84,7 +84,7 @@ routerProducts.post("/productos/guardar", (req, res) => {
 
     listProducts.push(newProduct);
     const listObject = { state: true, list: listProducts}
-    res.redirect('./pages/prueba', {listObject});
+    res.redirect('./pages/agregar', {listObject});
 
   } else {
     let newProduct = new Product(
@@ -95,7 +95,7 @@ routerProducts.post("/productos/guardar", (req, res) => {
     );
     listProducts.push(newProduct);
     const listObject = { state: true, list: listProducts}
-    res.redirect('./pages/prueba', {listObject});
+    res.redirect('./pages/agregar', {listObject});
     ; 
    }
 });
@@ -149,7 +149,7 @@ app.get('/productos/agregar', (req,res) => {
 
 
 
-/*Ruta de testing */
+/*Ruta de websocket */
 
 app.get('/prueba', (req,res) => {
 
@@ -183,6 +183,8 @@ app.get('/prueba', (req,res) => {
 
     // socket.emit('table products', listProducts);
 
+    socket.emit('table products', listProducts)
+
     socket.on('add product', (data) => {
 
       if (listProducts.length == 0) {
@@ -195,7 +197,7 @@ app.get('/prueba', (req,res) => {
     
         listProducts.push(newProduct);
 
-        console.log(listProducts)
+        // console.log(listProducts)
 
         socket.emit('table products', listProducts);
 
@@ -211,7 +213,7 @@ app.get('/prueba', (req,res) => {
         );
         listProducts.push(newProduct);
 
-        console.log(listProducts)
+        // console.log(listProducts)
 
         socket.emit('table products', listProducts);
 
