@@ -1,27 +1,48 @@
 const socket = io();
-console.log('hola')
+console.log('Index.js funcionando');
 
-
-
-/* agregar el add event prevent default al FORM */
-
-const btnAddProduct = document.getElementById('btn-addproduct').addEventListener('click',)
-
-
-socket.on('tableproducts', data => {
+socket.on('table products', data => {
     console.log(data)
+
+    const tBody = document.getElementById('tabla_body')
+
+    tBody.innerHTML = ``
+
+    data.forEach(data => {
+
+        tBody.innerHTML += `
+        <tr id="tabla_row">
+
+        <td>${data.id}</td>
+        <td>${data.title}</td>
+        <td>${data.price}</td>
+        <td><img src="" alt="Imagen" srcset=${data.thumbnail}></td>
+        </tr>`
+        
+    });
+
 })
 
 
-// const textSocketId = document.getElementById('socket-id')
 
+function addProduct(e) {
 
-// showId();
-// async function showId() {
+    e.preventDefault();
+    let titleProduct = document.getElementById('title').value;
+    let priceProduct = document.getElementById('price').value;
+    let thumbnailProduct = document.getElementById('thumbnail').value;
 
-//     const socketId = await socket.on('id socket', socket.id)
-//     console.log(socketId)
+    let productAdded = { 
+        title:  titleProduct,
+        price:  priceProduct,
+        thumbnail: thumbnailProduct,
+    }
+    // console.log(productAdded)
+    socket.emit('add product', productAdded)
     
-//     // textSocketId.innerHTML = socketId.Socket.id;
+    document.getElementById('title').value = ""
+    document.getElementById('price').value = ""
+    document.getElementById('thumbnail').value = ""
+}
 
-// }
+const btnAddProduct = document.getElementById('btn-addproduct').addEventListener('click', addProduct);

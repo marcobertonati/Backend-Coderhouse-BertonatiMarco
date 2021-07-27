@@ -84,7 +84,7 @@ routerProducts.post("/productos/guardar", (req, res) => {
 
     listProducts.push(newProduct);
     const listObject = { state: true, list: listProducts}
-    res.render('./pages/prueba', {listObject});
+    res.redirect('./pages/prueba', {listObject});
 
   } else {
     let newProduct = new Product(
@@ -95,7 +95,7 @@ routerProducts.post("/productos/guardar", (req, res) => {
     );
     listProducts.push(newProduct);
     const listObject = { state: true, list: listProducts}
-    res.render('./pages/prueba', {listObject});
+    res.redirect('./pages/prueba', {listObject});
     ; 
    }
 });
@@ -168,18 +168,60 @@ app.get('/prueba', (req,res) => {
 
   io.on('connection', (socket) => {
 
-    console.log('Usuario conectado');
+    console.log(`Usuario conectado ${socket.id}`);
 
-    if (listProducts.length <= 0) {
-      console.log("No se encontraron productos");
-      const listObject = { state: false, msg: "No hay productos cargados"}
-      socket.emit('tableproducts', {listObject})
+    // if (listProducts.length <= 0) {
+    //   console.log("No se encontraron productos");
+    //   const listObject = { state: false, msg: "No hay productos cargados"}
+    //   socket.emit('tableproducts', {listObject})
 
-    } else {
-      console.log("Se encontraron productos");
-      const listObject = { state: true, list: listProducts}
-      socket.emit('tableproducts', {listObject})
-    }
+    // } else {
+    //   console.log("Se encontraron productos");
+    //   const listObject = { state: true, list: listProducts}
+    //   socket.emit('tableproducts', {listObject})
+    // }
+
+    // socket.emit('table products', listProducts);
+
+    socket.on('add product', (data) => {
+
+      if (listProducts.length == 0) {
+        let newProduct = new Product(
+          data.title,
+          data.price,
+          data.thumbnail,
+          listProducts.length + 1
+        );
+    
+        listProducts.push(newProduct);
+
+        console.log(listProducts)
+
+        socket.emit('table products', listProducts);
+
+        // const listObject = { state: true, list: listProducts}
+        // res.redirect('./pages/prueba', {listObject});
+    
+      } else {
+        let newProduct = new Product(
+          data.title,
+          data.price,
+          data.thumbnail,
+          listProducts[listProducts.length-1].id +1
+        );
+        listProducts.push(newProduct);
+
+        console.log(listProducts)
+
+        socket.emit('table products', listProducts);
+
+        // const listObject = { state: true, list: listProducts}
+        // res.redirect('./pages/prueba', {listObject});
+        ; 
+       }
+
+
+    })
 
     socket.on('disconnect', () => {
       console.log('El usuariio se desconectó');

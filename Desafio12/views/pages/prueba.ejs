@@ -9,13 +9,26 @@
 
       <%- include('../partials/header'); %>
 
-      <h2>Prueba de Webscoket</h2>
+      <h2>Webscoket</h2>
 
       <%- include('../partials/form-productos'); %>
 
       <br>
 
-      <%- include('../partials/tabla-productos'); %>
+      <!-- <%- include('../partials/tabla-productos'); %> -->
+
+      <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">#id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Icono/Imagen</th>
+            </tr>
+        </thead>
+        <tbody id="tabla_body">
+        </tbody>
+    </table>
 
       
 

@@ -17,10 +17,10 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tabla_body">
 
                 <% listObject.list.forEach( function (product) { %>
-                    <tr>
+                    <tr id="tabla_row">
                         <td><%=product.id %></td>
                         <td><%=product.title %></td>
                         <td><%=product.price %></td>
