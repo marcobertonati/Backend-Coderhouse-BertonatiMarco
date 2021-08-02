@@ -11,8 +11,8 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 
-// /*Cargo módulo Handlebars */
-// const handlebars = require('express-handlebars');
+/*Cargo módulo Handlebars */
+const handlebars = require('express-handlebars');
 
 /*Router */
 const routerProducts = express.Router();
@@ -25,8 +25,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 /*Configuración del motor de plantillas */
+//Configuración del motor de plantilla 
+app.engine(
+  'hbs',
+  handlebars({
+    extname: 'hbs', // Extension a utilizar
+    defaultLayout: 'main.hbs', // El layout que va a cargar en todas las paginas por default
+    layoutsDir: `./views/layouts`, // Donde se van a encontrar las layouts
+    partialsDir: `./views/partials/` // Donde se van a encontrar los partials
+  })
+)
 // Estableciendo el motor de plantilla que se utiliza
-app.set("view engine", "ejs");
+app.set("view engine", "hbs");
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
 
@@ -149,91 +159,53 @@ app.get('/productos/agregar', (req,res) => {
 
 
 
+/* Ruta de prueba para websocket*/
+app.get('/websocket', (req,res) => {
+  res.render('./websocket')
+});
+
 /*Ruta de websocket */
+io.on('connection', (socket) => {
 
-app.get('/prueba', (req,res) => {
+  console.log(`Usuario conectado ${socket.id}`);
 
-  if (listProducts.length <= 0) {
-    // console.log("No se encontraron productos");
-    // res.send({ error: "No hay productos cargados" });
-    const listObject = { state: false, msg: "No hay productos cargados"}
-    res.render('./pages/prueba', {listObject})
-  } else {
-    // console.log("Se encontraron productos");
-    // res.render('main', {title: 'Soy un título'})
-    const listObject = { state: true, list: listProducts}
-    // console.log(listObject)
-    res.render('./pages/prueba', {listObject})
-  }
+  /*Evento que emite al socket para construir la página */
+  socket.emit('table products', listProducts);
 
-  io.on('connection', (socket) => {
+  /*Evento escuchar el servidor para agregar un producto al array */
+  socket.on('add product', (data) => {
 
-    console.log(`Usuario conectado ${socket.id}`);
+    if (listProducts.length == 0) {
+      let newProduct = new Product(
+        data.title,
+        data.price,
+        data.thumbnail,
+        listProducts.length + 1
+      );
+      listProducts.push(newProduct);
 
-    // if (listProducts.length <= 0) {
-    //   console.log("No se encontraron productos");
-    //   const listObject = { state: false, msg: "No hay productos cargados"}
-    //   socket.emit('tableproducts', {listObject})
+      /*Una vez que lo agregar emite a TODOS los socket el nuevo elemento para reconstruir la página a partir de todos */
+      io.emit('table products', listProducts);
+  
+    } else {
+      let newProduct = new Product(
+        data.title,
+        data.price,
+        data.thumbnail,
+        listProducts[listProducts.length-1].id +1
+      );
+      listProducts.push(newProduct);
 
-    // } else {
-    //   console.log("Se encontraron productos");
-    //   const listObject = { state: true, list: listProducts}
-    //   socket.emit('tableproducts', {listObject})
-    // }
-
-    // socket.emit('table products', listProducts);
-
-    socket.emit('table products', listProducts)
-
-    socket.on('add product', (data) => {
-
-      if (listProducts.length == 0) {
-        let newProduct = new Product(
-          data.title,
-          data.price,
-          data.thumbnail,
-          listProducts.length + 1
-        );
-    
-        listProducts.push(newProduct);
-
-        // console.log(listProducts)
-
-        socket.emit('table products', listProducts);
-
-        // const listObject = { state: true, list: listProducts}
-        // res.redirect('./pages/prueba', {listObject});
-    
-      } else {
-        let newProduct = new Product(
-          data.title,
-          data.price,
-          data.thumbnail,
-          listProducts[listProducts.length-1].id +1
-        );
-        listProducts.push(newProduct);
-
-        // console.log(listProducts)
-
-        socket.emit('table products', listProducts);
-
-        // const listObject = { state: true, list: listProducts}
-        // res.redirect('./pages/prueba', {listObject});
-        ; 
-       }
-
-
-    })
-
-    socket.on('disconnect', () => {
-      console.log('El usuariio se desconectó');
-    });
-   
-
+       /*Una vez que lo agregar emite a TODOS los socket el nuevo elemento para reconstruir la página a partir de todos */
+      io.emit('table products', listProducts);
+     }
   })
 
-  
-});
+  socket.on('disconnect', () => {
+    console.log(`El usuario ${socket.id} se desconectó`);
+  });
+
+})
 
 /*Ejecución de servidor*/
 const PORT = 8080;
