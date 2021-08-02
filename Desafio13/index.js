@@ -1,6 +1,9 @@
 /*Creo servidor */
 const express = require("express");
 
+/*Requiero FS*/
+const fs = require('fs');
+
 /*Inicializamos express */
 const app = express();
 
@@ -170,7 +173,7 @@ io.on('connection', (socket) => {
 
   console.log(`Usuario conectado ${socket.id}`);
 
-  /*Evento que emite al socket para construir la página */
+  /*Evento que emite al socket para construir la tabla */
   socket.emit('table products', listProducts);
 
   /*Evento escuchar el servidor para agregar un producto al array */
@@ -202,15 +205,22 @@ io.on('connection', (socket) => {
      }
   });
 
+
+
   /*Evento envia chat */
   socket.emit('list-msg-chat', msgChat);
 
   /*Evento escucha de mensaje */
   socket.on('msg-chat', (data) => {
-    console.log(data);
     msgChat.push(data);
+
+    /*Se guarda en un archivo TXT */
+    fs.promises.writeFile('chat-historial.txt', JSON.stringify(msgChat), 'utf-8');
+
     io.emit('list-msg-chat', msgChat);
   })
+
+
 
   /*Evento desconectar */
   socket.on('disconnect', () => {
