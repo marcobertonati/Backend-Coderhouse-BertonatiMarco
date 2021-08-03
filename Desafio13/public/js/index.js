@@ -96,3 +96,11 @@ socket.on('list-msg-chat', data => {
     });
 
 })
+
+
+
+/*Prueba con handlebars */
+let template = Handlebars.template(` {{#each msg}}
+<span class="user-chat">${msg.user} </span> <span class="date-chat">[${msg.date}]:</span> <span class="msg-chat">${msg.msg}</span> </br>
+{{/each}}
+`)

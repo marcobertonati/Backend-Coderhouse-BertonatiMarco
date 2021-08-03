@@ -139,6 +139,8 @@ routerProducts.delete('/productos/borrar/:id', (req, res) => {
     res.send(`Se borró el producto`)
 })
 
+
+
 /*Rutas vistas */
 app.get("/productos/vista", (req, res) => {
   if (listProducts.length <= 0) {
@@ -158,8 +160,6 @@ app.get("/productos/vista", (req, res) => {
 app.get('/productos/agregar', (req,res) => {
   res.render('./pages/agregar');
 })
-
-
 
 
 
