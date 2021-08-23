@@ -13,7 +13,8 @@ knex.schema.createTable('history-chat', table => {
   table.string('user');
   table.string('msg');
   table.string('date');
-}).then(() => console.log('Table created')).catch((err)=>console.log(err)).finally(()=> knex.destroy());
+}).then(() => console.log('Table created')).catch((err)=>console.log(err))
+// .finally(()=> knex.destroy());
 
 /*Crear tabla productos */
 knex.schema.createTable('products', (table) => {
@@ -21,9 +22,8 @@ knex.schema.createTable('products', (table) => {
   table.string('title');
   table.integer('price');
   table.string('thumbnail');
-}).then(() => console.log('Table created')).catch((err)=>console.log(err)).finally(()=> knex.destroy());
-
-
+}).then(() => console.log('Table created')).catch((err)=>console.log(err))
+// .finally(()=> knex.destroy());
 
 
 /*Inicializamos express */
