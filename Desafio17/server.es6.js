@@ -9,19 +9,19 @@ const { options } = require('./options/mysqlDB');
 const knex = require('knex')(options);
 
 /*Crear tabla historial de chat */
-// knex.schema.createTable('history-chat', table => {
-//   table.string('user');
-//   table.string('msg');
-//   table.string('date');
-// }).then(() => console.log('Table created')).catch((err)=>console.log(err)).finally(()=> knex.destroy());
+knex.schema.createTable('history-chat', table => {
+  table.string('user');
+  table.string('msg');
+  table.string('date');
+}).then(() => console.log('Table created')).catch((err)=>console.log(err)).finally(()=> knex.destroy());
 
 /*Crear tabla productos */
-// knex.schema.createTable('products', (table) => {
-//   table.increments('id').primary();;
-//   table.string('title');
-//   table.integer('price');
-//   table.string('thumbnail');
-// }).then(() => console.log('Table created')).catch((err)=>console.log(err)).finally(()=> knex.destroy());
+knex.schema.createTable('products', (table) => {
+  table.increments('id').primary();;
+  table.string('title');
+  table.integer('price');
+  table.string('thumbnail');
+}).then(() => console.log('Table created')).catch((err)=>console.log(err)).finally(()=> knex.destroy());
 
 
 
