@@ -1,0 +1,39 @@
+/* USO LA BASE DE DATOS PRUEBA */
+Atlas atlas-16n7am-shard-0 [primary] DB_CODER> db
+DB_CODER
+Atlas atlas-16n7am-shard-0 [primary] DB_CODER> use DB_CODER
+already on db DB_CODER
+
+/* CON LA BASE DE DATOS SELECCIONADAS AGREGO UNA COLECCIÓN ITEMS, E INSERTO MEDIANTE LA ESTRUCTURA DE ARRAY Y ADENTRO OBJETOS TODOS LOS PRODUCTOS */
+Atlas atlas-16n7am-shard-0 [primary] DB_CODER> db.items.insert([{"nombre":"Fideos","categoria":"Harina","stock":20},{"nombre":"Leche","categoria":"Lacteos","stock":30},{"nombre":"Crema","categoria":"Lacteos","stock":15}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6126f4b71f94f9c7e30f1815"),
+    '1': ObjectId("6126f4b71f94f9c7e30f1816"),
+    '2': ObjectId("6126f4b71f94f9c7e30f1817")
+  }
+}
+
+/* HAGO LA CONSULTA A LA BASE DE DATOS*/
+Atlas atlas-16n7am-shard-0 [primary] DB_CODER> db.items.find()
+[
+  {
+    _id: ObjectId("6126f4b71f94f9c7e30f1815"),
+    nombre: 'Fideos',
+    categoria: 'Harina',
+    stock: 20
+  },
+  {
+    _id: ObjectId("6126f4b71f94f9c7e30f1816"),
+    nombre: 'Leche',
+    categoria: 'Lacteos',
+    stock: 30
+  },
+  {
+    _id: ObjectId("6126f4b71f94f9c7e30f1817"),
+    nombre: 'Crema',
+    categoria: 'Lacteos',
+    stock: 15
+  }
+]

@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": ".\\node_modules\\.bin\\tsc server.ts -w",
-    "build": ".\\node_modules\\.bin\\tsc server.ts",
     "start": "nodemon server.js",
-    "ServerES6toJS5": ".\\node_modules\\.bin\\babel server.es6.js -o server.js",
-    "ServerTStoJS5": ".\\node_modules\\.bin\\tsc server.ts"
+    "ServerES6toJS5": ".\\node_modules\\.bin\\babel server.es6.js -o server.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +15,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
     "knex": "^0.95.10",
