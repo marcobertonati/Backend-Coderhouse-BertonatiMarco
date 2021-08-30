@@ -38,37 +38,46 @@ createProduct = async (req,res,next) => {
         const productDB = [{title: newProductBody.title,price: newProductBody.price,thumbnail: newProductBody.thumbnail}];
 
         knex('products').insert(productDB)
-                .then(()=>console.log('Producto guardado en la DB'))
-                .catch((e)=>console.log(e))
-                // .finally(()=>knex.destroy());
-        res.json(`Agregado nuevo producto`);
+            .then(()=>res.render('./pages/agregar'))
+            .catch((e)=>console.log(e))
+            // .finally(()=>knex.destroy());
     }
 
 updateProduct = async (req,res,next) => {
 
-        /*Perdido a DB */
-          
-        knex('products').where('id', '=', `${req.params.id}`)
-        .update({title: req.body.title, price: req.body.price, thumbnail: req.body.thumbnail})
-        .then(()=>console.log('Producto actualizado'))
-        .catch((e)=>console.log(e))
-        // .finally(()=>knex.destroy())
-    
-        res.json('Producto modificado');
-        
+         const productExist = await knex('products').select('*').where('id', '=', `${req.params.id}`).then(product=> product);
+
+         if (productExist.length <= 0) {
+            res.json({msg: 'Producto no encontrado'});
+         } else {
+
+             /*Perdido a DB */
+             knex('products').where('id', '=', `${req.params.id}`)
+             .update({title: req.body.title, price: req.body.price, thumbnail: req.body.thumbnail})
+             .then(()=>res.json('Producto modificado'))
+             .catch((e)=>console.log(e))
+             // .finally(()=>knex.destroy())
+             ;
+         }
     }
 
 deleteProduct = async (req,res,next) => {
-            /*Solicitud a la DB */
-            knex('products').where('id', '=', `${req.params.id}`)
-              .del()
-              .then(()=>{
-                console.log('Producto borrado')
-                res.json({msg: 'Se ha borrado un productos'});
-              })
-              .catch((e)=>console.log(e))
-              // .finally(()=>knex.destroy());
-        
+
+            const productExist = await knex('products').select('*').where('id', '=', `${req.params.id}`).then(product=> product);
+            
+            if (productExist.length <= 0) {
+                res.json({msg: 'Producto no encontrado'})
+            } else {
+                /*Solicitud a la DB */
+                knex('products').where('id', '=', `${req.params.id}`)
+                  .del()
+                  .then(()=>{
+                    console.log('Producto borrado')
+                    res.json({msg: 'Se ha borrado un productos'});
+                  })
+                  .catch((e)=>console.log(e))
+                  // .finally(()=>knex.destroy());
+            }
     }
 
 module.exports = {

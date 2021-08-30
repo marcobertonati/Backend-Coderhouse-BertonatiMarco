@@ -1,13 +1,13 @@
 /*Creo servidor */
 const express = require("express");
-
 /*Requiero FS*/
 const fs = require('fs');
-
-
 /* Requiero DB y configuración de la misma */
 const { options } = require('./options/mysqlDB');
 const knex = require('knex')(options);
+
+
+/* NOSE COMO HACER PARA QUE CUANDO YA ESTÉ CREADA NO VUELVA A INTENTARLO */
 
 /*Crear tabla historial de chat */
 // knex.schema.createTable('history-chat', table => {
@@ -71,84 +71,50 @@ app.set("views", "./views");
 app.use('/static',express.static(__dirname + '/public'))
 
 
-/*Array que contendrá productos*/
-let listProducts = [];
-let msgChat = [];
-
 /*-----------------------*/
 
 /*Rutas del API*/
 app.use(routes(routerProducts));
 
 
-
-
-/*Rutas vistas */
+/*Rutas vistas para agregar y ver productos */
 app.get("/productos/vista", async (req, res) => {
 
-  if (listProducts.length <= 0) {
+  const products = await knex.from('products').select('*')
+    .then((rows) => rows)
+    .catch(e=>console.log(e))
+    // .finally(()=>knex.destroy())
+
+  if (products.length <= 0) {
     console.log("No se encontraron productos");
     const noProducts = { state: true, msg: "No hay productos cargados"}
     res.render('./pages/lista', {noProducts})
   } else {
     console.log("Se encontraron productos");
-    console.log(listProducts);
-    res.render('./pages/lista', {listProducts})
+    res.render('./pages/lista', {products})
   }
 });
-
 app.get('/productos/agregar', (req,res) => {
   res.render('./pages/agregar');
-})
+});
 
 
-
-/* Ruta de prueba para websocket*/
+/* Ruta de prueba para websocket: CHAT*/
 app.get('/websocket', (req,res) => {
   res.render('./websocket')
 });
 
 /*Ruta de websocket */
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
 
   console.log(`Usuario conectado ${socket.id}`);
 
-  /*Evento que emite al socket para construir la tabla */
-  socket.emit('table products', listProducts);
-
-  /*Evento escuchar el servidor para agregar un producto al array */
-  socket.on('add product', (data) => {
-
-    if (listProducts.length == 0) {
-      let newProduct = new Product(
-        data.title,
-        data.price,
-        data.thumbnail,
-        listProducts.length + 1
-      );
-      listProducts.push(newProduct);
-
-      /*Una vez que lo agregar emite a TODOS los socket el nuevo elemento para reconstruir la página a partir de todos */
-      io.emit('table products', listProducts);
-  
-    } else {
-      let newProduct = new Product(
-        data.title,
-        data.price,
-        data.thumbnail,
-        listProducts[listProducts.length-1].id +1
-      );
-      listProducts.push(newProduct);
-
-       /*Una vez que lo agregar emite a TODOS los socket el nuevo elemento para reconstruir la página a partir de todos */
-      io.emit('table products', listProducts);
-     }
-  });
-
-
-
   /*Evento envia chat */
-  socket.emit('list-msg-chat', msgChat);
+  const historyChats = await knex.from('history-chat').select('*')
+    .then((rows) => rows)
+    .catch(e=>console.log(e))
+    // .finally(()=>knex.destroy())
+  socket.emit('list-msg-chat', historyChats);
 
   /*Evento escucha de mensaje */
   socket.on('msg-chat', async (data) => {
@@ -165,16 +131,12 @@ io.on('connection', (socket) => {
       // .finally(()=> knex.destroy());
       /*Con el Finally se corta la conexión knex. Por lo cual una vez que graba en base de datos se corta. Si lo pongo solo se guarda un mensaje y luego aparece un error. */
 
-    /*Se guarda en memoria del servidor */
-    msgChat.push(data);
-
-    /*Se guarda en un archivo TXT */
-    fs.promises.writeFile('chat-historial.txt', JSON.stringify(msgChat), 'utf-8');
-
-    io.emit('list-msg-chat', msgChat);
+    const historyChats = await knex.from('history-chat').select('*')
+      .then((rows) => rows)
+      .catch(e=>console.log(e))
+      // .finally(()=>knex.destroy())
+    io.emit('list-msg-chat', historyChats);
   })
-
-
 
   /*Evento desconectar */
   socket.on('disconnect', () => {
