@@ -1,6 +1,5 @@
 /* Requiero DB y configuración de la misma */
-const { options } = require ('../../options/mysqlDB');
-const knex = require ('knex')(options);
+const knex = require('../dao/db/connectionKnex');
 
 /*Requiero clase Producto */
 const { Product } = require ('../dao/models/products');
@@ -33,7 +32,7 @@ getOneProduct = async (req,res,next) => {
     }
 
 createProduct = async (req,res,next) => {
-
+        console.log('Entro a createProduct')
         const newProductBody = req.body;
         const productDB = [{title: newProductBody.title,price: newProductBody.price,thumbnail: newProductBody.thumbnail}];
 
@@ -44,7 +43,7 @@ createProduct = async (req,res,next) => {
     }
 
 updateProduct = async (req,res,next) => {
-
+        console.log('Entro a updateProduct')
          const productExist = await knex('products').select('*').where('id', '=', `${req.params.id}`).then(product=> product);
 
          if (productExist.length <= 0) {
@@ -62,7 +61,7 @@ updateProduct = async (req,res,next) => {
     }
 
 deleteProduct = async (req,res,next) => {
-
+            console.log('Entro a deleteProduct')
             const productExist = await knex('products').select('*').where('id', '=', `${req.params.id}`).then(product=> product);
             
             if (productExist.length <= 0) {

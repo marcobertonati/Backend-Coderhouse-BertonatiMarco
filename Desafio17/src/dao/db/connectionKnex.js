@@ -9,7 +9,7 @@ knex.schema.hasTable('history-chat').then(function(exists) {
         table.string('user');
         table.string('msg');
         table.string('date');
-      }).then(() => console.log('Table created')).catch((err)=>console.log(err))
+      }).then(() => console.log('Table history-chat created!')).catch((err)=>console.log(err))
       // .finally(()=> knex.destroy());
     } else {
       console.log('Table history-chat already created!')
@@ -25,10 +25,11 @@ knex.schema.hasTable('history-chat').then(function(exists) {
         table.string('title');
         table.integer('price');
         table.string('thumbnail');
-      }).then(() => console.log('Table created')).catch((err)=>console.log(err))
+      }).then(() => console.log('Table products created!')).catch((err)=>console.log(err))
       // .finally(()=> knex.destroy());
     } else {
       console.log('Table products already created!')
     }
   })
   
+  module.exports = knex

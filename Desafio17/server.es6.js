@@ -2,51 +2,17 @@
 const express = require("express");
 
 /* Requiero DB y configuración de la misma */
-const { options } = require('./options/mysqlDB');
-const knex = require('knex')(options);
-
-
-/*Chequear que tabla 'history-chat' esté creada, sino crear tabla historial de chat */
-knex.schema.hasTable('history-chat').then(function(exists) {
-  if (!exists) {
-    return knex.schema.createTable('history-chat', table => {
-      table.string('user');
-      table.string('msg');
-      table.string('date');
-    }).then(() => console.log('Table created')).catch((err)=>console.log(err))
-    // .finally(()=> knex.destroy());
-  } else {
-    console.log('Table history-chat already created!')
-  }
-})
-
-
-/*Chequear que tabla 'products' esté creada, sino crear tabla historial de chat */
-knex.schema.hasTable('products').then(function(exists) {
-  if (!exists) {
-    return knex.schema.createTable('products', (table) => {
-      table.increments('id').primary();;
-      table.string('title');
-      table.integer('price');
-      table.string('thumbnail');
-    }).then(() => console.log('Table created')).catch((err)=>console.log(err))
-    // .finally(()=> knex.destroy());
-  } else {
-    console.log('Table products already created!')
-  }
-})
-
-
-
+const knex = require('./src/dao/db/connectionKnex')
 
 /*Inicializamos express */
 const app = express();
+
 /*Le pasamos la constante app que creamos arriba */
 const http = require('http').Server(app);
 module.exports = { http }
+
 /*Le pasamos la constante http */
 const io = require('socket.io')(http);
-
 
 /*Cargo módulo Handlebars */
 const handlebars = require('express-handlebars');
@@ -92,7 +58,6 @@ app.use(routesView(routerViews));
 /*Socket.io */
 // const { ioEvents } = require('./src/services/chat');
 // ioEvents;
-
 io.on('connection', async (socket) => {
 
   console.log(`Usuario conectado ${socket.id}`);

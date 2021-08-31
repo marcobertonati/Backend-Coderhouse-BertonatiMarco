@@ -1,7 +1,5 @@
 /* Requiero DB y configuración de la misma */
-const { options } = require ('../../options/mysqlDB');
-const knex = require ('knex')(options);
-
+const knex = require('../dao/db/connectionKnex')
 
 module.exports = (router) => {
 
@@ -13,18 +11,22 @@ module.exports = (router) => {
             // .finally(()=>knex.destroy())
         
           if (products.length <= 0) {
+            console.log('Ingresaron a pagina de lista productos:');
             console.log("No se encontraron productos");
             const noProducts = { state: true, msg: "No hay productos cargados"}
             res.render('./pages/lista', {noProducts})
           } else {
+            console.log('Ingresaron a pagina de lista productos:');
             console.log("Se encontraron productos");
             res.render('./pages/lista', {products})
           }
         })
         .get('/productos/agregar', async (req,res,next) => {
+            console.log('Ingresaron a pagina agregar producto');
             res.render('./pages/agregar');
         })
         .get('/chat', (req,res, next) => {
+            console.log('Ingresaron a pagina de chat');
             res.render('./websocket')
         })
 

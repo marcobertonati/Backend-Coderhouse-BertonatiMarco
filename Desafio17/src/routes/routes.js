@@ -1,5 +1,5 @@
+/*Requiero controladores de productos */
 const productController = require('../controller/product');
-
 
 module.exports = (router) => {
 
