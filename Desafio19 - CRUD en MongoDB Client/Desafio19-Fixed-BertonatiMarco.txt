@@ -1,0 +1,310 @@
+/* CREO BASE DE DATOS E-COMMERCE*/
+
+Atlas atlas-16n7am-shard-0 [primary] DB_CODER> use ecommerce
+switched to db ecommerce
+
+/* CREO COLLECIONES */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.createCollection("mensajes")
+{ ok: 1 }
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.createCollection("productos")
+{ ok: 1 }
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> show collections
+mensajes
+productos
+
+/* INSERTO 10 PRODUCTOS */ 
+db.productos.insert([{title: "remera", price:1250, thumbnail: "www.adidas.com"},{title: "pantalon", price:2000, thumbnail: "www.adidas.com"},{title: "zapatilla", price:4900, thumbnail: "www.adidas.com"},{title: "gorro", price:300, thumbnail: "www.adidas.com"},{title: "medias", price:200, thumbnail: "www.adidas.com"},{title: "cordones", price:120, thumbnail: "www.adidas.com"},{title: "cinturon", price:900, thumbnail: "www.adidas.com"},{title: "calzones", price:600, thumbnail: "www.adidas.com"},{title: "campera", price:3950, thumbnail: "www.adidas.com"},{title: "guantes", price:1200, thumbnail: "www.adidas.com"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("612d8b311f94f9c7e30f1818"),
+    '1': ObjectId("612d8b311f94f9c7e30f1819"),
+    '2': ObjectId("612d8b311f94f9c7e30f181a"),
+    '3': ObjectId("612d8b311f94f9c7e30f181b"),
+    '4': ObjectId("612d8b311f94f9c7e30f181c"),
+    '5': ObjectId("612d8b311f94f9c7e30f181d"),
+    '6': ObjectId("612d8b311f94f9c7e30f181e"),
+    '7': ObjectId("612d8b311f94f9c7e30f181f"),
+    '8': ObjectId("612d8b311f94f9c7e30f1820"),
+    '9': ObjectId("612d8b311f94f9c7e30f1821")
+  }
+}
+
+/* INSERTO 10 MENSAJES */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.mensajes.insert([
+...     {user: "marko@gmail.com", msg:"Hola", date: ISODate()},
+...     {user: "nicolas@gmail.com", msg:"como va", date: ISODate()},
+...     {user: "facundo@gmail.com", msg:"todo bien", date: ISODate()},
+...     {user: "nahuel@gmail.com", msg:"de donde sos", date: ISODate()},
+...     {user: "sergio@gmail.com", msg:"cuantos años tenes", date: ISODate()},
+...     {user: "angel@gmail.com", msg:"que estudias", date: ISODate()},
+...     {user: "sonia@gmail.com", msg:"trabajas en donde", date: ISODate()},
+...     {user: "beatriz@gmail.com", msg:"te gusta viajar", date: ISODate()},
+...     {user: "nicolas@gmail.com", msg:"soy de argentina", date: ISODate()},
+...     {user: "medina@gmail.com", msg:"no tengo hotmail", date: ISODate()},
+... ])
+
+/* LISTO PRODUCTOS */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.productos.find().pretty()
+[
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1818"),
+    title: 'remera',
+    price: 1250,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1819"),
+    title: 'pantalon',
+    price: 2000,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181a"),
+    title: 'zapatilla',
+    price: 4900,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181b"),
+    title: 'gorro',
+    price: 300,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181c"),
+    title: 'medias',
+    price: 200,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181d"),
+    title: 'cordones',
+    price: 120,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181e"),
+    title: 'cinturon',
+    price: 900,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181f"),
+    title: 'calzones',
+    price: 600,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1820"),
+    title: 'campera',
+    price: 3950,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1821"),
+    title: 'guantes',
+    price: 1200,
+    thumbnail: 'www.adidas.com'
+  }
+]
+
+/* LISTO MENSAJE */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.mensajes.find().pretty()
+[
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1822"),
+    user: 'marko@gmail.com',
+    msg: 'Hola',
+    date: ISODate("2021-08-31T01:55:19.908Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1823"),
+    user: 'nicolas@gmail.com',
+    msg: 'como va',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1824"),
+    user: 'facundo@gmail.com',
+    msg: 'todo bien',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1825"),
+    user: 'nahuel@gmail.com',
+    msg: 'de donde sos',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1826"),
+    user: 'sergio@gmail.com',
+    msg: 'cuantos años tenes',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1827"),
+    user: 'angel@gmail.com',
+    msg: 'que estudias',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1828"),
+    user: 'sonia@gmail.com',
+    msg: 'trabajas en donde',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f1829"),
+    user: 'beatriz@gmail.com',
+    msg: 'te gusta viajar',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f182a"),
+    user: 'nicolas@gmail.com',
+    msg: 'soy de argentina',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  },
+  {
+    _id: ObjectId("612d8c071f94f9c7e30f182b"),
+    user: 'medina@gmail.com',
+    msg: 'no tengo hotmail',
+    date: ISODate("2021-08-31T01:55:19.923Z")
+  }
+]
+
+/* CHEQUEO CANTIDAD DE DOCUMENTOS EN COLECCIÓN */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.productos.estimatedDocumentCount()
+10
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.mensajes.estimatedDocumentCount()
+10
+
+/* 5-a Agrego un producto más en la colección productos */
+db.productos.insertOne({title: "cuello", price:750, thumbnail: "www.adidas.com"})
+
+/* 5-b Consultas */
+/* menores a 1000 */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.productos.find({price: {$lt: 1000}})
+[ongoServerError: unknown operator: $it
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181b"),
+    title: 'gorro',
+    price: 300,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181c"),
+    title: 'medias',
+    price: 200,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181d"),
+    title: 'cordones',
+    price: 120,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181e"),
+    title: 'cinturon',
+    price: 900,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181f"),
+    title: 'calzones',
+    price: 600,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d90cd1f94f9c7e30f182c"),
+    title: 'cuello',
+    price: 750,
+    thumbnail: 'www.adidas.com'
+  }
+]
+
+
+
+/* Precio entre 1000 a 3000 */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.productos.find({$and: [{price: {$gt: 1000}}, {price: {$lt: 3000}}]})
+[
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1818"),
+    title: 'remera',
+    price: 1250,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1819"),
+    title: 'pantalon',
+    price: 2000,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1821"),
+    title: 'guantes',
+    price: 1200,
+    thumbnail: 'www.adidas.com'
+  }
+]
+
+
+
+/* Precio mayor a 3000 */
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.productos.find({price: {$gt: 3000}})
+[
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f181a"),
+    title: 'zapatilla',
+    price: 4900,
+    thumbnail: 'www.adidas.com'
+  },
+  {
+    _id: ObjectId("612d8b311f94f9c7e30f1820"),
+    title: 'campera',
+    price: 3950,
+    thumbnail: 'www.adidas.com'
+  }
+]
+
+
+/* Sólo nombre del tercer producto más barato */
+db.productos.find({},{title: 1}).sort({price: 1}).limit(1).skip(2);
+
+
+/* Seteo stock en 100*/
+db.productos.update({}, {$set: {stock: 100}}, {upsert:true, multi:true})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 10,
+  upsertedCount: 0
+}
+
+/* Cambiar stock a 0 de precios con más $4000*/
+db.productos.update({price: {$gt: 4000} }, {$set: {stock: 0}}, {upsert:true, multi:true})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+/* Borrar los productos con precio menor a 1000 */
+db.productos.remove({price: {$lt: 1000}})
+[eprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+  {cknowledged: true, deletedCount: 6 }
+
+
+/* 6 USUARIO PEPE */
+db.createUser({user:"pepe", pwd:"asd456", roles: [{role: "read", db: "ecommerce"}]})
+Atlas atlas-16n7am-shard-0 [primary] ecommerce> db.productos.insertOne({title: "gorrita"})
+MongoServerError: user is not allowed to do action [insert] on [ecommerce.productos]
+Atlas atlas-16n7am-shard-0 [primary] ecommerce>
+
+
+

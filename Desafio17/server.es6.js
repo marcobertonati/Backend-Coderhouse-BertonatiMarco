@@ -1,39 +1,49 @@
 /*Creo servidor */
 const express = require("express");
-/*Requiero FS*/
-const fs = require('fs');
+
 /* Requiero DB y configuración de la misma */
 const { options } = require('./options/mysqlDB');
 const knex = require('knex')(options);
 
 
-/* NOSE COMO HACER PARA QUE CUANDO YA ESTÉ CREADA NO VUELVA A INTENTARLO */
+/*Chequear que tabla 'history-chat' esté creada, sino crear tabla historial de chat */
+knex.schema.hasTable('history-chat').then(function(exists) {
+  if (!exists) {
+    return knex.schema.createTable('history-chat', table => {
+      table.string('user');
+      table.string('msg');
+      table.string('date');
+    }).then(() => console.log('Table created')).catch((err)=>console.log(err))
+    // .finally(()=> knex.destroy());
+  } else {
+    console.log('Table history-chat already created!')
+  }
+})
 
-/*Crear tabla historial de chat */
-// knex.schema.createTable('history-chat', table => {
-//   table.string('user');
-//   table.string('msg');
-//   table.string('date');
-// }).then(() => console.log('Table created')).catch((err)=>console.log(err))
-// .finally(()=> knex.destroy());
+
+/*Chequear que tabla 'products' esté creada, sino crear tabla historial de chat */
+knex.schema.hasTable('products').then(function(exists) {
+  if (!exists) {
+    return knex.schema.createTable('products', (table) => {
+      table.increments('id').primary();;
+      table.string('title');
+      table.integer('price');
+      table.string('thumbnail');
+    }).then(() => console.log('Table created')).catch((err)=>console.log(err))
+    // .finally(()=> knex.destroy());
+  } else {
+    console.log('Table products already created!')
+  }
+})
 
 
-/*Crear tabla productos */
-// knex.schema.createTable('products', (table) => {
-//   table.increments('id').primary();;
-//   table.string('title');
-//   table.integer('price');
-//   table.string('thumbnail');
-// }).then(() => console.log('Table created')).catch((err)=>console.log(err))
-// .finally(()=> knex.destroy());
 
 
 /*Inicializamos express */
 const app = express();
-
 /*Le pasamos la constante app que creamos arriba */
 const http = require('http').Server(app);
-
+module.exports = { http }
 /*Le pasamos la constante http */
 const io = require('socket.io')(http);
 
@@ -44,6 +54,9 @@ const handlebars = require('express-handlebars');
 /*Router */
 const routes = require ('./src/routes/routes')
 const routerProducts = express.Router();
+const routesView = require('./src/routes/routesView')
+const routerViews = express.Router();
+
 
 /*Body Parser */
 const bodyParser = require("body-parser");
@@ -71,40 +84,15 @@ app.set("views", "./views");
 app.use('/static',express.static(__dirname + '/public'))
 
 
-/*-----------------------*/
-
 /*Rutas del API*/
 app.use(routes(routerProducts));
+/*Rutas del views productos, agregar y chat*/
+app.use(routesView(routerViews));
 
+/*Socket.io */
+// const { ioEvents } = require('./src/services/chat');
+// ioEvents;
 
-/*Rutas vistas para agregar y ver productos */
-app.get("/productos/vista", async (req, res) => {
-
-  const products = await knex.from('products').select('*')
-    .then((rows) => rows)
-    .catch(e=>console.log(e))
-    // .finally(()=>knex.destroy())
-
-  if (products.length <= 0) {
-    console.log("No se encontraron productos");
-    const noProducts = { state: true, msg: "No hay productos cargados"}
-    res.render('./pages/lista', {noProducts})
-  } else {
-    console.log("Se encontraron productos");
-    res.render('./pages/lista', {products})
-  }
-});
-app.get('/productos/agregar', (req,res) => {
-  res.render('./pages/agregar');
-});
-
-
-/* Ruta de prueba para websocket: CHAT*/
-app.get('/websocket', (req,res) => {
-  res.render('./websocket')
-});
-
-/*Ruta de websocket */
 io.on('connection', async (socket) => {
 
   console.log(`Usuario conectado ${socket.id}`);
@@ -142,7 +130,6 @@ io.on('connection', async (socket) => {
   socket.on('disconnect', () => {
     console.log(`El usuario ${socket.id} se desconectó`);
   });
-
 })
 
 /*Ejecución de servidor*/
