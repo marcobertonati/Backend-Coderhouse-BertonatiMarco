@@ -8,6 +8,7 @@ exports.createProduct = async (req, res, next) => {
     const productCreated = await product.createProduct(req.body);
     // res.json({ msg: "Product Created!", product: productCreated });
     res.render('./pages/agregar')
+    // probar res.redirect()!!!!!!!
   } catch (error) {
     console.log(error);
   }

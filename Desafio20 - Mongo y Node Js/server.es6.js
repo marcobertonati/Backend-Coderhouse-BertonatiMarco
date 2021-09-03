@@ -25,6 +25,9 @@ const routerMessagesChat = express.Router();
 const routesView = require("./src/routes/routesView");
 const routerViews = express.Router();
 
+const routesIoChat  = require("./src/routes/routesIOChat");
+const routerIoChat = express.Router();
+
 
 /*Body Parser */
 const bodyParser = require("body-parser");
@@ -63,6 +66,8 @@ app.use(routesProducts(routerProducts));
 app.use(routesMessagesChat(routerMessagesChat))
 /*Rutas del views productos, agregar y chat*/
 app.use(routesView(routerViews));
+/*Rutas IO chat*/
+app.use(routesIoChat(routerIoChat));
 
 /*Socket.io: Chat */
 io.on("connection", async (socket) => {

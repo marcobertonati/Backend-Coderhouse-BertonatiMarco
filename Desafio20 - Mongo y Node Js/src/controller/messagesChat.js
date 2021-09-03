@@ -10,5 +10,10 @@ exports.createMsg = async (req,res,next) => {
 exports.getAllMsgChat = async (req,res,next) => {
     console.log('Entro a getAllmsgChat');
     const allMesgChat = await messageChat.getAllMessage();
-    res.json({msg: 'Messages from chat', historialMessages: allMesgChat});
+
+    //Sirve para la petición HTTP
+    // res.json({msg: 'Messages from chat', historialMessages: allMesgChat});
+
+    // Sirve para SocketIo
+    res.render("websocket",allMesgChat);
 }
