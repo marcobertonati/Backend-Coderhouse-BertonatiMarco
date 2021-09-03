@@ -1,30 +1,26 @@
 /*Creo servidor */
 const express = require("express");
-
 /*Inicializamos express */
 const app = express();
-
 /*Le pasamos la constante app que creamos arriba */
 const http = require("http").Server(app);
-
 /*Le pasamos la constante http */
 const io = require("socket.io")(http);
-
-/*Requiero Mongoose para chats */
-const messagesChat = require('./src/dao/models/messagesMongoose');
-
 /*Cargo módulo Handlebars */
 const handlebars = require("express-handlebars");
 
-
 /*Router */
+/*Requerimos las rutas que va a ofrecer nuestra aplicación */
 const routesProducts = require("./src/routes/routesProducts");
 const routerProducts = express.Router();
 const routesMessagesChat = require('./src/routes/routesMessagesChat');
 const routerMessagesChat = express.Router();
+
+/*Rutas a las view */
 const routesView = require("./src/routes/routesView");
 const routerViews = express.Router();
 
+/*Rutas a las view via IO */
 const routesIoChat  = require("./src/routes/routesIOChat");
 const routerIoChat = express.Router();
 
@@ -70,38 +66,8 @@ app.use(routesView(routerViews));
 app.use(routesIoChat(routerIoChat));
 
 /*Socket.io: Chat */
-io.on("connection", async (socket) => {
-  console.log(`Usuario conectado ${socket.id}`);
-
-  /*Traigo todos los mensajes */
-  try {
-    const historyChats = await messagesChat.find();
-    socket.emit('list-msg-chat', historyChats);
-      } catch (error) {
-          console.log(error)
-      }
-
-  socket.on('msg-chat', async (data)=> {
-
-    try {
-      const dbMsgChat = [{ user: data.user, msg: data.msg, date: data.date}];
-      await messagesChat.create(dbMsgChat);
-    } catch (error) {
-      console.log(error)
-    }
-
-    try {
-      const historyChats = await messagesChat.find();
-      io.emit('list-msg-chat', historyChats); 
-    } catch (error) {
-      console.log(error)  
-    }
-    })
-
-  /*Evento desconectar */
-  socket.on("disconnect", () => {
-    console.log(`El usuario ${socket.id} se desconectó`);
-  });
-});
+/*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
+const socketConnection = require ('./src/services/messagesIOchat');
+socketConnection(io);
 
 module.exports = http;
