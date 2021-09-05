@@ -3,7 +3,6 @@ const ProductService = require('../services/products');
 const product = new ProductService();
 
 module.exports = (router) => {
-
     router
         .get('/productos/vista', async (req,res,next) => {
           console.log('Entro a /productos/lista')
@@ -14,11 +13,9 @@ module.exports = (router) => {
           console.log('Ingresaron a pagina agregar producto');
           res.render('./pages/agregar');
         })
-        .get('/chat', (req,res,next)=>{
+        .get('/chat-view', (req,res,next)=>{
           console.log('Ingresaron a pagina de chat');
           res.render('./websocket')
         })
-        
-    return router
-        
+    return router    
 }

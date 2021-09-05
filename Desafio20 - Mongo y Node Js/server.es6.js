@@ -8,6 +8,9 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 /*Cargo módulo Handlebars */
 const handlebars = require("express-handlebars");
+/*Requiero cors */;
+const cors = require('cors')
+app.use(cors())
 
 /*Router */
 /*Requerimos las rutas que va a ofrecer nuestra aplicación */
@@ -40,6 +43,7 @@ app.engine(
     defaultLayout: "main.hbs", // El layout que va a cargar en todas las paginas por default
     layoutsDir: `./views/layouts`, // Donde se van a encontrar las layouts
     partialsDir: `./views/partials/`, // Donde se van a encontrar los partials
+    
   })
 );
 // Estableciendo el motor de plantilla que se utiliza
@@ -59,7 +63,7 @@ app.use("/static", express.static(__dirname + "/public"));
 /*Rutas del API: Productos*/
 app.use(routesProducts(routerProducts));
 /*Rutas del API: Mensaje de chat*/
-app.use(routesMessagesChat(routerMessagesChat))
+app.use(routesMessagesChat(routerMessagesChat));
 /*Rutas del views productos, agregar y chat*/
 app.use(routesView(routerViews));
 /*Rutas IO chat*/

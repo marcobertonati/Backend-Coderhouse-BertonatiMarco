@@ -1,5 +1,6 @@
 /*Requiero Mongoose para chats */
 const messagesChat = require('../dao/models/messagesMongoose');
+/*Deberia tratar de requerirlo desde servicios */
 
 module.exports = (io) => {
     io.on("connection", async (socket) => {
