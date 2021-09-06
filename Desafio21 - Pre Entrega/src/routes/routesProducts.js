@@ -14,6 +14,5 @@ module.exports = (router) => {
         .get('/api/product/price/search', productController.getByPrice)
         .get('/api/product/stock/search', productController.getByStock)
 
-    return router
-        
+    return router   
 }
