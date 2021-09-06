@@ -59,7 +59,7 @@ http://localhost:8080/static/js/index.js
 // app.use(express.static(__dirname + '/public'))
 app.use("/static", express.static(__dirname + "/public"));
 
-
+/*Este trabajo funciona con REACTJS: https://github.com/marcobertonati/frontend-react-ecommerceunique/tree/main/src */
 /*Rutas del API: Productos*/
 app.use(routesProducts(routerProducts));
 /*Rutas del API: Mensaje de chat*/
