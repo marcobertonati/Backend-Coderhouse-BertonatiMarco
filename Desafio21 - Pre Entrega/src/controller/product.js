@@ -1,4 +1,4 @@
-const ProductService = require("../services/productsMongoose");
+const ProductService = require("../services/productService");
 const product = new ProductService();
 
 exports.createProduct = async (req, res, next) => {

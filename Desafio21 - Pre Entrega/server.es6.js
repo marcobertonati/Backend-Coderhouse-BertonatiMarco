@@ -16,6 +16,8 @@ app.use(cors())
 /*Requerimos las rutas que va a ofrecer nuestra aplicación */
 const routesProducts = require("./src/routes/routesProducts");
 const routerProducts = express.Router();
+const routesCart = require ('./src/routes/routesCart');
+const routerCart = express.Router()
 const routesMessagesChat = require('./src/routes/routesMessagesChat');
 const routerMessagesChat = express.Router();
 
@@ -62,6 +64,8 @@ app.use("/static", express.static(__dirname + "/public"));
 /*Este trabajo funciona con REACTJS: https://github.com/marcobertonati/frontend-react-ecommerceunique/tree/main/src */
 /*Rutas del API: Productos*/
 app.use(routesProducts(routerProducts));
+/*Rutas del API: Cart*/
+app.use(routesCart(routerCart));
 /*Rutas del API: Mensaje de chat*/
 app.use(routesMessagesChat(routerMessagesChat));
 /*Rutas del views productos, agregar y chat*/
