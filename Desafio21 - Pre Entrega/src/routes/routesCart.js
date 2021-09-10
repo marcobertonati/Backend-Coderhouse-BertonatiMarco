@@ -5,7 +5,7 @@ module.exports = (router) => {
 
     router
         .post('/api/cart/create', cartController.createCart)
-        .get('/api/cart/:id', cartController.getProductOnCart)
+        .get('/api/cart/search', cartController.getProductOnCart)
         .delete('/api/cart/delete/:id', cartController.deleteProductOnCart)
     return router   
 }

@@ -1,4 +1,4 @@
-const productModel = require('../dao/models/productsMongoose');
+const {productModel} = require('../dao/models/productsMongoose');
 
 module.exports = class {
 

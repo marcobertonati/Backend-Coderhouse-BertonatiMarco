@@ -6,8 +6,8 @@ module.exports = class {
         return await cartModel.create(cart);
     }
 
-    async getProductOnCart(id) {
-        return await cartModel.find(cart);
+    async getProductOnCart(idCart) {
+        return await cartModel.findById(idCart);
     }
 
     async deleteProductOnCart(id) {

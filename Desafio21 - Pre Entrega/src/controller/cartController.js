@@ -20,8 +20,20 @@ exports.getProductOnCart = async (req,res,next) => {
     console.log('Entró a cartController => getProductOnCart');
 
     try {
-    
-        res.send('Working!')
+        const idCart = req.query.idCart;
+        const idProduct = req.query.idProduct;
+        console.log(idCart);
+        console.log(idProduct);
+        const productsOnCart = await cart.getProductOnCart(idCart);
+
+        if (idProduct) {
+            const productFinded = productsOnCart.product.find(product=> product.code == idProduct);
+            console.log(productFinded);           
+            res.json(productFinded);
+        } else {
+            console.log(productsOnCart);
+            res.json(productsOnCart);
+        }
         
     } catch (error) {
         console.log(error)
