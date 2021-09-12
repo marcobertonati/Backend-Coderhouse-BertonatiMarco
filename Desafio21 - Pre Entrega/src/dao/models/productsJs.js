@@ -1,12 +1,15 @@
-class Product {
+class ProductJS {
 
-    constructor(title, price, thumbnail, id) {
-        this.title = title, 
-        this.price = price,
-        this.thumbnail = thumbnail,
-        this.id = id
+    listOfProducts = []
+
+    createProduct = (product) => {
+        return this.listOfProducts.push(product);
+    }
+
+    showProducts = () => {
+        return this.listOfProducts;
     }
 
 }
 
-module.exports = Product
+module.exports = { ProductJS }

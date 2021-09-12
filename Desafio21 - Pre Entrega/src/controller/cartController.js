@@ -42,3 +42,12 @@ exports.deleteProductOnCart = async (req,res,next) => {
         console.log(error)
     }
 }
+
+exports.getAllCarts = async (req,res,next) => {
+    try {
+        const carts = await cart.getAllCarts();
+        res.json(carts)
+    } catch (error) {
+        console.log(error)
+    }
+}
