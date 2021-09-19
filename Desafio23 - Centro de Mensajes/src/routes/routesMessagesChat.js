@@ -2,7 +2,7 @@
 const messagesController = require('../controller/messagesChat');
 module.exports = (router) => {
     router
-        .get("/api/mensajes/listar", messagesController.getAllMsgChat)
-        .post("/api/mensajes/guardar", messagesController.createMsg)
+        .get("/api/message/list", messagesController.getAllMsgChat)
+        .post("/api/message/create", messagesController.createMsg)
     return router   
 }

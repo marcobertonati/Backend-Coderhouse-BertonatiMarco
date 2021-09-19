@@ -68,10 +68,13 @@ app.use(routesProducts(routerProducts));
 app.use(routesCart(routerCart));
 /*Rutas del API: Mensaje de chat*/
 app.use(routesMessagesChat(routerMessagesChat));
-/*Rutas del views productos, agregar y chat*/
-app.use(routesView(routerViews));
+
+
 /*Rutas IO chat*/
 app.use(routesIoChat(routerIoChat));
+
+/*Rutas del views productos, agregar y chat*/
+app.use(routesView(routerViews));
 
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */

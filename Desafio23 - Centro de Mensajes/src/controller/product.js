@@ -12,6 +12,7 @@ exports.createProduct = async (req, res, next) => {
     // res.redirect('/productos/agregar');
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 };
 
@@ -21,8 +22,8 @@ exports.findAll = async (req, res, next) => {
     const allProducts = await product.getAllProducts();
     res.json(allProducts);
   } catch (error) {
-    console.log("Entro al Catch");
     console.log(error);
+    res.json(error);
   }
 };
 
@@ -36,6 +37,7 @@ exports.getOne = async (req, res, next) => {
     res.json(productRetrieved);
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 };
 
@@ -49,6 +51,7 @@ exports.updateProduct = async (req, res, next) => {
     res.json(updateProduct);
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 };
 
@@ -61,6 +64,7 @@ exports.deleteOne = async (req, res, next) => {
     res.json({ msg: "Product deleted!" });
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 };
 
@@ -73,6 +77,7 @@ exports.getByName = async (req, res, next) => {
     res.json(productsRetrieved);
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 };
 
@@ -85,6 +90,7 @@ exports.getByCode = async (req, res, next) => {
     res.json(productsRetrieved);
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 };
 
@@ -98,6 +104,7 @@ exports.getByPrice = async (req, res, next) => {
     res.json(productsRetrieved);
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 
 
@@ -116,6 +123,7 @@ exports.getByStock = async (req, res, next) => {
     res.json(productsRetrieved);
   } catch (error) {
     console.log(error);
+    res.json(error);
   }
 
 

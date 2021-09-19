@@ -49,12 +49,12 @@ module.exports = class {
 
     async getProductByPrice (pricemin, pricemax) {
         console.log('Ingresó a productService => getProductByPrice');
-        return await productModel.find({$and: [{price: {$gt:pricemin}}, {price: {$lt: pricemax}}]});
+        return await productModel.find({$and: [{price: {$gte:pricemin}}, {price: {$lte: pricemax}}]});
     }
 
     async getProductByStock (stockmin, stockmax) {
         console.log('Ingresó a productService => getProductByStock');
-        return await productModel.find({$and: [{stock: {$gt:stockmin}}, {stock: {$lt: stockmax}}]});
+        return await productModel.find({$and: [{stock: {$gte:stockmin}}, {stock: {$lte: stockmax}}]});
     }
 }
 
