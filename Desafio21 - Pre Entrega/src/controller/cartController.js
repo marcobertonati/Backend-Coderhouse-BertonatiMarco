@@ -8,7 +8,8 @@ exports.createCart = async (req,res,next) => {
         const cartCreated = await cart.createCart(cartBody);
         res.json(cartCreated)
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.json(error);
     }
 }
 
@@ -25,7 +26,8 @@ exports.getProductOnCart = async (req,res,next) => {
             res.json(productsOnCart);
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.json(error);
     }
 }
 
@@ -39,7 +41,8 @@ exports.deleteProductOnCart = async (req,res,next) => {
         res.json(productsOnCart)
         
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.json(error);
     }
 }
 
@@ -48,6 +51,7 @@ exports.getAllCarts = async (req,res,next) => {
         const carts = await cart.getAllCarts();
         res.json(carts)
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.json(error);
     }
 }
