@@ -25,27 +25,8 @@ exports.getAllMsgChat = async (req, res, next) => {
 
     const historyChat = { id: 1, content: allMsgChat};
 
-    // console.log(historyChat)
-
-    // /*NORMALIZAR */    
-    // const schemaAuthor = new schema.Entity('author', {
-   
-    // }, {idAttribute: (value) => value.author.id});
-
-
-    // // const schemaAuthorList = new schema.Array(schemaAuthor)
-    // const schemaAuthorList = new schema.Array(schemaAuthor)
-
-
-    // const normalizedChat = normalize(allMsgChat, schemaAuthorList);
-
-    // console.log(JSON.stringify(allMsgChat).length);
-    // console.log(JSON.stringify(normalizedChat).length);
-
-    // res.json(normalizedChat)
-
-
     const userSchema = new schema.Entity('authors');
+    
     const entrySchema = new schema.Entity('entries', {
       author: userSchema
     }, {idAttribute: (value) => value._id}); /*Este es el ID del mensaje de chat */
@@ -57,14 +38,11 @@ exports.getAllMsgChat = async (req, res, next) => {
     console.log(JSON.stringify(allMsgChat).length);
     console.log(JSON.stringify(chatSchema).length);
 
-
     const normalizedChat = normalize(historyChat, chatSchema);
 
+    console.log(JSON.stringify(normalizedChat).length);
+
     res.json(normalizedChat)
-
-
-
-
 
 
     //Sirve para la petición HTTP
