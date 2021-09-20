@@ -7,7 +7,7 @@ module.exports = class {
     }
 
     async getAllMessage() {
-        const allMessage = await messagesChat.find();
+        const allMessage = await messagesChat.find().lean();
         return allMessage;
     }
 

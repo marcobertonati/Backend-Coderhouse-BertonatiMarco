@@ -1,6 +1,8 @@
 const MessagesChatService = require("../services/messagesChat");
 const messageChat = new MessagesChatService();
 
+const util = require('util')
+
 const { normalize, schema } = require('normalizr');
 
 exports.createMsg = async (req, res, next) => {
@@ -19,27 +21,49 @@ exports.getAllMsgChat = async (req, res, next) => {
   console.log("Controller => messagesChat => getAllMsgChat");
 
   try {
-    const allMesgChat = await messageChat.getAllMessage();
+    const allMsgChat = await messageChat.getAllMessage();
 
-    /*NORMALIZAR */    
-    const schemaAuthor = new schema.Entity('author', {
-      // id: id,
-      // firstName: firstName,
-      // lastName: lastName,
-    }, {idAttribute: (value) => value.author.id});
+    const historyChat = { id: 1, content: allMsgChat};
 
-    const schemaMsg = new schema.Entity('text')
+    // console.log(historyChat)
 
+    // /*NORMALIZAR */    
+    // const schemaAuthor = new schema.Entity('author', {
+   
+    // }, {idAttribute: (value) => value.author.id});
+
+
+    // // const schemaAuthorList = new schema.Array(schemaAuthor)
     // const schemaAuthorList = new schema.Array(schemaAuthor)
-    const schemaAuthorList = new schema.Array(schemaAuthor)
 
 
-    const normalizedChat = normalize(allMesgChat, schemaAuthorList);
+    // const normalizedChat = normalize(allMsgChat, schemaAuthorList);
 
-    console.log(JSON.stringify(allMesgChat).length);
-    console.log(JSON.stringify(normalizedChat).length);
+    // console.log(JSON.stringify(allMsgChat).length);
+    // console.log(JSON.stringify(normalizedChat).length);
+
+    // res.json(normalizedChat)
+
+
+    const userSchema = new schema.Entity('authors');
+    const entrySchema = new schema.Entity('entries', {
+      author: userSchema
+    }, {idAttribute: (value) => value._id}); /*Este es el ID del mensaje de chat */
+
+    const chatSchema = new schema.Entity('chat', {
+      content: [entrySchema]
+    })
+
+    console.log(JSON.stringify(allMsgChat).length);
+    console.log(JSON.stringify(chatSchema).length);
+
+
+    const normalizedChat = normalize(historyChat, chatSchema);
 
     res.json(normalizedChat)
+
+
+
 
 
 

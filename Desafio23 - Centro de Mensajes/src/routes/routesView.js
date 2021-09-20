@@ -17,5 +17,16 @@ module.exports = (router) => {
           console.log('Ingresaron a pagina de chat');
           res.render('./websocket')
         })
+        .get('/login', (req,res,next)=>{
+          console.log('Ingresaron a pagina de login');
+          res.render('./pages/login')
+        })
+        .get('/welcome', (req,res,next)=>{
+          console.log('Ingresaron a pagina de welcome');
+          res.render('./pages/welcome')
+        })
+        .get('/goodbye', (req,res,next)=> {
+          res.render('./pages/goodbye')
+        })
     return router    
 }

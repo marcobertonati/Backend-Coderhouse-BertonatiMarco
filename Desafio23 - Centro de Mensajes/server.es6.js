@@ -12,17 +12,21 @@ const handlebars = require("express-handlebars");
 const cors = require('cors')
 app.use(cors())
 
+
+
+/*Requiero Session*/
+const session = require('express-session');
 /*Requiero CookieParser */
 const cookieParser = require('cookie-parser');
-app.use(cookieParser());
 
-/*Requiero Session */
-const session = require('express-session');
 app.use(session({
   secret: "Soy un gran secreto",
   resave: true,
   saveUninitialized: true
 }))
+
+app.use(cookieParser());
+
 
 /*Router */
 /*Requerimos las rutas que va a ofrecer nuestra aplicación */
@@ -90,51 +94,34 @@ const {auth} = require('./src/auth/auth')
 
 app.post('/api/signup', (req,res,next) => {
   const userName = req.body.username;
-
+  console.log(userName)
   if (!userName) throw new Error ('No es posible registrarse')
-
   console.log('Esto trae userName de signup')
-  console.log(userName);
-  
   req.session.user = { username: userName};
   console.log(req.session.user);
+  // res.cookie('isRegistered', `${req.session.user.username}`, {maxAge: 10000}).json({msg: 'usuario registrado', userName})
 
-  // req.session.id = req.session.id ? req.session +1 : 1;
-  // console.log(req.session.id);
-
-  res.cookie('isRegistered', 'true', {maxAge: 100000}).json({
-    msg: 'Usuario Registrado',
-    user: userName
-  })
+  res.cookie('isRegistered', `${req.session.user.username}`, {maxAge: 20000}).render('./pages/welcome')
 
 })
 
-app.post('/api/login', (req,res,next)=> {
-
-  console.log('Ingreso a Auth');
-
-  const userName = req.body.username
-  console.log(userName);
-  console.log(req.session.user.username);
-
-  if (!userName) throw new Error ('No es posible iniciar sesión')
-  if (req.session.user.username === userName) {
-        res.json({msg: 'Te has autenticado'})
-    } else {
-        res.json({msg:'Usuario no registrado'})
-    }
-
-  res.json({msg: 'Usuario logeado'})
+app.get('/api/login', (req,res,next)=> {
+  const userName = req.body.username;
+  console.log(userName)
+  if (!userName) throw new Error ('No es posible iniciar sesion')
+  if(req.session.user.username == userName) {
+    res.json('Te has autenticado con éxito!')
+  } else {
+    res.json('No te has podido autenticar')
+  }
 
 })
 
 app.post('/api/logout', (req,res,next)=>{
   console.log('Ingresó a Logout');
+  console.log(req.session);
   req.session.destroy();
-  res.json({
-    msg: 'Session expirada',
-    isRegistered: false
-  })
+  res.render('./pages/goodbye')
 })
 
 
