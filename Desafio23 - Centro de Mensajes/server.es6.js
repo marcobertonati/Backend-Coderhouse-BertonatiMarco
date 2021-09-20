@@ -12,6 +12,18 @@ const handlebars = require("express-handlebars");
 const cors = require('cors')
 app.use(cors())
 
+/*Requiero CookieParser */
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+/*Requiero Session */
+const session = require('express-session');
+app.use(session({
+  secret: "Soy un gran secreto",
+  resave: true,
+  saveUninitialized: true
+}))
+
 /*Router */
 /*Requerimos las rutas que va a ofrecer nuestra aplicación */
 const routesProducts = require("./src/routes/routesProducts");
@@ -62,12 +74,69 @@ http://localhost:8080/static/js/index.js
 app.use("/static", express.static(__dirname + "/public"));
 
 /*Este trabajo funciona con REACTJS: https://github.com/marcobertonati/frontend-react-ecommerceunique/tree/main/src */
+
 /*Rutas del API: Productos*/
 app.use(routesProducts(routerProducts));
 /*Rutas del API: Cart*/
 app.use(routesCart(routerCart));
 /*Rutas del API: Mensaje de chat*/
 app.use(routesMessagesChat(routerMessagesChat));
+
+
+
+/*Rutas del API: Ruta de session*/
+/*Este auth no lo estoy usando por el momento */
+const {auth} = require('./src/auth/auth')
+
+app.post('/api/signup', (req,res,next) => {
+  const userName = req.body.username;
+
+  if (!userName) throw new Error ('No es posible registrarse')
+
+  console.log('Esto trae userName de signup')
+  console.log(userName);
+  
+  req.session.user = { username: userName};
+  console.log(req.session.user);
+
+  // req.session.id = req.session.id ? req.session +1 : 1;
+  // console.log(req.session.id);
+
+  res.cookie('isRegistered', 'true', {maxAge: 100000}).json({
+    msg: 'Usuario Registrado',
+    user: userName
+  })
+
+})
+
+app.post('/api/login', (req,res,next)=> {
+
+  console.log('Ingreso a Auth');
+
+  const userName = req.body.username
+  console.log(userName);
+  console.log(req.session.user.username);
+
+  if (!userName) throw new Error ('No es posible iniciar sesión')
+  if (req.session.user.username === userName) {
+        res.json({msg: 'Te has autenticado'})
+    } else {
+        res.json({msg:'Usuario no registrado'})
+    }
+
+  res.json({msg: 'Usuario logeado'})
+
+})
+
+app.post('/api/logout', (req,res,next)=>{
+  console.log('Ingresó a Logout');
+  req.session.destroy();
+  res.json({
+    msg: 'Session expirada',
+    isRegistered: false
+  })
+})
+
 
 
 /*Rutas IO chat*/

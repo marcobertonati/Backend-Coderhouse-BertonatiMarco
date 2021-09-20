@@ -1,6 +1,8 @@
 const MessagesChatService = require("../services/messagesChat");
 const messageChat = new MessagesChatService();
 
+const { normalize, schema } = require('normalizr');
+
 exports.createMsg = async (req, res, next) => {
   console.log("Controller => messagesChat => createMsg");
 
@@ -19,8 +21,30 @@ exports.getAllMsgChat = async (req, res, next) => {
   try {
     const allMesgChat = await messageChat.getAllMessage();
 
+    /*NORMALIZAR */    
+    const schemaAuthor = new schema.Entity('author', {
+      // id: id,
+      // firstName: firstName,
+      // lastName: lastName,
+    }, {idAttribute: (value) => value.author.id});
+
+    const schemaMsg = new schema.Entity('text')
+
+    // const schemaAuthorList = new schema.Array(schemaAuthor)
+    const schemaAuthorList = new schema.Array(schemaAuthor)
+
+
+    const normalizedChat = normalize(allMesgChat, schemaAuthorList);
+
+    console.log(JSON.stringify(allMesgChat).length);
+    console.log(JSON.stringify(normalizedChat).length);
+
+    res.json(normalizedChat)
+
+
+
     //Sirve para la petición HTTP
-    res.json({ msg: "Messages from chat", historialMessages: allMesgChat });
+    // res.json({ msg: "Messages from chat", historialMessages: allMesgChat });
 
     // Sirve para SocketIo
     // res.render("websocket",allMesgChat);
