@@ -1,0 +1,43 @@
+Buenas, Marco! Lo había empezado a corregir antes de la clase y no llegue, aproveche estos ultimos minutos de pausa para terminarlo.
+
+
+
+Productos:
+
+Listar todos los productos ✅
+Listar producto por Id ✅
+Guardar producto ✅ 
+Actualizar producto ✅ 
+Eliminar producto por ID ✅
+Excelente los filtros ✅ Solo te doy una recomendación, la querie para ver productos dentro de un rango de precios o stock la podes hacer mas facil, asi: {price: {$gt:pricemin, $lt: pricemax}} y me parece que quedaría mejor con $gte y $lte así incluye los numero que queres filtrar inclusive
+
+
+
+
+⭕️ Todos estos endpoints funcionan perfecto, felicitaciones 🎉 Pero está faltando manejar los errores en los controllers! Al no hacer esto si alguna de las funciones de los Services tira un error la petición HTTP va a quedar colgada, porque solamente estas haciendo un console.log en el catch. Siempre tenes que devolver una respuesta, aunque sea con un código y mensaje de error
+
+
+
+
+Carrito:
+
+No me voy a poner muy exigente con esto porque quedamos en hacerlo diferente a lo que dice la consigna porque pensando a futuro esta no tenía mucho sentido. Los endpoints que para mi deberian existir son:
+
+Crear carrito
+Obtener carrito por ID
+Guardar producto por ID de producto en un carrito (si el producto ya existe solamente se debería actualizar un contador o algo asi)
+Borrar producto por ID de producto y ID de carrito
+Borrar carrito por ID
+
+
+Los que hiciste en principio están bien,anda pensando en esto para la próxima. También falto el manejo de errores igual, no cuelgues con eso.
+
+
+
+En términos generales la estructura es muy clara, mejoraste mucho en este aspecto. Solo vi que quedo un archivo de Knex y algunos cosas desctualizadas en el package.json como los scripts para arrancar el proyecto o dependencias que no se usan. Las funcionalidades tambien están bien implementadas. Para esta observación sólo evalúe lo de la consigna, los extra los observare en breve. Va un puntaje de Optimo +5 puntos para el Top10
+
+
+
+
+
+15/09 22:39
