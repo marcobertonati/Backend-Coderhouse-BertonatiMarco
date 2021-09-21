@@ -24,7 +24,8 @@ module.exports = (router) => {
         })
         .get('/welcome', auth, (req,res,next)=>{
           console.log('Ingresaron a pagina de welcome');
-          res.render('./pages/welcome')
+          const data = { user: req.session.user}
+          res.render('./pages/welcome', {data})
         })
         .get('/goodbye', auth, (req,res,next)=> {
           res.render('./pages/goodbye')
