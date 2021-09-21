@@ -1,6 +1,7 @@
 /*Requiero controladores de productos */
 const ProductService = require('../services/productService');
 const product = new ProductService();
+const {auth} = require('../auth/auth')
 
 module.exports = (router) => {
     router
@@ -21,11 +22,11 @@ module.exports = (router) => {
           console.log('Ingresaron a pagina de login');
           res.render('./pages/login')
         })
-        .get('/welcome', (req,res,next)=>{
+        .get('/welcome', auth, (req,res,next)=>{
           console.log('Ingresaron a pagina de welcome');
           res.render('./pages/welcome')
         })
-        .get('/goodbye', (req,res,next)=> {
+        .get('/goodbye', auth, (req,res,next)=> {
           res.render('./pages/goodbye')
         })
     return router    

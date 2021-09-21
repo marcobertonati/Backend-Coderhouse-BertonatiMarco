@@ -1,26 +1,20 @@
 const auth = function (req, res, next) {
     console.log('Ingreso a Auth');
 
-    console.log(req.session.user)
+    if (!req.session.user) {
+        res.redirect('/login')
+    }
 
-    const user = req.body.user;
+    const user = req.session.user.username;
 
-    // req.session.user = {userName: user};
+    console.log(`El usuario ${user} ingresó a /welcome`)
 
-    if (!user) throw new Error ('No es posible iniciar sesión')
-    if (req.session.user.userName === user) {
+    if (req.session.user.username === user) {
         next();
+
     } else {
         res.json({msg:'Usuario no registrado'})
     }
 
-    // if (req.session.user.user === "marco" ) {
-    //     return next()
-    // } else {
-    //     console.log('Ingreso al else')
-    //     return res.json({msg: 'Usuario sin acceso', isRegistered: false
-    // })
-    // }
-    
 }
 module.exports = { auth }

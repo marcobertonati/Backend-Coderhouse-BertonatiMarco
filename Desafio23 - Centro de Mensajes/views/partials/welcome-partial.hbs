@@ -1,8 +1,25 @@
-<h1>Bienvenidx usuarix:</h1>
+<h1 class="row">Bienvenidx usuarix:</h1>
 
 <div class="row">
 
-<div class="col" id="user-session"></div>
+  <div class="col" id="user-session">
 
-<button id="btn-logout" class="col btn btn-primary"> Desloguear </button>
+      
+  </div>
+
+  <form
+    id="form-product"
+    action="http://localhost:8080/api/logout"
+    method="POST"
+    class="col"
+  >
+
+    <button
+      id="btn-addproduct"
+      type="submit"
+      class="btn btn-primary"
+    >Desloguear</button>
+
+  </form>
+
 </div>

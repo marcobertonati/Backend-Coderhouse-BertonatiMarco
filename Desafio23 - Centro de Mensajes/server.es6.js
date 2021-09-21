@@ -94,14 +94,15 @@ const {auth} = require('./src/auth/auth')
 
 app.post('/api/signup', (req,res,next) => {
   const userName = req.body.username;
+
   console.log(userName)
+
   if (!userName) throw new Error ('No es posible registrarse')
   console.log('Esto trae userName de signup')
   req.session.user = { username: userName};
-  console.log(req.session.user);
-  // res.cookie('isRegistered', `${req.session.user.username}`, {maxAge: 10000}).json({msg: 'usuario registrado', userName})
 
-  res.cookie('isRegistered', `${req.session.user.username}`, {maxAge: 20000}).render('./pages/welcome')
+  res.cookie('isRegistered', `${req.session.user.username}`, {maxAge: 60000});
+  res.redirect('/welcome');
 
 })
 
@@ -121,7 +122,8 @@ app.post('/api/logout', (req,res,next)=>{
   console.log('Ingresó a Logout');
   console.log(req.session);
   req.session.destroy();
-  res.render('./pages/goodbye')
+  res.clearCookie();
+  res.redirect('/goodbye');
 })
 
 
