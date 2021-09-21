@@ -36,6 +36,8 @@ const routesCart = require ('./src/routes/routesCart');
 const routerCart = express.Router()
 const routesMessagesChat = require('./src/routes/routesMessagesChat');
 const routerMessagesChat = express.Router();
+const routesAuth = require('./src/routes/routesAuth');
+const routerAuth = express.Router();
 
 /*Rutas a las view */
 const routesView = require("./src/routes/routesView");
@@ -79,63 +81,26 @@ app.use("/static", express.static(__dirname + "/public"));
 
 /*Este trabajo funciona con REACTJS: https://github.com/marcobertonati/frontend-react-ecommerceunique/tree/main/src */
 
+
 /*Rutas del API: Productos*/
 app.use(routesProducts(routerProducts));
 /*Rutas del API: Cart*/
 app.use(routesCart(routerCart));
 /*Rutas del API: Mensaje de chat*/
 app.use(routesMessagesChat(routerMessagesChat));
-
-
-
 /*Rutas del API: Ruta de session*/
-
-app.post('/api/signup', (req,res,next) => {
-  const userName = req.body.username;
-
-  console.log(userName)
-
-  if (!userName) throw new Error ('No es posible registrarse')
-  console.log('Esto trae userName de signup')
-  req.session.user = { username: userName};
-
-  res.cookie('isRegistered', `${req.session.user.username}`, {maxAge: 60000});
-  res.redirect('/welcome');
-
-})
-
-app.get('/api/login', (req,res,next)=> {
-  const userName = req.body.username;
-  console.log(userName)
-  if (!userName) throw new Error ('No es posible iniciar sesion')
-  if(req.session.user.username == userName) {
-    res.json('Te has autenticado con éxito!')
-  } else {
-    res.json('No te has podido autenticar')
-  }
-
-})
-
-app.post('/api/logout', (req,res,next)=>{
-  console.log('Ingresó a Logout');
-  console.log(req.session);
-  req.session.destroy();
-  res.clearCookie('isRegistered');
-  res.redirect('/goodbye');
-})
-
-
-
+app.use(routesAuth(routerAuth));
 /*Rutas IO chat*/
 app.use(routesIoChat(routerIoChat));
-
 /*Rutas del views productos, agregar y chat*/
 app.use(routesView(routerViews));
 
+
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
-const socketConnection = require ('./src/services/messagesIOchat');
+// const socketConnection = require ('./src/services/messagesIOchat');
+// socketConnection(io);
 
-socketConnection(io);
 
+/*Exportamos servidor */
 module.exports = http;
