@@ -27,7 +27,7 @@ module.exports = (router) => {
           const data = { user: req.session.user}
           res.render('./pages/welcome', {data})
         })
-        .get('/goodbye', auth, (req,res,next)=> {
+        .get('/goodbye', (req,res,next)=> {
           res.render('./pages/goodbye')
         })
     return router    

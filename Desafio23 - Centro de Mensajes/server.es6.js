@@ -89,8 +89,6 @@ app.use(routesMessagesChat(routerMessagesChat));
 
 
 /*Rutas del API: Ruta de session*/
-/*Este auth no lo estoy usando por el momento */
-const {auth} = require('./src/auth/auth')
 
 app.post('/api/signup', (req,res,next) => {
   const userName = req.body.username;
@@ -122,7 +120,7 @@ app.post('/api/logout', (req,res,next)=>{
   console.log('Ingresó a Logout');
   console.log(req.session);
   req.session.destroy();
-  res.clearCookie();
+  res.clearCookie('isRegistered');
   res.redirect('/goodbye');
 })
 

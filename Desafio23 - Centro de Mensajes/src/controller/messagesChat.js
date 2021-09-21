@@ -1,6 +1,5 @@
 const MessagesChatService = require("../services/messagesChat");
 const messageChat = new MessagesChatService();
-
 const util = require('util')
 
 const { normalize, schema } = require('normalizr');
@@ -25,24 +24,33 @@ exports.getAllMsgChat = async (req, res, next) => {
 
     const historyChat = { id: 1, content: allMsgChat};
 
-    const userSchema = new schema.Entity('authors');
+    const userSchema = new schema.Entity('author');
+
+    /* Con este esquema con este atributo id lo que hace es crear la entidad author, donde cada autor el ID es su ALIAS: 
+
+     const userSchema = new schema.Entity('authors',{}, {idAttribute: (value) => value.alias});
+
+     pero si no le colocamos nada lo que hace es leer por defecto dentro de author (consignado en el entry schema "author:userSchema") la propiedad ID, que en nuestra DB es el mail. Si en vez de ponerle author le pongo otra cosa se va a romper. 
+
+    */
     
     const entrySchema = new schema.Entity('entries', {
-      author: userSchema
-    }, {idAttribute: (value) => value._id}); /*Este es el ID del mensaje de chat */
+      author: userSchema,
+      
+    }, {idAttribute: (value) => value._id.toString()}); /*Este es el ID del mensaje de chat */
 
     const chatSchema = new schema.Entity('chat', {
       content: [entrySchema]
     })
 
-    console.log(JSON.stringify(allMsgChat).length);
-    console.log(JSON.stringify(chatSchema).length);
 
     const normalizedChat = normalize(historyChat, chatSchema);
 
+    console.log(JSON.stringify(allMsgChat).length);
     console.log(JSON.stringify(normalizedChat).length);
 
     res.json(normalizedChat)
+
 
 
     //Sirve para la petición HTTP
@@ -50,6 +58,7 @@ exports.getAllMsgChat = async (req, res, next) => {
 
     // Sirve para SocketIo
     // res.render("websocket",allMesgChat);
+    
   } catch (error) {
     console.log(error);
     res.json(error);
