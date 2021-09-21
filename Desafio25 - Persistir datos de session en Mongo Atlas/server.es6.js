@@ -18,11 +18,25 @@ app.use(cors())
 const session = require('express-session');
 /*Requiero CookieParser */
 const cookieParser = require('cookie-parser');
+/*Requiero Mongo Store para guardar sesiones */
+const MongoStore = require('connect-mongo')
+/*Configuración para Mongo Atlas */
+const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true};
+
 
 app.use(session({
+  store: MongoStore.create({ 
+    mongoUrl: 'mongodb+srv://marco-bertonati-session:u3TiWI9S5xBiAT39@cluster1.gplx5.mongodb.net/ecommerce?retryWrites=true&w=majority',
+    mongoOptions: advancedOptions,
+    ttl: 60
+  }),
   secret: "Soy un gran secreto",
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 60000,
+  }
+  
 }))
 
 app.use(cookieParser());
