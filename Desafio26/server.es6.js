@@ -14,7 +14,8 @@ app.use(cors())
 
 
 /*Requiero passport */
-const passport= require('passport')
+const passport= require('passport');
+/*Se requiere el modulo o la configuración? */
 
 const authPassport = require('./src/auth/authPassportLocal');
 /*Requiero passport local strategy */
@@ -26,7 +27,7 @@ const session = require('express-session');
 /*Requiero CookieParser */
 const cookieParser = require('cookie-parser');
 /*Requiero Mongo Store para guardar sesiones */
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo');
 /*Configuración para Mongo Atlas */
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true};
 

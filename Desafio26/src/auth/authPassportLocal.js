@@ -1,72 +1,82 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const modelUser = require("../dao/models/userMongoose");
+const userModel = require("../dao/models/userMongoose");
+
+const saltRounds = 12;
 
 // module.exports = () => {
-  passport.use(
-    'login',
-    new LocalStrategy(
-      {
-        passReqToCallback: true,
-      },
-      function (req, email, password, done) {
-        /*ACA DENTRO VA TODA LA LOGICA */
-        console.log('working!')
+passport.use(
+  "local-login",
+  new LocalStrategy(
+    {
+      passReqToCallback: true,
+      usernameField: 'email',
+      passwordField: 'password'
+    },
+    async function (username, password, done) {
+      /*ACA DENTRO VA TODA LA LOGICA */
+      console.log(username);
 
-        const userFinded = modelUser.findOne({ email: req.body.email });
+      try {
+
+        const userFinded = await userModel.findOne({ email: username });
+
         console.log(userFinded);
-
+  
         if (!userFinded) {
-          console.log(`Usuario con email ${req.body.email} no encontrado`);
+          console.log('No se encontró usuario');
           return done(
             null,
             false,
             console.log("mensaje", "usuario no encontrado")
           );
         }
-
-        return done(null, userFinded);
-
-        // modelUser.findOne({ email: email }, function (err, user) {
-        //   // if (err) { return done(err); }
-        //   // if (!user) { return done(null, false); }
-        //   // if (!user.verifyPassword(password)) { return done(null, false); }
-        //   return done(null, user);
-        // });
-      }
-    )
-  );
-
-  passport.use(
-    "signup",
-    new LocalStrategy(function (username, password, done) {
-      User.findOne({ username: username }, function (err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false);
-        }
-        if (!user.verifyPassword(password)) {
-          return done(null, false);
-        }
-        return done(null, user);
-      });
-    })
-  );
-
-
-  passport.serializeUser(function (user, done) {
-    done(null, user._id);
-  });
   
+        return done(null, userFinded);
+        
+      } catch (error) {
 
-  passport.deserializeUser(function(id, done) {
-    modelUser.findById(id, function (err, user) {
-        done(err, user);
-    })
-      
+        console.log(error);
+        
+      }
+
+      // modelUser.findOne({ email: email }, function (err, user) {
+      //   // if (err) { return done(err); }
+      //   // if (!user) { return done(null, false); }
+      //   // if (!user.verifyPassword(password)) { return done(null, false); }
+      //   return done(null, user);
+      // });
+    }
+  )
+);
+
+passport.use(
+  "signup",
+  new LocalStrategy(function (username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false);
+      }
+      if (!user.verifyPassword(password)) {
+        return done(null, false);
+      }
+      return done(null, user);
+    });
   })
+);
 
-  module.exports = passport;
+passport.serializeUser(function (user, done) {
+  done(null, user._id);
+});
+
+passport.deserializeUser(function (id, done) {
+  modelUser.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
+
+module.exports = passport;
 // };
