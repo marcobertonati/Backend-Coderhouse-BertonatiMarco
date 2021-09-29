@@ -1,9 +1,10 @@
 /*Requiero controladores de productos */
 const ProductService = require("../services/productService");
 const product = new ProductService();
+
+/*Controladores de Auth */
 const { auth } = require("../auth/auth");
 const passportFacebook = require("../auth/authPassportFacebook");
-
 const passport = require("../auth/authPassportLocal");
 
 
@@ -29,7 +30,7 @@ module.exports = (router) => {
       res.render("./pages/login");
     })
     .get("/auth/facebook", passportFacebook.authenticate("facebook"))
-    .get("/welcome", (req, res, next) => {
+    .get("/welcome" ,(req, res, next) => {
       console.log("Ingresaron a pagina de welcome");
       const data = { user: req.session.user };
       res.render("./pages/welcome", { data });

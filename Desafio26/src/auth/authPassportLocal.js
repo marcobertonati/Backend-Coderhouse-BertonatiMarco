@@ -10,18 +10,16 @@ passport.use(
   new LocalStrategy(
     {
       passReqToCallback: true,
-      usernameField: 'email',
+      usernameField: 'email', /*Esto 3 campos tienen que estar para que funcione */
       passwordField: 'password'
     },
-    async function (username, password, done) {
+    async function (req ,username, password, done) {
       /*ACA DENTRO VA TODA LA LOGICA */
-      console.log(username);
+      console.log(req.body);
 
       try {
 
-        const userFinded = await userModel.findOne({ email: username });
-
-        console.log(userFinded);
+        const userFinded = await userModel.findOne({ email: req.body.email, password: req.body.password });
   
         if (!userFinded) {
           console.log('No se encontró usuario');
