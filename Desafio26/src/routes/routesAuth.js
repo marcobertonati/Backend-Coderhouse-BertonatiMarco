@@ -12,15 +12,30 @@ module.exports = (router) => {
     // .get('/api/login', logIn)
     // .post('/api/logout', logOut)
 
-    .post("/api/signup", signUp)
+    .post(
+      "/api/signup",
+      passport.authenticate("signup-local", { failureRedirect: "/failsignup" }),
+      (req, res, next) => {
+        console.log("Usuario Creado");
+        res.redirect("/welcome");
+      }
+    )
+    .get("/failsignup", (req, res, next) => {
+      res.status(400).send({ error: "Usuario ya creado con ese mail" });
+    })
+
     .post(
       "/api/login",
       passport.authenticate("local-login"),
       (req, res, next) => {
         console.log("Paso autenticación");
-        res.json(req.body);
+        res.redirect("/welcome");
       }
     )
+    .get("/faillogin", (req, res, next) => {
+      res.status(400).send({ error: "usuario o contraseña invalida" });
+    })
+
     .post("/api/logout", logOut);
 
   return router;
