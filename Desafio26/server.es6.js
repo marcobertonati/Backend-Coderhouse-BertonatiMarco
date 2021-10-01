@@ -36,7 +36,7 @@ app.use(session({
   store: MongoStore.create({ 
     mongoUrl: 'mongodb+srv://marco-bertonati-session:u3TiWI9S5xBiAT39@cluster1.gplx5.mongodb.net/ecommerce?retryWrites=true&w=majority',
     mongoOptions: advancedOptions,
-    ttl: 60
+    ttl: 600
   }),
   secret: "Soy un gran secreto",
   resave: true,

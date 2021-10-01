@@ -1,9 +1,7 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
+const { createHash, isValidPassword } = require("./bcrypt/bcrypt");
 const userModel = require("../dao/models/userMongoose");
-
-const saltRounds = 12;
 
 passport.use(
   "local-login",
@@ -29,7 +27,7 @@ passport.use(
           );
         }
 
-        if (req.body.password !== userFinded.password) {
+        if (!isValidPassword(req.body.password, userFinded.password)) {
           console.log("Contraseña incorrecta");
           return done(
             null,
@@ -71,6 +69,7 @@ passport.use(
       // });
 
       try {
+        console.log("Ingresó a authPassportLocal => Sign Up");
         const userFinded = await userModel.findOne({ email: req.body.email });
 
         if (userFinded) {
@@ -80,7 +79,15 @@ passport.use(
             console.log("mensaje", "Hay un usuario registrado con su mail")
           );
         } else {
-          const userToCreate = await userModel.create(req.body);
+          const userToCreate = {
+            name: req.body.name,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            password: createHash(req.body.password),
+          };
+
+          await userModel.create(userToCreate);
+
           return done(null, userToCreate);
         }
       } catch (err) {
@@ -91,7 +98,7 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, user._id);
+  done(null, user.email);
 });
 
 passport.deserializeUser(async function (id, done) {
