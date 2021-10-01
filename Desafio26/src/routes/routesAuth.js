@@ -21,19 +21,19 @@ module.exports = (router) => {
       }
     )
     .get("/failsignup", (req, res, next) => {
-      res.status(400).send({ error: "Usuario ya creado con ese mail" });
+      res.status(400).redirect('/error-signup');
     })
 
     .post(
       "/api/login",
-      passport.authenticate("local-login"),
+      passport.authenticate("local-login", {failureRedirect :'/faillogin'}),
       (req, res, next) => {
         console.log("Paso autenticación");
         res.redirect("/welcome");
       }
     )
     .get("/faillogin", (req, res, next) => {
-      res.status(400).send({ error: "usuario o contraseña invalida" });
+      res.status(400).redirect('/error-login');
     })
 
     .post("/api/logout", logOut);

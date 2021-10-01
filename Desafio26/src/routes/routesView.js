@@ -7,34 +7,30 @@ const { auth } = require("../auth/auth");
 const passportFacebook = require("../auth/authPassportFacebook");
 const passport = require("../auth/authPassportLocal");
 
-const checkAuthentication = (req,res, next) => {
+const checkAuthentication = (req, res, next) => {
   if (req.isAuthenticated()) {
     const user = req.user;
-    console.log('Usuario Logueado')
+    console.log("Usuario Logueado");
     next();
   } else {
-    console.log('Usuario NO Logueado')
-    res.redirect('/login')
+    console.log("Usuario NO Logueado");
+    res.redirect("/login");
   }
-}
-
-
-
+};
 
 module.exports = (router) => {
   router
-    .get("/productos/vista", async (req, res, next) => {
+    .get("/productos/vista",checkAuthentication, async (req, res, next) => {
       console.log("Entro a /productos/lista");
       const products = await product.getAllProducts();
       res.render("./pages/lista", { products });
     })
-
-    .get("/productos/agregar", (req, res, next) => {
+    .get("/productos/agregar",checkAuthentication, (req, res, next) => {
       console.log("Ingresaron a pagina agregar producto");
       res.render("./pages/agregar");
     })
 
-    .get("/chat-view", (req, res, next) => {
+    .get("/chat-view",checkAuthentication, (req, res, next) => {
       console.log("Ingresaron a pagina de chat");
       res.render("./websocket");
     })
@@ -44,15 +40,26 @@ module.exports = (router) => {
       res.render("./pages/login");
     })
     .get("/auth/facebook", passportFacebook.authenticate("facebook"))
+    .get("/signup", (req, res, next) => {
+      console.log("Ingresaron a la página /signup");
+      res.render("./pages/signup");
+    })
 
     .get("/welcome", checkAuthentication, (req, res, next) => {
       console.log("Ingresaron a pagina de welcome");
-      const data = { user: req.session.user };
+      console.log(req.session.passport.user)
+      const data = { user: req.session.passport.user };
       res.render("./pages/welcome", { data });
     })
-
     .get("/goodbye", (req, res, next) => {
       res.render("./pages/goodbye");
+    })
+
+    .get("/error-login", (req, res, next) => {
+      res.render("./pages/error-login");
+    })
+    .get("/error-signup", (req, res, next) => {
+      res.render("./pages/error-signup");
     });
   return router;
 };
