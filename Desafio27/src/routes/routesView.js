@@ -2,7 +2,6 @@
 const ProductService = require("../services/productService");
 const product = new ProductService();
 
-
 /*Controladores de Auth */
 const { auth } = require("../auth/auth");
 const passportFacebook = require("../auth/authPassportFacebook");
@@ -24,7 +23,6 @@ module.exports = (router) => {
     .get("/productos/vista", checkAuthentication, async (req, res, next) => {
       console.log("Entro a /productos/lista");
       const products = await product.getAllProducts();
-      console.log(products)
       res.render("./pages/lista", { products });
     })
     .get("/productos/agregar", checkAuthentication, (req, res, next) => {
@@ -45,7 +43,7 @@ module.exports = (router) => {
     .get(
       "/auth/facebook/callback",
       passportFacebook.authenticate("facebook", {
-        successRedirect: "http://www.google.com/",
+        successRedirect: "/welcome",
         failureRedirect: "/login",
       })
     )

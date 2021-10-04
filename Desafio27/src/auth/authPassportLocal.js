@@ -98,14 +98,10 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  console.log('Ingreso a serealizaSuer');
-  console.log(user)
   done(null, user.email);
 });
 
 passport.deserializeUser(async function (id, done) {
-  console.log('Ingresó a deserializeUser');
-  console.log(id);
   // userModel.findById(id, function (err, user) {
   //   done(err, user);
   // });
