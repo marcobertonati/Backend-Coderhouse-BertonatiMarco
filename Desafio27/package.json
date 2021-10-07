@@ -26,6 +26,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.10",
     "mongoose": "^6.0.3",
+    "mongoose-findorcreate": "^3.0.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.12",
     "normalizr": "^3.6.1",

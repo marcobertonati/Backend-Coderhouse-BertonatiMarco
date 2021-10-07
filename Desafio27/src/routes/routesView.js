@@ -20,17 +20,17 @@ const checkAuthentication = (req, res, next) => {
 
 module.exports = (router) => {
   router
-    .get("/productos/vista", checkAuthentication, async (req, res, next) => {
+    .get("/productos/vista", async (req, res, next) => {
       console.log("Entro a /productos/lista");
       const products = await product.getAllProducts();
       res.render("./pages/lista", { products });
     })
-    .get("/productos/agregar", checkAuthentication, (req, res, next) => {
+    .get("/productos/agregar", (req, res, next) => {
       console.log("Ingresaron a pagina agregar producto");
       res.render("./pages/agregar");
     })
 
-    .get("/chat-view", checkAuthentication, (req, res, next) => {
+    .get("/chat-view", (req, res, next) => {
       console.log("Ingresaron a pagina de chat");
       res.render("./websocket");
     })
@@ -43,7 +43,7 @@ module.exports = (router) => {
     .get(
       "/auth/facebook/callback",
       passportFacebook.authenticate("facebook", {
-        successRedirect: "/welcome",
+        successRedirect: "https://www.google.com/",
         failureRedirect: "/login",
       })
     )
@@ -52,7 +52,7 @@ module.exports = (router) => {
       res.render("./pages/signup");
     })
 
-    .get("/welcome", checkAuthentication, (req, res, next) => {
+    .get("/welcome", (req, res, next) => {
       console.log("Ingresaron a pagina de welcome");
       console.log(req.session.passport.user);
       const data = { user: req.session.passport.user };
