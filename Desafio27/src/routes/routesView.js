@@ -43,7 +43,7 @@ module.exports = (router) => {
     .get(
       "/auth/facebook/callback",
       passportFacebook.authenticate("facebook", {
-        successRedirect: "https://www.google.com/",
+        successRedirect: "/welcome",
         failureRedirect: "/login",
       })
     )
