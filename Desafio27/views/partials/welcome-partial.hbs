@@ -3,7 +3,11 @@
 <div class="row">
 
 
-<p>Esto ingresa por info de sessión: {{data.user}}</p>
+<p>¡Hola {{data.user._json.first_name}} {{data.user._json.last_name}}!</p>
+<p>Tu correo es {{data.user._json.email}}</p>
+
+<img src="" alt="" srcset="{{data.user._json.picture.data.url}}">
+
 
 
   <div class="col" id="user-session">

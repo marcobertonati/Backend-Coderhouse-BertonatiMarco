@@ -54,8 +54,17 @@ module.exports = (router) => {
 
     .get("/welcome", (req, res, next) => {
       console.log("Ingresaron a pagina de welcome");
-      console.log(req.session.passport.user);
-      const data = { user: req.session.passport.user };
+
+
+      // console.log(req.session.passport.user);
+      // const data = { user: req.session.passport.user };
+      // console.log(data);
+      // res.render("./pages/welcome", { data });
+
+      const data = req.session.passport;
+      console.log(data);
+      console.log(data.user._json.picture.data.url);
+
       res.render("./pages/welcome", { data });
     })
     .get("/goodbye", (req, res, next) => {

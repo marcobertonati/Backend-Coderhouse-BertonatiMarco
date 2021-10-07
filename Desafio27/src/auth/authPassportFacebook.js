@@ -16,21 +16,23 @@ passport.use(
     function (accessToken, refreshToken, profile, done) {
       console.log("Entro a Facebook Login");
       // console.log(profile);
-      const id = { id: profile.id };
+      // const id = { id: profile.id };
 
-      userFacebookModel.findOrCreate(id, function (err, user) {
-        if (err) {
-          return done(err);
-        }
-        console.log(user)
-        done(null, user);
-      });
+      done(null,profile)
+
+      // userFacebookModel.findOrCreate(id, function (err, user) {
+      //   if (err) {
+      //     return done(err);
+      //   }
+      //   console.log(user)
+      //   done(null, user);
+      // });
     }
   )
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, user._id);
+  done(null, user);
 });
 
 passport.deserializeUser(async function (id, done) {
