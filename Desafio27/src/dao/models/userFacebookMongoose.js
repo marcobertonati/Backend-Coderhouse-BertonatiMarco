@@ -2,12 +2,18 @@ const { Schema, model } = require('mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
 // Estructura del documento en MongoDB a través de Mongoose
-const userFBkSchema = new Schema({
-    user: { type: Object }
+const userFBSchema = new Schema({
+    id_facebook: { type: String },
+    firstName: { type: String },
+    lastName : { type: String },
+    email: { type: String },
+    photo: { type: String }
+
+
 })
 
-userFBkSchema.plugin(findOrCreate);
+userFBSchema.plugin(findOrCreate);
 
-const userFacebookModel = model('UsersFacebook', userFBkSchema);
+const userFacebookModel = model('UsersFacebook', userFBSchema);
 
 module.exports = userFacebookModel;

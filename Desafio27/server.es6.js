@@ -17,10 +17,6 @@ app.use(cors())
 const passport= require('passport');
 /*Se requiere el modulo o la configuración? */
 
-const authPassport = require('./src/auth/authPassportLocal');
-/*Requiero passport local strategy */
-// const LocalStrategy = require('passport-local').Strategy;
-
 
 /*Requiero Session*/
 const session = require('express-session');
@@ -52,6 +48,12 @@ app.use(cookieParser());
 /*Middleware Passport: SIEMPRE VAN ANTES QUE LAS RUTAS */
 app.use(passport.initialize());
 app.use(passport.session());
+
+/*Middle para saber que viene de passport */
+// app.use((req,res,next)=> {
+//   console.log(req.session.passport);
+//   next();
+// })
 
 
 /*Router */

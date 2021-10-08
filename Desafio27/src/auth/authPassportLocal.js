@@ -98,7 +98,8 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, user.email);
+  // done(null, user.email);
+  done(null, user);
 });
 
 passport.deserializeUser(async function (id, done) {

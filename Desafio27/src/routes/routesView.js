@@ -3,34 +3,23 @@ const ProductService = require("../services/productService");
 const product = new ProductService();
 
 /*Controladores de Auth */
-const { auth } = require("../auth/auth");
 const passportFacebook = require("../auth/authPassportFacebook");
 const passport = require("../auth/authPassportLocal");
-
-const checkAuthentication = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    const user = req.user;
-    console.log("Usuario Logueado");
-    next();
-  } else {
-    console.log("Usuario NO Logueado");
-    res.redirect("/login");
-  }
-};
+const { checkAuthentication } = require("../auth/checkAuth");
 
 module.exports = (router) => {
   router
-    .get("/productos/vista", async (req, res, next) => {
+    .get("/productos/vista", checkAuthentication, async (req, res, next) => {
       console.log("Entro a /productos/lista");
       const products = await product.getAllProducts();
       res.render("./pages/lista", { products });
     })
-    .get("/productos/agregar", (req, res, next) => {
+    .get("/productos/agregar", checkAuthentication, (req, res, next) => {
       console.log("Ingresaron a pagina agregar producto");
       res.render("./pages/agregar");
     })
 
-    .get("/chat-view", (req, res, next) => {
+    .get("/chat-view", checkAuthentication, (req, res, next) => {
       console.log("Ingresaron a pagina de chat");
       res.render("./websocket");
     })
@@ -52,18 +41,19 @@ module.exports = (router) => {
       res.render("./pages/signup");
     })
 
-    .get("/welcome", (req, res, next) => {
+    .get("/welcome", checkAuthentication, (req, res, next) => {
       console.log("Ingresaron a pagina de welcome");
-
 
       // console.log(req.session.passport.user);
       // const data = { user: req.session.passport.user };
       // console.log(data);
       // res.render("./pages/welcome", { data });
 
+      console.log("esto ingresa a req.session.passport");
       const data = req.session.passport;
-      console.log(data);
-      console.log(data.user._json.picture.data.url);
+
+      console.log('Esto llega en data')
+      console.log(data)
 
       res.render("./pages/welcome", { data });
     })
