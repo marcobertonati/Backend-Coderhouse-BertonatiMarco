@@ -65,6 +65,8 @@ const routesAuth = require("./src/routes/routesAuth");
 const routerAuth = express.Router();
 const routesProcessInfo = require("./src/routes/routesProcessInfo");
 const routerProcessInfo = express.Router();
+const routesRandom = require("./src/routes/routesRandom");
+const routerRandom = express.Router();
 
 /*Rutas a las view */
 const routesView = require("./src/routes/routesView");
@@ -118,7 +120,9 @@ app.use(routesIoChat(routerIoChat));
 /*Rutas del views productos, agregar y chat*/
 app.use(routesView(routerViews));
 /*Rutas de ProcessInfo */
-app.use(routesProcessInfo(routerProcessInfo))
+app.use(routesProcessInfo(routerProcessInfo));
+/*Rutas de Random */
+app.use(routesRandom(routerRandom));
 
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
