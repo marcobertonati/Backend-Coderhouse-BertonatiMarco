@@ -8,50 +8,38 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 /*Cargo módulo Handlebars */
 const handlebars = require("express-handlebars");
-/*Requiero cors */;
-const cors = require('cors')
+/*Requiero cors */ const cors = require("cors");
 app.use(cors());
 
-const cluster = require('cluster');
-
-const numCPUS = require('os').cpus().length;
-
-
-
-
 /*Requiero passport */
-const passport= require('passport');
+const passport = require("passport");
 /*Se requiere el modulo o la configuración? */
 
-const authPassport = require('./src/auth/authPassportLocal');
-/*Requiero passport local strategy */
-// const LocalStrategy = require('passport-local').Strategy;
-
-
 /*Requiero Session*/
-const session = require('express-session');
+const session = require("express-session");
 /*Requiero CookieParser */
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 /*Requiero Mongo Store para guardar sesiones */
-const MongoStore = require('connect-mongo');
+const MongoStore = require("connect-mongo");
 /*Configuración para Mongo Atlas */
-const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true};
+const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
-
-app.use(session({
-  store: MongoStore.create({ 
-    mongoUrl: 'mongodb+srv://marco-bertonati-session:u3TiWI9S5xBiAT39@cluster1.gplx5.mongodb.net/ecommerce?retryWrites=true&w=majority',
-    mongoOptions: advancedOptions,
-    ttl: 600
-  }),
-  secret: "Soy un gran secreto",
-  resave: true,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 60000,
-  }
-  
-}))
+app.use(
+  session({
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb+srv://marco-bertonati-session:u3TiWI9S5xBiAT39@cluster1.gplx5.mongodb.net/ecommerce?retryWrites=true&w=majority",
+      mongoOptions: advancedOptions,
+      ttl: 600,
+    }),
+    secret: "Soy un gran secreto",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 60000,
+    },
+  })
+);
 
 app.use(cookieParser());
 
@@ -59,26 +47,34 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+/*Middle para saber que viene de passport */
+// app.use((req,res,next)=> {
+//   console.log(req.session.passport);
+//   next();
+// })
 
 /*Router */
 /*Requerimos las rutas que va a ofrecer nuestra aplicación */
 const routesProducts = require("./src/routes/routesProducts");
 const routerProducts = express.Router();
-const routesCart = require ('./src/routes/routesCart');
-const routerCart = express.Router()
-const routesMessagesChat = require('./src/routes/routesMessagesChat');
+const routesCart = require("./src/routes/routesCart");
+const routerCart = express.Router();
+const routesMessagesChat = require("./src/routes/routesMessagesChat");
 const routerMessagesChat = express.Router();
-const routesAuth = require('./src/routes/routesAuth');
+const routesAuth = require("./src/routes/routesAuth");
 const routerAuth = express.Router();
+const routesProcessInfo = require("./src/routes/routesProcessInfo");
+const routerProcessInfo = express.Router();
+const routesRandom = require("./src/routes/routesRandom");
+const routerRandom = express.Router();
 
 /*Rutas a las view */
 const routesView = require("./src/routes/routesView");
 const routerViews = express.Router();
 
 /*Rutas a las view via IO */
-const routesIoChat  = require("./src/routes/routesIOChat");
+const routesIoChat = require("./src/routes/routesIOChat");
 const routerIoChat = express.Router();
-
 
 /*Body Parser */
 const bodyParser = require("body-parser");
@@ -86,7 +82,6 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.json());
-
 
 /*Configuración del motor de plantilla*/
 app.engine(
@@ -96,14 +91,12 @@ app.engine(
     defaultLayout: "main.hbs", // El layout que va a cargar en todas las paginas por default
     layoutsDir: `./views/layouts`, // Donde se van a encontrar las layouts
     partialsDir: `./views/partials/`, // Donde se van a encontrar los partials
-    
   })
 );
 // Estableciendo el motor de plantilla que se utiliza
 app.set("view engine", "hbs");
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
-
 
 /*Sirve para ofrecer archivos staticos, ej:
 http://localhost:8080/static/css/style.css
@@ -113,7 +106,6 @@ http://localhost:8080/static/js/index.js
 app.use("/static", express.static(__dirname + "/public"));
 
 /*Este trabajo funciona con REACTJS: https://github.com/marcobertonati/frontend-react-ecommerceunique/tree/main/src */
-
 
 /*Rutas del API: Productos*/
 app.use(routesProducts(routerProducts));
@@ -127,13 +119,15 @@ app.use(routesAuth(routerAuth));
 app.use(routesIoChat(routerIoChat));
 /*Rutas del views productos, agregar y chat*/
 app.use(routesView(routerViews));
-
+/*Rutas de ProcessInfo */
+app.use(routesProcessInfo(routerProcessInfo));
+/*Rutas de Random */
+app.use(routesRandom(routerRandom));
 
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
 // const socketConnection = require ('./src/services/messagesIOchat');
 // socketConnection(io);
-
 
 /*Exportamos servidor */
 module.exports = http;

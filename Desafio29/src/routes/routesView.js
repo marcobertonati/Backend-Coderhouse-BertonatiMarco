@@ -3,20 +3,9 @@ const ProductService = require("../services/productService");
 const product = new ProductService();
 
 /*Controladores de Auth */
-const { auth } = require("../auth/auth");
 const passportFacebook = require("../auth/authPassportFacebook");
 const passport = require("../auth/authPassportLocal");
-
-const checkAuthentication = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    const user = req.user;
-    console.log("Usuario Logueado");
-    next();
-  } else {
-    console.log("Usuario NO Logueado");
-    res.redirect("/login");
-  }
-};
+const { checkAuthentication } = require("../auth/checkAuth");
 
 module.exports = (router) => {
   router
@@ -54,8 +43,18 @@ module.exports = (router) => {
 
     .get("/welcome", checkAuthentication, (req, res, next) => {
       console.log("Ingresaron a pagina de welcome");
-      console.log(req.session.passport.user);
-      const data = { user: req.session.passport.user };
+
+      // console.log(req.session.passport.user);
+      // const data = { user: req.session.passport.user };
+      // console.log(data);
+      // res.render("./pages/welcome", { data });
+
+      console.log("esto ingresa a req.session.passport");
+      const data = req.session.passport;
+
+      console.log('Esto llega en data')
+      console.log(data)
+
       res.render("./pages/welcome", { data });
     })
     .get("/goodbye", (req, res, next) => {
