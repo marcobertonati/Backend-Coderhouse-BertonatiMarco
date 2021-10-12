@@ -12,6 +12,8 @@ module.exports = (router) => {
     .get("/productos/vista", checkAuthentication, async (req, res, next) => {
       console.log("Entro a /productos/lista");
       const products = await product.getAllProducts();
+      console.log('ESTO ME TRAE LA BASE DE DATOS:')
+      console.log(products);
       res.render("./pages/lista", { products });
     })
     .get("/productos/agregar", checkAuthentication, (req, res, next) => {
