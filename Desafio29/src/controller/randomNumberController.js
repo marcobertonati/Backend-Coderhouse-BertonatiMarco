@@ -1,9 +1,9 @@
 const { fork } = require("child_process");
-const forkedRandomNumber = fork("./src/utils/randomNumber.js");
 // const generateRandomNumber = require('../utils/randomNumber.js')
 
 const randomNumberController = (req, res, next) => {
   console.log("Ingresó a randomNumberProcess.js");
+  const forkedRandomNumber = fork("./src/utils/randomNumber.js");
 
   let { cant } = req.query;
 
