@@ -76,11 +76,11 @@ const routerViews = express.Router();
 const routesIoChat = require("./src/routes/routesIOChat");
 const routerIoChat = express.Router();
 
-/*Body Parser */
-const bodyParser = require("body-parser");
-/*Uso de Middlewares*/
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+/*Body Parser: YA NO SE USA */
+// const bodyParser = require("body-parser");
+// /*Uso de Middlewares*/
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded());
 app.use(express.json());
 
 /*Configuración del motor de plantilla*/
