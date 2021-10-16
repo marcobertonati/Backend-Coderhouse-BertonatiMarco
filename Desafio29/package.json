@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "ServerES6toJS5": ".\\node_modules\\.bin\\babel server.es6.js -o server.js",
-    "prod:forever": "forever start -w index.js"
+    "start:fork": "nodemon server.js 8080 default default default",
+    "start:cluster": "nodemon server.js 8080 default default cluster",
+    "prod:forever": "forever start -w index.js",
+    "prod:pm2:fork": "pm2 start index.js --name='ServerFork' --watch",
+    "prod:pm2:cluster": "pm2 start index.js --name='ServerCluster' --watch -i max"
   },
   "keywords": [],
   "author": "",
