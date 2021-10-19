@@ -1,37 +1,37 @@
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const userFacebookModel = require("../dao/models/userFacebookMongoose");
+const {
+  FACEBOOK_CLIENT_ID,
+  FACEBOOK_CLIENT_SECRET,
+} = require("../config/globals");
 
-/*Sino vamos a usar las variables de entorno */
-const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
-const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
+// /*Sino vamos a usar las variables de entorno */
+// const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
+// const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 
-/*Para chquear si ingresamos FACEBOOK CLIENT Y SU PASS */
-let consoleFacebookId;
-let consoleFacebookSecret;
+// /*Para chquear si ingresamos FACEBOOK CLIENT Y SU PASS */
+// let consoleFacebookId;
+// let consoleFacebookSecret;
 
 /*Si por consola ingresamos default tomará por valor predeterminado el colocado en el .env */
-process.argv.forEach((val, index) => {
-  if (index === 3) {
-    consoleFacebookId = val !== "default" ? val : FACEBOOK_CLIENT_ID;
-    console.log(`Facebook Client ID: ${consoleFacebookId}`);
-  }
-  if (index === 4) {
-    consoleFacebookSecret = val !== "default" ? val : FACEBOOK_CLIENT_SECRET;
-    console.log(`Facebook Client Secret: ${consoleFacebookSecret}`);
-  }
-});
+// process.argv.forEach((val, index) => {
+//   if (index === 3) {
+//     consoleFacebookId = val !== "default" ? val : FACEBOOK_CLIENT_ID;
+//     console.log(`Facebook Client ID: ${consoleFacebookId}`);
+//   }
+//   if (index === 4) {
+//     consoleFacebookSecret = val !== "default" ? val : FACEBOOK_CLIENT_SECRET;
+//     console.log(`Facebook Client Secret: ${consoleFacebookSecret}`);
+//   }
+// });
 
 passport.use(
   "facebook",
   new FacebookStrategy(
     {
-      clientID:
-        consoleFacebookId == undefined ? FACEBOOK_CLIENT_ID : consoleFacebookId,
-      clientSecret:
-        consoleFacebookSecret == undefined
-          ? FACEBOOK_CLIENT_SECRET
-          : consoleFacebookSecret,
+      clientID: FACEBOOK_CLIENT_ID,
+      clientSecret: FACEBOOK_CLIENT_SECRET,
       callbackURL:
         "http://localhost:8080/auth/facebook/callback" /*Tiene que ser una vista del Frontend */,
       profileFields: ["id", "name", "photos", "email"],
