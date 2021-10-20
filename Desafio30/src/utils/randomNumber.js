@@ -12,12 +12,15 @@ const generateRandomNumber = (cant) => {
   return objectNumbers;
 };
 
-process.on("message", (cant) => {
-  console.log(
-    `Ingresó a proceso hijo solicitando una cantidad de ${cant} numeros randoms`
-  );
-  const cantidadDeNumeros = parseInt(cant);
-  const result = generateRandomNumber(cantidadDeNumeros);
-  console.log(result);
-  process.send(result);
-});
+module.exports = generateRandomNumber
+
+/*CON FORK */
+// process.on("message", (cant) => {
+//   console.log(
+//     `Ingresó a proceso hijo solicitando una cantidad de ${cant} numeros randoms`
+//   );
+//   const cantidadDeNumeros = parseInt(cant);
+//   const result = generateRandomNumber(cantidadDeNumeros);
+//   console.log(result);
+//   process.send(result);
+// });
