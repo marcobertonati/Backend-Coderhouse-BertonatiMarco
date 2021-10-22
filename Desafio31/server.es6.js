@@ -8,13 +8,15 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 /*Cargo módulo Handlebars */
 const handlebars = require("express-handlebars");
-/*Requiero cors */ const cors = require("cors");
+/*Requiero cors */
+const cors = require("cors");
 app.use(cors());
+/*Requiero compression*/
+const compression = require("compression");
+app.use(compression());
 
 /*Requiero passport */
 const passport = require("passport");
-/*Se requiere el modulo o la configuración? */
-
 /*Requiero Session*/
 const session = require("express-session");
 /*Requiero CookieParser */
@@ -77,11 +79,11 @@ const routesIoChat = require("./src/routes/routesIOChat");
 const routerIoChat = express.Router();
 
 /*Body Parser: YA NO SE USA */
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 // /*Uso de Middlewares*/
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded());
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+// app.use(express.json());
 
 /*Configuración del motor de plantilla*/
 app.engine(

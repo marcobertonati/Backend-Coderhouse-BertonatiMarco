@@ -1,0 +1,128 @@
+[2021-10-22T17:32:45.270] [ERROR] error - Error: Product validation failed: title: Path `title` is required., price: Path `price` is required., thumbnail: Path `thumbnail` is required., description: Path `description` is required., code: Path `code` is required., stock: Path `stock` is required.
+    at ValidationError.inspect (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:774:19)
+    at inspect (internal/util/inspect.js:336:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2006:40)
+    at Object.format (internal/util/inspect.js:1880:10)
+    at basicLayout (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\log4js\lib\layouts.js:62:57)
+    at app (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\log4js\lib\appenders\file.js:64:23)
+    at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\log4js\lib\log4js.js:42:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    title: ValidatorError: Path `title` is required.
+        at validate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1264:13)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1247:7
+        at Array.forEach (<anonymous>)
+        at SchemaString.SchemaType.doValidate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1197:14)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\document.js:2653:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'title',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    price: ValidatorError: Path `price` is required.
+        at validate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1264:13)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1247:7
+        at Array.forEach (<anonymous>)
+        at SchemaNumber.SchemaType.doValidate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1197:14)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\document.js:2653:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'price',
+      value: null,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    thumbnail: ValidatorError: Path `thumbnail` is required.
+        at validate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1264:13)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1247:7
+        at Array.forEach (<anonymous>)
+        at SchemaString.SchemaType.doValidate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1197:14)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\document.js:2653:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'thumbnail',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    description: ValidatorError: Path `description` is required.
+        at validate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1264:13)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1247:7
+        at Array.forEach (<anonymous>)
+        at SchemaString.SchemaType.doValidate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1197:14)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\document.js:2653:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'description',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    code: ValidatorError: Path `code` is required.
+        at validate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1264:13)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1247:7
+        at Array.forEach (<anonymous>)
+        at SchemaString.SchemaType.doValidate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1197:14)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\document.js:2653:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'code',
+      value: '',
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    stock: ValidatorError: Path `stock` is required.
+        at validate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1264:13)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1247:7
+        at Array.forEach (<anonymous>)
+        at SchemaNumber.SchemaType.doValidate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1197:14)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\document.js:2653:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'stock',
+      value: null,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'Product validation failed'
+}
+[2021-10-22T17:39:44.742] [ERROR] myError - Error: Product validation failed: stock: Path `stock` is required.
+    at ValidationError.inspect (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:774:19)
+    at inspect (internal/util/inspect.js:336:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2006:40)
+    at Object.format (internal/util/inspect.js:1880:10)
+    at basicLayout (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\log4js\lib\layouts.js:62:57)
+    at app (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\log4js\lib\appenders\file.js:64:23)
+    at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\log4js\lib\log4js.js:42:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    stock: ValidatorError: Path `stock` is required.
+        at validate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1264:13)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1247:7
+        at Array.forEach (<anonymous>)
+        at SchemaNumber.SchemaType.doValidate (D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\schematype.js:1197:14)
+        at D:\Cursos\Programación\Programación Backend\Desafios\Desafio31\node_modules\mongoose\lib\document.js:2653:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'stock',
+      value: null,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'Product validation failed'
+}

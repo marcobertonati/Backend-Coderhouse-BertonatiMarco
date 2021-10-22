@@ -21,6 +21,8 @@ const randomNumberController = (req, res, next) => {
 
   /*SIN FORK*/
   let { cant } = req.query;
+  console.log(cant);
+
   if (cant === undefined) {
     cant = 100000000;
   }

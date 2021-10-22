@@ -9,6 +9,7 @@ module.exports = class {
 
     async createProduct(product) {
         console.log('Ingresó a productService => createProduct');
+        console.log(product);
         productJS.createProduct(product);
         return await productModel.create(product);
     }

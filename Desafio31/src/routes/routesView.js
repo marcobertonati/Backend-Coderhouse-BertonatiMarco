@@ -12,11 +12,11 @@ module.exports = (router) => {
     .get("/productos/vista", checkAuthentication, async (req, res, next) => {
       console.log("Entro a /productos/lista");
       const products = await product.getAllProducts();
-      console.log('ESTO ME TRAE LA BASE DE DATOS:')
+      console.log("ESTO ME TRAE LA BASE DE DATOS:");
       console.log(products);
       res.render("./pages/lista", { products });
     })
-    .get("/productos/agregar", checkAuthentication, (req, res, next) => {
+    .get("/productos/agregar", (req, res, next) => {
       console.log("Ingresaron a pagina agregar producto");
       res.render("./pages/agregar");
     })
@@ -54,8 +54,8 @@ module.exports = (router) => {
       console.log("esto ingresa a req.session.passport");
       const data = req.session.passport;
 
-      console.log('Esto llega en data')
-      console.log(data)
+      console.log("Esto llega en data");
+      console.log(data);
 
       res.render("./pages/welcome", { data });
     })
