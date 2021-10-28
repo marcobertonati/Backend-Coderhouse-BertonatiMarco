@@ -3,11 +3,11 @@ const { getConnection } = require("./src/dao/db/connectionMongo");
 const http = require("./server.es6");
 const cluster = require("cluster");
 const numCPUs = require("os").cpus().length;
-const { PORT } = require("./src/config/globals");
+const { PORT, IS_CLUSTER } = require("./src/config/globals");
 
 /*En nuestra linea de comandamos tenemos
 
-primer argumento: fork o cluster
+primer argumento: FORK o CLUSTER
 segundo argument: port
 tercer argumento: facebook client
 cuarto argumento: facebook secret

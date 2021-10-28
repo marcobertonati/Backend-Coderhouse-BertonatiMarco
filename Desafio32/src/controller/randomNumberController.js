@@ -1,4 +1,4 @@
-const { fork } = require("child_process");
+// const { fork } = require("child_process");
 const generateRandomNumber = require("../utils/randomNumber.js");
 
 const randomNumberController = (req, res, next) => {

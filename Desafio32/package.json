@@ -11,7 +11,9 @@
     "start:cluster": "nodemon server.js cluster 8080",
     "prod:forever": "forever start -w index.js",
     "prod:pm2:fork": "pm2 start index.js --name='ServerFork' --watch",
-    "prod:pm2:cluster": "pm2 start index.js --name='ServerCluster' --watch -i max"
+    "prod:pm2:cluster": "pm2 start index.js --name='ServerCluster' --watch -i max",
+    "start:prof": "node --prof index.js FORK 8080",
+    "test:info:artillery": "artillery quick --count 50 -n 40 http://localhost:8080/info"
   },
   "keywords": [],
   "author": "",

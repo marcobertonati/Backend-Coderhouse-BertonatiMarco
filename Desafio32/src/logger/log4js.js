@@ -14,4 +14,12 @@ log4js.configure({
   },
 });
 
-module.exports = log4js;
+const loggers = {
+  loggerDefault: log4js.getLogger(),
+  loggerError: log4js.getLogger('myError'),
+  loggerWarn: log4js.getLogger('myWarn'),
+  loggerTrace: log4js.getLogger('myTrace'),
+}
+
+module.exports= loggers;
+// module.exports = log4js;

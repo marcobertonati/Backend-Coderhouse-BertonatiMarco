@@ -1,10 +1,18 @@
 const ProductService = require("../services/productService");
 const product = new ProductService();
-const log4js = require("../logger/log4js");
-const loggerError = log4js.getLogger("myError");
-const loggerWarn = log4js.getLogger("myWarn");
-const loggerDefault = log4js.getLogger();
-const loggerTrace = log4js.getLogger("myTrace");
+
+// const log4js = require("../logger/log4js");
+// const loggerError = log4js.getLogger("myError");
+// const loggerWarn = log4js.getLogger("myWarn");
+// const loggerDefault = log4js.getLogger();
+// const loggerTrace = log4js.getLogger("myTrace");
+
+const {
+  loggerWarn,
+  loggerTrace,
+  loggerDefault,
+  loggerError,
+} = require("../logger/log4js");
 
 exports.createProduct = async (req, res, next) => {
   loggerTrace.trace("Ingresó a createProduct");
