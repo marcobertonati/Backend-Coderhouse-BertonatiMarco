@@ -9,6 +9,10 @@ const { checkAuthentication } = require("../auth/checkAuth");
 
 module.exports = (router) => {
   router
+    .get("/", checkAuthentication, (req, res, next) => {
+      console.log("Ingresaron a pagina de login");
+      res.render("./pages/login");
+    })
     .get("/productos/vista", checkAuthentication, async (req, res, next) => {
       console.log("Entro a /productos/lista");
       const products = await product.getAllProducts();
