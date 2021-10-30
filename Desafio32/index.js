@@ -23,6 +23,8 @@ getConnection()
   })
   .catch((err) => console.log(err));
 
+
+
 // if (process.argv[2] === "cluster") {
 //   console.log("Servidor iniciado en modo CLUSTER");
 

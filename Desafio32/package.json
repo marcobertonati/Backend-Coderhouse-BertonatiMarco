@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:autocannon": "node ./src/performance/benchmark.js",
+    "start:0x": "0x ./index.js",
     "start": "nodemon server.js",
     "ServerES6toJS5": ".\\node_modules\\.bin\\babel server.es6.js -o server.js",
     "start:fork": "nodemon server.js fork 8080",
@@ -13,12 +15,14 @@
     "prod:pm2:fork": "pm2 start index.js --name='ServerFork' --watch",
     "prod:pm2:cluster": "pm2 start index.js --name='ServerCluster' --watch -i max",
     "start:prof": "node --prof index.js FORK 8080",
-    "test:info:artillery": "artillery quick --count 50 -n 40 http://localhost:8080/info"
+    "test:info:artillery": "artillery quick --count 50 -n 20 http://localhost:8080/info",
+    "start:inspect": "node --inspect index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autocannon": "^7.5.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "bcrypt": "^5.0.1",
