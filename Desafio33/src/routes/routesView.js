@@ -4,7 +4,6 @@ const product = new ProductService();
 
 /*Controladores de Auth */
 const passportFacebook = require("../auth/authPassportFacebook");
-const passport = require("../auth/authPassportLocal");
 const { checkAuthentication } = require("../auth/checkAuth");
 
 module.exports = (router) => {

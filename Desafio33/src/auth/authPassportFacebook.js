@@ -33,7 +33,7 @@ passport.use(
       clientID: FACEBOOK_CLIENT_ID,
       clientSecret: FACEBOOK_CLIENT_SECRET,
       callbackURL:
-        "http://localhost:8080/auth/facebook/callback" /*Tiene que ser una vista del Frontend */,
+        "https://unique-coderhouse-bertonati.herokuapp.com/auth/facebook/callback" /*Tiene que ser una vista del Frontend */,
       profileFields: ["id", "name", "photos", "email"],
       scope: ["email"],
     },
