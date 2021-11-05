@@ -13,4 +13,6 @@ module.exports = {
   FACEBOOK_CLIENT_SECRET: process.argv[5]
     ? process.argv[5]
     : process.env.FACEBOOK_CLIENT_SECRET,
+  GMAIL_USER: process.env.GMAIL_USER,
+  GMAIL_USER_PASS: process.env.GMAIL_USER_PASS
 };

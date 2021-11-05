@@ -3,7 +3,7 @@ const ProductService = require("../services/productService");
 const product = new ProductService();
 
 /*Controladores de Auth */
-const passportFacebook = require("../auth/authPassportFacebook");
+
 const { checkAuthentication } = require("../auth/checkAuth");
 
 module.exports = (router) => {
@@ -33,33 +33,14 @@ module.exports = (router) => {
       console.log("Ingresaron a pagina de login");
       res.render("./pages/login");
     })
-    .get("/auth/facebook", passportFacebook.authenticate("facebook"))
-    .get(
-      "/auth/facebook/callback",
-      passportFacebook.authenticate("facebook", {
-        successRedirect: "/welcome",
-        failureRedirect: "/login",
-      })
-    )
+
     .get("/signup", (req, res, next) => {
       console.log("Ingresaron a la página /signup");
       res.render("./pages/signup");
     })
 
     .get("/welcome", checkAuthentication, (req, res, next) => {
-      console.log("Ingresaron a pagina de welcome");
-
-      // console.log(req.session.passport.user);
-      // const data = { user: req.session.passport.user };
-      // console.log(data);
-      // res.render("./pages/welcome", { data });
-
-      console.log("esto ingresa a req.session.passport");
       const data = req.session.passport;
-
-      console.log("Esto llega en data");
-      console.log(data);
-
       res.render("./pages/welcome", { data });
     })
     .get("/goodbye", (req, res, next) => {
