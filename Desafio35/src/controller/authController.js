@@ -40,7 +40,7 @@ exports.logInCallbackFacebook = async (req, res, next) => {
   const time = new Date().toLocaleTimeString();
   const mailOptions = {
     from: "Servidor de Node.js",
-    to: ["df2euol6wwi5u2ix@ethereal.email", "marko.bertonati@gmail.com"],
+    to: ["df2euol6wwi5u2ix@ethereal.email", req.session.passport.user.email],
     subject: `El usuario ${req.session.passport.user.email} se LOGUEO el día ${date} a las ${time}`,
     html: `<h2>${req.session.passport.user.firstName} ${req.session.passport.user.lastName} se ha LOGUEADO el día ${date} a las ${time}</h2>`,
     attachments: [
@@ -60,7 +60,7 @@ exports.logOut = async (req, res, next) => {
   const time = new Date().toLocaleTimeString();
   const mailOptions = {
     from: "Servidor de Node.js",
-    to: ["df2euol6wwi5u2ix@ethereal.email", "marko.bertonati@gmail.com"],
+    to: ["df2euol6wwi5u2ix@ethereal.email", req.session.passport.user.email],
     subject: `El usuario ${req.session.passport.user.email} se deslogueo el día ${date} a las ${time}`,
     html: `<h2>${req.session.passport.user.firstName} ${req.session.passport.user.lastName} se ha deslogueado el día ${date} a las ${time}</h2>`,
     attachments: [

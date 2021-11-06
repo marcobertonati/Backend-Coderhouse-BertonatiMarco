@@ -3,39 +3,32 @@ const ProductService = require("../services/productService");
 const product = new ProductService();
 
 /*Controladores de Auth */
-
 const { checkAuthentication } = require("../auth/checkAuth");
+
+/*Controladores de Productos */
+const productController = require("../controller/product");
+
+/*Controladores de Mensajes de chat */
+const chatController = require("../controller/messagesChat");
 
 module.exports = (router) => {
   router
     .get("/", checkAuthentication, (req, res, next) => {
-      console.log("Ingresaron a pagina de login");
       res.render("./pages/login");
     })
-    .get("/productos/vista", checkAuthentication, async (req, res, next) => {
-      console.log("Entro a /productos/lista");
-      const products = await product.getAllProducts();
-      console.log("ESTO ME TRAE LA BASE DE DATOS:");
-      console.log(products);
-      res.render("./pages/lista", { products });
-    })
+    .get("/productos/vista", productController.findAll)
+
     .get("/productos/agregar", (req, res, next) => {
-      console.log("Ingresaron a pagina agregar producto");
       res.render("./pages/agregar");
     })
 
-    .get("/chat-view", checkAuthentication, (req, res, next) => {
-      console.log("Ingresaron a pagina de chat");
-      res.render("./websocket");
-    })
+    .get("/chat-view", chatController.getAllMsgChat)
 
     .get("/login", (req, res, next) => {
-      console.log("Ingresaron a pagina de login");
       res.render("./pages/login");
     })
 
     .get("/signup", (req, res, next) => {
-      console.log("Ingresaron a la página /signup");
       res.render("./pages/signup");
     })
 

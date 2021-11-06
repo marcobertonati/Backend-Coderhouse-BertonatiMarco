@@ -50,9 +50,10 @@ exports.createProduct = async (req, res, next) => {
 exports.findAll = async (req, res, next) => {
   loggerTrace.trace("Ingresó a findAll");
   try {
-    const allProducts = await product.getAllProducts();
-    loggerDefault.info(allProducts);
-    res.json(allProducts);
+    const products = await product.getAllProducts();
+    loggerDefault.info(products);
+    res.render("./pages/lista", { products });
+    // res.json(allProducts);
   } catch (error) {
     loggerError.error(error);
     res.json(error);

@@ -128,8 +128,8 @@ app.use(routesRandom(routerRandom));
 
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
-// const socketConnection = require ('./src/services/messagesIOchat');
-// socketConnection(io);
+const socketConnection = require ('./src/services/messagesIOchat');
+socketConnection(io);
 
 /*Exportamos servidor */
 module.exports = http;

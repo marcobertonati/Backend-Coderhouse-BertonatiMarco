@@ -14,5 +14,8 @@ module.exports = {
     ? process.argv[5]
     : process.env.FACEBOOK_CLIENT_SECRET,
   GMAIL_USER: process.env.GMAIL_USER,
-  GMAIL_USER_PASS: process.env.GMAIL_USER_PASS
+  GMAIL_USER_PASS: process.env.GMAIL_USER_PASS,
+  TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+  TWILIO_AUTH_TOKEN:  process.env.TWILIO_AUTH_TOKEN,
+  TWILIO_NUMBER: process.env.TWILIO_NUMBER
 };

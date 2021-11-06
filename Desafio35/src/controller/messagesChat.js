@@ -1,8 +1,8 @@
 const MessagesChatService = require("../services/messagesChat");
 const messageChat = new MessagesChatService();
-const util = require('util')
+const util = require("util");
 
-const { normalize, schema } = require('normalizr');
+const { normalize, schema } = require("normalizr");
 
 exports.createMsg = async (req, res, next) => {
   console.log("Controller => messagesChat => createMsg");
@@ -22,9 +22,9 @@ exports.getAllMsgChat = async (req, res, next) => {
   try {
     const allMsgChat = await messageChat.getAllMessage();
 
-    const historyChat = { id: 1, content: allMsgChat};
+    const historyChat = { id: 1, content: allMsgChat };
 
-    const userSchema = new schema.Entity('author');
+    const userSchema = new schema.Entity("author");
 
     /* Con este esquema con este atributo id lo que hace es crear la entidad author, donde cada autor el ID es su ALIAS: 
 
@@ -33,32 +33,33 @@ exports.getAllMsgChat = async (req, res, next) => {
      pero si no le colocamos nada lo que hace es leer por defecto dentro de author (consignado en el entry schema "author:userSchema") la propiedad ID, que en nuestra DB es el mail. Si en vez de ponerle author le pongo otra cosa se va a romper. 
 
     */
-    
-    const entrySchema = new schema.Entity('entries', {
-      author: userSchema,
-      
-    }, {idAttribute: (value) => value._id.toString()}); /*Este es el ID del mensaje de chat */
 
-    const chatSchema = new schema.Entity('chat', {
-      content: [entrySchema]
-    })
+    const entrySchema = new schema.Entity(
+      "entries",
+      {
+        author: userSchema,
+      },
+      { idAttribute: (value) => value._id.toString() }
+    ); /*Este es el ID del mensaje de chat */
 
+    const chatSchema = new schema.Entity("chat", {
+      content: [entrySchema],
+    });
 
     const normalizedChat = normalize(historyChat, chatSchema);
 
     console.log(JSON.stringify(allMsgChat).length);
     console.log(JSON.stringify(normalizedChat).length);
 
-    res.json(normalizedChat)
-
-
+    //Sirve para cuando hay renderizado del lado del servidor
+    // res.json(normalizedChat)
 
     //Sirve para la petición HTTP
-    // res.json({ msg: "Messages from chat", historialMessages: allMesgChat });
+    // console.log(allMsgChat);
+    // res.render("./pages/chat", { allMsgChat });
 
     // Sirve para SocketIo
-    // res.render("websocket",allMesgChat);
-    
+    res.render("./pages/chat");
   } catch (error) {
     console.log(error);
     res.json(error);
