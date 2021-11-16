@@ -1,0 +1,1 @@
+El desafio 37 fue aprobado a partir de la estructura que vengo realizando en el trabajo final: https://github.com/marcobertonati/tercera-entrega-backend-coderhouse-bertonati
