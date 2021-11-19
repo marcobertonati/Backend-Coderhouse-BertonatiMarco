@@ -141,5 +141,9 @@ app.use(routesRandom(routerRandom));
 const socketConnection = require("./src/services/messagesIOchat");
 socketConnection(io);
 
+/*GraphQL */
+const graphqlHTTP = require("./src/graphql/config/graphql.config");
+app.use("/graphql", graphqlHTTP);
+
 /*Exportamos servidor */
 module.exports = http;
