@@ -1,0 +1,46 @@
+/*************/
+/*  PRODUCTS */
+/*************/
+{products {
+  _id
+  title
+  price
+  thumbnail
+  timestamp
+  description
+  code
+  stock
+}}
+
+/*****************/
+/* PRODUCT BY ID */
+/*****************/
+
+{product(_id:"6144c9d45dd28c2628026a38")}
+
+
+/************/
+/* MUTATION */
+/************/
+REQUEST:
+mutation{createProduct(
+title:"Guantes Under Armour", 
+price:1200, 
+thumbnail: "https://www.digitalsport.com.ar/files/products/5d769ee9db5aa-505883-500x500.jpg",
+timestamp: "23/11/2021",
+description:"Guantes UnderArmour para entrenamiento funcional",
+code: "753159846",
+stock: 400
+  
+) {
+  _id
+  title
+  price
+  thumbnail
+  timestamp
+  description
+  code
+  stock
+}}
+
+RESPONSE:
