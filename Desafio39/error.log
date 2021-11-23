@@ -1210,3 +1210,223 @@
       at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
   valueType: 'string'
 }
+[2021-11-23T11:01:44.304] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:02:51.121] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:04:29.334] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:04:29.984] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:05:14.792] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:05:15.424] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:05:16.002] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:06:55.671] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:06:56.327] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}
+[2021-11-23T11:06:56.926] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\cast.js:333:32)
+      at model.Query.Query.cast (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:4966:12)
+      at model.Query.Query._castConditions (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio39\node_modules\mongoose\lib\query.js:2058:10),
+  valueType: 'string'
+}

@@ -68,8 +68,12 @@ exports.getOne = async (req, res, next) => {
     const productRetrieved = await product.getProduct(id);
     res.json(productRetrieved);
   } catch (error) {
+    const errorMsg = {
+      message: "No se encontraron productos",
+      productFinded: false,
+    };
     loggerError.error(error);
-    res.json(error);
+    res.json(errorMsg);
   }
 };
 
@@ -86,7 +90,11 @@ exports.updateProduct = async (req, res, next) => {
     res.json(updateProduct);
   } catch (error) {
     loggerError.error(error);
-    res.json(error);
+    const errorMsg = {
+      message: "No se encontraron productos",
+      productFinded: false,
+    };
+    res.json(errorMsg);
   }
 };
 
@@ -100,7 +108,11 @@ exports.deleteOne = async (req, res, next) => {
     res.json({ msg: "Product deleted!" });
   } catch (error) {
     loggerError.error(error);
-    res.json(error);
+    const errorMsg = {
+      message: "No se encontraron productos",
+      productFinded: false,
+    };
+    res.json(errorMsg);
   }
 };
 

@@ -15,11 +15,10 @@ describe("TEST API REST => Producto by ID", () => {
     expect(response.body._id).to.eql(ID);
   });
 
-  it("Deberia retornar CastError si no existe el id", async () => {
+  it("Deberia retornar FALSE si no existe el id", async () => {
     let ID = "este-es-un-id-falso";
     let response = await request.get(`/api/product/${ID}`);
-    console.log(response.body.name);
-    expect(response.body.name).to.eql("CastError");
+    expect(response.body.productFinded).to.eql(false);
   });
 });
 
@@ -34,6 +33,12 @@ describe("TEST API REST => Update by ID", () => {
       .send(dataUpdated);
     expect(response.status).to.eql(200);
   });
+
+  it("Deberia retornar FALSE si no existe el id", async () => {
+    let ID = "este-es-un-id-falso";
+    let response = await request.get(`/api/product/${ID}`);
+    expect(response.body.productFinded).to.eql(false);
+  });
 });
 
 describe("TEST API REST => Delete by ID", () => {
@@ -42,5 +47,11 @@ describe("TEST API REST => Delete by ID", () => {
     let ID = "6199190b292b5e99db26615b";
     let response = await request.delete(`/api/product/delete/${ID}`);
     expect(response.status).to.eql(200);
+  });
+
+  it("Deberia retornar FALSE si no existe el id", async () => {
+    let ID = "este-es-un-id-falso";
+    let response = await request.get(`/api/product/${ID}`);
+    expect(response.body.productFinded).to.eql(false);
   });
 });
