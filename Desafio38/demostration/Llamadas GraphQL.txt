@@ -1,3 +1,6 @@
+Link de video:
+https://drive.google.com/file/d/11kxhWOyr6-WsKzfrEbvrVxTD0Ap70xyW/view?usp=sharing
+
 /*************/
 /*  PRODUCTS */
 /*************/
@@ -42,5 +45,3 @@ stock: 400
   code
   stock
 }}
-
-RESPONSE:
