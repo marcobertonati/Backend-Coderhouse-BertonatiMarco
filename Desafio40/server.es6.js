@@ -67,28 +67,32 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-/*Router */
-/*Requerimos las rutas que va a ofrecer nuestra aplicación */
-const routesProducts = require("./src/routes/routesProducts");
-const routerProducts = express.Router();
-const routesCart = require("./src/routes/routesCart");
-const routerCart = express.Router();
-const routesMessagesChat = require("./src/routes/routesMessagesChat");
-const routerMessagesChat = express.Router();
-const routesAuth = require("./src/routes/routesAuth");
-const routerAuth = express.Router();
-const routesProcessInfo = require("./src/routes/routesProcessInfo");
-const routerProcessInfo = express.Router();
-const routesRandom = require("./src/routes/routesRandom");
-const routerRandom = express.Router();
+// /*Router */
+// /*Requerimos las rutas que va a ofrecer nuestra aplicación */
+// const routesProducts = require("./src/routes/routesProducts");
+// const routerProducts = express.Router();
+// const routesCart = require("./src/routes/routesCart");
+// const routerCart = express.Router();
+// const routesMessagesChat = require("./src/routes/routesMessagesChat");
+// const routerMessagesChat = express.Router();
+// const routesAuth = require("./src/routes/routesAuth");
+// const routerAuth = express.Router();
+// const routesProcessInfo = require("./src/routes/routesProcessInfo");
+// const routerProcessInfo = express.Router();
+// const routesRandom = require("./src/routes/routesRandom");
+// const routerRandom = express.Router();
 
-/*Rutas a las view */
-const routesView = require("./src/routes/routesView");
-const routerViews = express.Router();
+// /*Rutas a las view */
+// const routesView = require("./src/routes/routesView");
+// const routerViews = express.Router();
 
-/*Rutas a las view via IO */
-const routesIoChat = require("./src/routes/routesIOChat");
-const routerIoChat = express.Router();
+// /*Rutas a las view via IO */
+// const routesIoChat = require("./src/routes/routesIOChat");
+// const routerIoChat = express.Router();
+
+/*Importamos rutas */
+const routesConfig = require("./src/routes/index");
+app.use(routesConfig);
 
 /*Body Parser: YA NO SE USA */
 const bodyParser = require("body-parser");
@@ -119,22 +123,22 @@ http://localhost:8080/static/js/index.js
 // Utilizamos el prefijo virtual '/static'
 app.use("/static", express.static(__dirname + "/public"));
 
-/*Rutas del API: Productos*/
-app.use(routesProducts(routerProducts));
-/*Rutas del API: Cart*/
-app.use(routesCart(routerCart));
-/*Rutas del API: Mensaje de chat*/
-app.use(routesMessagesChat(routerMessagesChat));
-/*Rutas del API: Ruta de session*/
-app.use(routesAuth(routerAuth));
-/*Rutas IO chat*/
-app.use(routesIoChat(routerIoChat));
-/*Rutas del views productos, agregar y chat*/
-app.use(routesView(routerViews));
-/*Rutas de ProcessInfo */
-app.use(routesProcessInfo(routerProcessInfo));
-/*Rutas de Random */
-app.use(routesRandom(routerRandom));
+// /*Rutas del API: Productos*/
+// app.use(routesProducts(routerProducts));
+// /*Rutas del API: Cart*/
+// app.use(routesCart(routerCart));
+// /*Rutas del API: Mensaje de chat*/
+// app.use(routesMessagesChat(routerMessagesChat));
+// /*Rutas del API: Ruta de session*/
+// app.use(routesAuth(routerAuth));
+// /*Rutas IO chat*/
+// app.use(routesIoChat(routerIoChat));
+// /*Rutas del views productos, agregar y chat*/
+// app.use(routesView(routerViews));
+// /*Rutas de ProcessInfo */
+// app.use(routesProcessInfo(routerProcessInfo));
+// /*Rutas de Random */
+// app.use(routesRandom(routerRandom));
 
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
