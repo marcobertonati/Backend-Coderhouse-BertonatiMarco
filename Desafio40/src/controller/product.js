@@ -49,10 +49,10 @@ exports.findAll = async (req, res, next) => {
     const products = await product.getAllProducts();
 
     //Para SSR
-    // res.render("./pages/lista", { products });
+    res.render("./pages/lista", { products });
 
     //Para ReactJS
-    res.json(products);
+    // res.json(products);
   } catch (error) {
     loggerError.error(error);
     res.json(error);

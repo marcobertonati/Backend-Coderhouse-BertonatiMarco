@@ -1,5 +1,5 @@
 /*Requiero Mongoose para chats */
-const messagesChat = require("../dao/models/messagesMongoose");
+const messagesChat = require("../dal/mongoose/dao/models/messagesMongoose");
 /*Deberia tratar de requerirlo desde servicios */
 
 /*Servicio de sms */

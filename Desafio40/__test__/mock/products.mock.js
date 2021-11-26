@@ -36,3 +36,5 @@ const response = [
     __v: 0,
   },
 ];
+
+module.exports = response;

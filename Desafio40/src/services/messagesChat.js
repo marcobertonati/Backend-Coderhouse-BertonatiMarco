@@ -1,4 +1,4 @@
-const messagesChat = require('../dao/models/messagesMongoose');
+const messagesChat = require('../dal/mongoose/dao/models/messagesMongoose');
 
 module.exports = class {
 

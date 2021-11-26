@@ -1,6 +1,6 @@
 /*Controladores de rutas AUTH */
 
-const userModel = require("../dao/models/userMongoose");
+const userModel = require("../dal/mongoose/dao/models/userMongoose");
 userModel;
 
 const mailingService = require("../services/mailingService");

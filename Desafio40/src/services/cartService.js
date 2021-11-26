@@ -1,9 +1,9 @@
 /*Cart en MongoDB */
-const { cartModel } = require("../dao/models/cartMongoose");
+const { cartModel } = require("../dal/mongoose/dao/models/cartMongoose");
 
 /*Cart en memoria */
-const { CartJS } = require("../dao/models/cartJs");
-const cartJs = new CartJS();
+// const { CartJS } = require("../dao/models/cartJs");
+// const cartJs = new CartJS();
 
 module.exports = class {
   async createCart(cart) {
