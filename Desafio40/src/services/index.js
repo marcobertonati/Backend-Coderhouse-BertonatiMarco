@@ -1,8 +1,8 @@
-const dao = require("../dao/models/productsMongoose");
-const productService = require('./productService')
-const product = new productService();
+// const dao = require("../dao/models/productsMongoose");
+const ProductService = require('./productService')
+// const product = new productService();
 
 
 module.exports = {
-    productService:
+    productService: new ProductService()
 }

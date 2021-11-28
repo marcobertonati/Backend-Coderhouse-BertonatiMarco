@@ -6,6 +6,8 @@ const {
 } = require("../logger/log4js");
 
 const productController = (service) => {
+  console.log("Esto trae service de productController:");
+  console.log(service);
   return {
     createProduct: async (req, res, next) => {
       loggerTrace.trace("Ingresó a createProduct");
@@ -42,14 +44,15 @@ const productController = (service) => {
 
     findAll: async (req, res, next) => {
       loggerTrace.trace("Ingresó a findAll");
+
       try {
-        const products = await product.getAllProducts();
+        const products = await service.getAllProducts();
 
         //Para SSR
-        // res.render("./pages/lista", { products });
+        res.render("./pages/lista", { products });
 
         //Para ReactJS
-        res.json(products);
+        // res.json(products);
       } catch (error) {
         loggerError.error(error);
         res.json(error);
@@ -62,7 +65,7 @@ const productController = (service) => {
       try {
         const id = req.params.id;
         loggerDefault.info(`El id ingresado es ${id}`);
-        const productRetrieved = await product.getProduct(id);
+        const productRetrieved = await service.getProduct(id);
         res.json(productRetrieved);
       } catch (error) {
         const errorMsg = {
@@ -80,7 +83,7 @@ const productController = (service) => {
       try {
         const body = req.body;
         const id = req.params.id;
-        const updateProduct = await product.updateProduct(id, body);
+        const updateProduct = await service.updateProduct(id, body);
         loggerDefault.info(
           "El producto actualizado quedó de la siguiente manera: " +
             updateProduct
@@ -102,7 +105,7 @@ const productController = (service) => {
       try {
         const id = req.params.id;
         loggerDefault.info(`El id ingresado es ${id}`);
-        await product.deleteProduct(id);
+        await service.deleteProduct(id);
         res.json({ msg: "Product deleted!" });
       } catch (error) {
         loggerError.error(error);
@@ -121,7 +124,7 @@ const productController = (service) => {
         const title = req.params.title;
         loggerDefault.info(`El nombre del producto ingresado es ${title}`);
 
-        const productsRetrieved = await product.getProductByTitle(title);
+        const productsRetrieved = await service.getProductByTitle(title);
         res.json(productsRetrieved);
       } catch (error) {
         loggerError.error(error);
@@ -136,7 +139,7 @@ const productController = (service) => {
         const code = req.params.code;
         loggerDefault.info(`El codigo del producto ingresado es ${code}`);
 
-        const productsRetrieved = await product.getProductByCode(code);
+        const productsRetrieved = await service.getProductByCode(code);
         res.json(productsRetrieved);
       } catch (error) {
         loggerError.error(error);
@@ -160,7 +163,7 @@ const productController = (service) => {
         } else {
           const pricemin = parseInt(req.query.minvalue);
           const pricemax = parseInt(req.query.maxvalue);
-          const productsRetrieved = await product.getProductByPrice(
+          const productsRetrieved = await service.getProductByPrice(
             pricemin,
             pricemax
           );
@@ -181,7 +184,7 @@ const productController = (service) => {
         loggerDefault.info(
           `El usuario quiere productos entre stock: ${stockmin} y ${stockmax}`
         );
-        const productsRetrieved = await product.getProductByStock(
+        const productsRetrieved = await service.getProductByStock(
           stockmin,
           stockmax
         );

@@ -26,12 +26,12 @@ const routerIoChat = express.Router();
 
 module.exports = routesConfig = () => {
     
-    return routesProducts(routerProducts)
-    // routesCart(routerCart),
-    // routesMessagesChat(routerMessagesChat);
-    // routesAuth(routerAuth);
-    // routesIoChat(routerIoChat);
-    // routesView(routerViews);
-    // routesProcessInfo(routerProcessInfo);
-    // routesRandom(routerRandom);
+routesProducts(routerProducts)
+routesCart(routerCart),
+routesMessagesChat(routerMessagesChat);
+routesAuth(routerAuth);
+routesIoChat(routerIoChat);
+routesView(routerViews);
+routesProcessInfo(routerProcessInfo);
+routesRandom(routerRandom);
 };

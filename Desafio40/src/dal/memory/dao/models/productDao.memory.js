@@ -18,10 +18,6 @@ module.exports = class {
     return await this.products;
   }
 
-  // async lean() {
-    
-  // }
-
   async findByIdAndUpdate(id, productUpdated) {
     this.products.forEach((e) => {
       if (e.id == id) {

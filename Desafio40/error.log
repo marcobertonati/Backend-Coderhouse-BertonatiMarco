@@ -1705,3 +1705,58 @@
     at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:112:3)
     at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
     at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:281:22
+[2021-11-28T14:33:18.312] [ERROR] myError - ReferenceError: product is not defined
+    at findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\src\controller\productController.js:46:26)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:174:3)
+    at router (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:47:12)
+[2021-11-28T14:36:40.817] [ERROR] myError - ReferenceError: product is not defined
+    at findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\src\controller\productController.js:46:26)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:174:3)
+    at router (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:47:12)
+[2021-11-28T14:40:08.744] [ERROR] myError - TypeError: productModel.getAllProducts is not a function
+    at findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\src\controller\productController.js:48:45)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:174:3)
+    at router (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:47:12)
+[2021-11-28T14:41:09.656] [ERROR] myError - TypeError: productModel.getAllProducts is not a function
+    at findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\src\controller\productController.js:49:45)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:174:3)
+    at router (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:47:12)
+[2021-11-28T14:41:19.864] [ERROR] myError - TypeError: productModel.getAllProducts is not a function
+    at findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\src\controller\productController.js:49:45)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:174:3)
+    at router (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:47:12)

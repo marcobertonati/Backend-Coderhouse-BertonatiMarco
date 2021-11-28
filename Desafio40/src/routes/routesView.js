@@ -1,12 +1,8 @@
-/*Requiero controladores de productos */
-const ProductService = require("../services/productService");
-const product = new ProductService();
-
 /*Controladores de Auth */
 const { checkAuthentication } = require("../auth/checkAuth");
 
 /*Controladores de Productos */
-const productController = require("../controller/product");
+const { productController } = require("../controller");
 
 /*Controladores de Mensajes de chat */
 const chatController = require("../controller/messagesChat");
