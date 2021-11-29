@@ -1,6 +1,5 @@
 /*Requiero Mongoose para chats */
-const messagesChat = require("../dal/mongoose/dao/models/messagesMongoose");
-/*Deberia tratar de requerirlo desde servicios */
+const { messagesRepository } = require("../dal/mongoose/repositories/index");
 
 /*Servicio de sms */
 const twilio = require("../sms/twilio");
@@ -11,7 +10,7 @@ module.exports = (io) => {
 
     /*Traigo todos los mensajes */
     try {
-      const allMsgChat = await messagesChat.find();
+      const allMsgChat = await messagesRepository.getAllMsg();
       socket.emit("list-msg-chat", allMsgChat);
     } catch (error) {
       console.log(error);
@@ -22,13 +21,13 @@ module.exports = (io) => {
         if (data.text.includes("administrador")) {
           twilio(data.author.id, data.text);
         }
-        await messagesChat.create(data);
+        await messagesRepository.create(data);
       } catch (error) {
         console.log(error);
       }
 
       try {
-        const allMsgChat = await messagesChat.find();
+        const allMsgChat = await messagesRepository.getAllMsg();
         io.emit("list-msg-chat", allMsgChat);
       } catch (error) {
         console.log(error);
