@@ -1,4 +1,8 @@
-require("dotenv").config();
+// const path = require("path");
+// require("dotenv").config({
+//   path: path.resolve(__dirname, process.env.NODE_ENV + ".env"),
+// });
+
 
 process.argv.forEach((value, index) => console.log(index + " => " + value));
 
@@ -6,10 +10,10 @@ module.exports = {
   NODE_ENV: process.env.NODE_ENV,
   MONGO_URI: process.env.MONGO_URI || "",
 
-  IS_CLUSTER: process.argv[2] === "CLUSTER" ? true : false,
+  IS_CLUSTER: process.env.IS_CLUSTER,
 
   PORT: parseInt(process.argv[3]) || process.env.PORT || 8080,
-  
+
   PERSISTENCE: process.argv[4] ? process.argv[4] : process.env.PERSISTENCE,
 
   // NODE_ENVI: process.argv[4] ? process.argv[4] : process.env.NODE_ENVI,

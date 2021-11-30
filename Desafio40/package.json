@@ -16,7 +16,9 @@
     "prod:pm2:cluster": "pm2 start index.js --name='ServerCluster' --watch -i max",
     "start:prof": "node --prof index.js FORK 8080",
     "test:info:artillery": "artillery quick --count 50 -n 20 http://localhost:8080/info",
-    "start:inspect": "node --inspect index.js"
+    "start:inspect": "node --inspect index.js",
+    "dev": "set NODE_ENV=development&& nodemon index.js ",
+    "prod": "set NODE_ENV=production&& nodemon index.js "
   },
   "keywords": [],
   "author": "",
@@ -56,7 +58,8 @@
     "socket.io": "^4.1.3",
     "supertest": "^6.1.6",
     "twilio": "^3.71.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "yargs": "^16.2.0"
   },
   "engines": {
     "node": ">=14.0.0",
