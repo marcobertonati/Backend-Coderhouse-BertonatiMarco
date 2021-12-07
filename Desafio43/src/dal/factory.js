@@ -21,9 +21,11 @@ class PersistenceFactory {
   };
 }
 
-exports.getPersistenceFactory = () => {
-  if (_persistenceFactoryInstance === null) {
-    _persistenceFactoryInstance = new PersistenceFactory();
-  }
-  return _persistenceFactoryInstance;
-};
+// exports.getPersistenceFactory = () => {
+//   if (_persistenceFactoryInstance === null) {
+//     _persistenceFactoryInstance = new PersistenceFactory();
+//   }
+//   return _persistenceFactoryInstance;
+// };
+
+module.exports = new PersistenceFactory();

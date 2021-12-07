@@ -1831,3 +1831,58 @@
     at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:281:22
     at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:354:14)
     at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio40\node_modules\express\lib\router\index.js:365:14)
+[2021-12-06T17:02:25.692] [ERROR] myError - TypeError: Cannot read property '_id' of undefined
+    at module.exports.findByIdAndUpdate (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\dal\memory\dao\models\productDao.memory.js:39:41)
+    at module.exports.updateProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:27:53)
+    at updateProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:86:45)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:365:14)
+[2021-12-06T17:03:10.309] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2021-12-06T17:03:10.934] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2021-12-06T17:03:11.535] [ERROR] myError - CastError: Cast to ObjectId failed for value "este-es-un-id-falso" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"este-es-un-id-falso"',
+  kind: 'ObjectId',
+  value: 'este-es-un-id-falso',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2021-12-06T17:04:41.109] [ERROR] myError - TypeError: Cannot read property '_id' of undefined
+    at module.exports.findByIdAndUpdate (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\dal\memory\dao\models\productDao.memory.js:39:41)
+    at module.exports.updateProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:27:53)
+    at updateProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:86:45)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:365:14)

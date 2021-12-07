@@ -1,7 +1,9 @@
-/*Elegimos persistencia */
-const { getPersistenceFactory } = require("../dal/factory");
-const persistenceFactory = getPersistenceFactory();
+// /*Elegimos persistencia */
+// const { getPersistenceFactory } = require("../dal/factory");
+// const persistenceFactory = getPersistenceFactory();
+
 const { PERSISTENCE } = require("../config/globals");
+const persistenceFactory = require("../dal/factory");
 let productModel = persistenceFactory.newPersistence(PERSISTENCE);
 
 module.exports = class {
