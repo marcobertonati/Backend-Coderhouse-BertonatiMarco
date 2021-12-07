@@ -31,10 +31,10 @@ const productController = (service) => {
 
       try {
         loggerTrace.trace("Ingresó al try");
-        const productCreated = await product.createProduct(req.body);
-        // res.json({ msg: "Product Created!", product: productCreated });
+        const productCreated = await service.createProduct(req.body);
+        res.json({ msg: "Product Created!", product: productCreated });
         // res.render('./pages/agregar')
-        res.redirect("/productos/agregar");
+        // res.redirect("/productos/agregar");
       } catch (error) {
         loggerTrace.trace("Ingresó al catch");
         loggerError.error(error);
@@ -49,10 +49,10 @@ const productController = (service) => {
         const products = await service.getAllProducts();
 
         //Para SSR
-        res.render("./pages/lista", { products });
+        // res.render("./pages/lista", { products });
 
         //Para ReactJS
-        // res.json(products);
+        res.json(products);
       } catch (error) {
         loggerError.error(error);
         res.json(error);

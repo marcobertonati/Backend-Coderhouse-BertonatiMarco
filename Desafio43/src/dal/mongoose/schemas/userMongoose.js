@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const { cartSchema } = require("../models/cartMongoose");
+const { cartSchema } = require("./cartMongoose");
 
 // Estructura del documento en MongoDB a través de Mongoose
 const userSchema = new Schema({

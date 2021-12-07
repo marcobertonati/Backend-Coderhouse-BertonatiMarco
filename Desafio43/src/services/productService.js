@@ -19,21 +19,11 @@ module.exports = class {
   }
 
   async getAllProducts() {
-    if (PERSISTENCE === "memory") {
-      return await this.productModel.find();
-    }
-    return await this.productModel.find().lean();
+    return await this.productModel.find();
   }
 
   async updateProduct(id, productUpdated) {
-    const productToUpdate = await this.productModel.findByIdAndUpdate(
-      id,
-      productUpdated,
-      {
-        new: true,
-      }
-    );
-    return productToUpdate;
+    return await this.productModel.findByIdAndUpdate(id, productUpdated);
   }
 
   async deleteProduct(id) {

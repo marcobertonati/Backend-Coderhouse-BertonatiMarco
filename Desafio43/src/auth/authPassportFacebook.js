@@ -1,6 +1,6 @@
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
-const userFacebookModel = require("../dal/mongoose/dao/models/userFacebookMongoose");
+const userFacebookModel = require("../dal/mongoose/schemas/userFacebookMongoose");
 const {
   FACEBOOK_CLIENT_ID,
   FACEBOOK_CLIENT_SECRET,

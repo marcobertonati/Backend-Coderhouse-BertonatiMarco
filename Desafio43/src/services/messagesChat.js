@@ -1,14 +1,12 @@
-const messagesChat = require('../dal/mongoose/dao/models/messagesMongoose');
+const messagesChat = require("../dal/mongoose/schemas/messagesMongoose");
 
 module.exports = class {
+  async createMessage(msg) {
+    await messagesChat.create(msg);
+  }
 
-    async createMessage(msg) {
-        await messagesChat.create(msg);
-    }
-
-    async getAllMessage() {
-        const allMessage = await messagesChat.find().lean();
-        return allMessage;
-    }
-
-}
+  async getAllMessage() {
+    const allMessage = await messagesChat.find().lean();
+    return allMessage;
+  }
+};

@@ -1886,3 +1886,67 @@
     at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
     at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:354:14)
     at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:365:14)
+[2021-12-07T17:00:22.709] [ERROR] myError - TypeError: this.productModel.find(...).lean is not a function
+    at module.exports.getAllProducts (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:25:43)
+    at findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:49:40)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:174:3)
+[2021-12-07T17:02:25.666] [ERROR] myError - ReferenceError: DTOmemory is not defined
+    at module.exports.find (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\dal\mongoose\dao\models\productDao.mongoose.js:27:31)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async module.exports.getAllProducts (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:25:12)
+    at async findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:49:26)
+[2021-12-07T17:02:52.736] [ERROR] myError - ReferenceError: DTOmemory is not defined
+    at module.exports.find (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\dal\mongoose\dao\models\productDao.mongoose.js:27:31)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async module.exports.getAllProducts (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:25:12)
+    at async findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:49:26)
+[2021-12-07T17:02:56.380] [ERROR] myError - ReferenceError: DTOmemory is not defined
+    at module.exports.find (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\dal\mongoose\dao\models\productDao.mongoose.js:27:31)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async module.exports.getAllProducts (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:25:12)
+    at async findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:49:26)
+[2021-12-07T17:08:41.567] [ERROR] myError - ReferenceError: DTOmemory is not defined
+    at module.exports.find (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\dal\mongoose\dao\models\productDao.mongoose.js:27:31)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async module.exports.getAllProducts (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:25:12)
+    at async findAll (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:49:26)
+[2021-12-07T17:57:57.472] [ERROR] myError - ReferenceError: product is not defined
+    at createProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:34:32)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:174:3)
+    at router (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:47:12)
+[2021-12-07T17:59:21.919] [ERROR] myError - ReferenceError: product is not defined
+    at createProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:34:32)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:174:3)
+    at router (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:47:12)
+[2021-12-07T18:02:19.962] [ERROR] myError - TypeError: this.products is not iterable
+    at module.exports.findByIdAndUpdate (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\dal\mongoose\dao\models\productDao.mongoose.js:26:31)
+    at module.exports.updateProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\services\productService.js:26:53)
+    at updateProduct (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\src\controller\productController.js:86:45)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:365:14)

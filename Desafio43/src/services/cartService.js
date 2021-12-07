@@ -1,5 +1,5 @@
 /*Cart en MongoDB */
-const { cartModel } = require("../dal/mongoose/dao/models/cartMongoose");
+const { cartModel } = require("../dal/mongoose/schemas/cartMongoose");
 
 /*Cart en memoria */
 // const { CartJS } = require("../dao/models/cartJs");

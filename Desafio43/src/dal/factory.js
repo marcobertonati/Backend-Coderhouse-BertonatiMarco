@@ -10,12 +10,11 @@ class PersistenceFactory {
 
       case "mongodb":
         console.log("[Persistence] : MongoDB");
-        const {
-          productModelMongoose,
-        } = require("../dal/mongoose/dao/models/productsMongoose");
-        return productModelMongoose;
+        const persistenceMongoDB = require("../dal/mongoose/dao/models/productDao.mongoose");
+        return new persistenceMongoDB();
 
       default:
+        console.log("[Persistence] : Default => Memory");
         return new persistenceMemory();
     }
   };

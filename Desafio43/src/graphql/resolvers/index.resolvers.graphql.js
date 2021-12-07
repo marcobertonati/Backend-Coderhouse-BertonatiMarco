@@ -1,6 +1,4 @@
-const {
-  productModel,
-} = require("../../dal/mongoose/dao/models/productsMongoose");
+const { productModel } = require("../../dal/mongoose/schemas/productsMongoose");
 
 const root = {
   products: async () => {

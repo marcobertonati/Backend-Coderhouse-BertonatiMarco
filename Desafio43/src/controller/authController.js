@@ -1,6 +1,6 @@
 /*Controladores de rutas AUTH */
 
-const userModel = require("../dal/mongoose/dao/models/userMongoose");
+const userModel = require("../dal/mongoose/schemas/userMongoose");
 userModel;
 
 const mailingService = require("../services/mailingService");
@@ -28,7 +28,7 @@ exports.signUpLocalCallback = async (req, res, next) => {
     - dirección ${req.body.address}
     - email ${req.body.email}
     - avatar ${req.body.avatar}`,
-    
+
     // Sirve para agregar archivos adjuntos
     // attachments: [
     //   {
@@ -50,7 +50,6 @@ exports.logIn = passportLocal.authenticate("local-login", {
 exports.logInCallback = async (req, res, next) => {
   res.redirect("/welcome");
 };
-
 
 /*Controlador de Logeo de FACEBOOK */
 exports.logInFacebook = async (req, res, next) => {
@@ -77,7 +76,6 @@ exports.logInCallbackFacebook = async (req, res, next) => {
   mailingService.mailingGmail(mailOptions);
   res.redirect("/welcome");
 };
-
 
 /*Controlador de deslogeo */
 exports.logOut = async (req, res, next) => {

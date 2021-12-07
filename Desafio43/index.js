@@ -4,9 +4,9 @@ require("dotenv").config({
 });
 
 const { port } = require("yargs").argv;
- const PORT = port === undefined ? 8080 : port;
+const PORT = port === undefined ? 8080 : port;
 
-const { getConnection } = require("./src/dal/mongoose/dao/db/connectionMongo");
+const { getConnection } = require("./src/dal/mongoose/db/connectionMongo");
 
 const http = require("./server.es6");
 const cluster = require("cluster");

@@ -1,7 +1,7 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const { createHash, isValidPassword } = require("./bcrypt/bcrypt");
-const userModel = require("../dal/mongoose/dao/models/userMongoose");
+const userModel = require("../dal/mongoose/schemas/userMongoose");
 
 passport.use(
   "local-login",

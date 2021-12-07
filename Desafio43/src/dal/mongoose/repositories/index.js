@@ -1,4 +1,4 @@
-const ModelMessagesMongoose = require("../dao/models/messagesMongoose");
+const ModelMessagesMongoose = require("../schemas/messagesMongoose");
 const MessageRepository = require("./messageRepository");
 // const model = new MessageRepository();
 
