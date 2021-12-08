@@ -3,7 +3,11 @@
 //   path: path.resolve(__dirname, process.env.NODE_ENV + ".env"),
 // });
 
-process.argv.forEach((value, index) => console.log(index + " => " + value));
+const { port } = require("yargs").argv;
+const PORT = port === undefined ? 8080 : port;
+
+// Chequeamos argumentos
+// process.argv.forEach((value, index) => console.log(index + " => " + value));
 
 module.exports = {
   NODE_ENV: process.env.NODE_ENV,
@@ -11,9 +15,9 @@ module.exports = {
 
   IS_CLUSTER: process.env.IS_CLUSTER,
 
-  // PORT: parseInt(process.argv[3]) || process.env.PORT || 8080,
+  PORT: PORT,
 
-  PERSISTENCE:  process.argv[4] ? process.argv[4] : process.env.PERSISTENCE,
+  PERSISTENCE: process.argv[4] ? process.argv[4] : process.env.PERSISTENCE,
 
   // NODE_ENVI: process.argv[4] ? process.argv[4] : process.env.NODE_ENVI,
 

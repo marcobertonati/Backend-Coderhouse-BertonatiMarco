@@ -3,15 +3,12 @@ require("dotenv").config({
   path: path.resolve(__dirname, process.env.NODE_ENV + ".env"),
 });
 
-const { port } = require("yargs").argv;
-const PORT = port === undefined ? 8080 : port;
-
 const { getConnection } = require("./src/dal/mongoose/db/connectionMongo");
 
 const http = require("./server.es6");
 const cluster = require("cluster");
 const numCPUs = require("os").cpus().length;
-const { IS_CLUSTER } = require("./src/config/globals");
+const { IS_CLUSTER, PORT } = require("./src/config/globals");
 
 /*En nuestra linea de comandamos tenemos
 primer argumento: FORK o CLUSTER
