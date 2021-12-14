@@ -1950,3 +1950,126 @@
     at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:281:22
     at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:354:14)
     at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio43\node_modules\express\lib\router\index.js:365:14)
+[2021-12-08T16:30:20.282] [ERROR] myError - ValidationError: Product validation failed: price: Path `price` is required., thumbnail: Path `thumbnail` is required., description: Path `description` is required., code: Path `code` is required.
+    at model.Document.invalidate (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\document.js:2870:32)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\document.js:2661:17
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\schematype.js:1267:9
+    at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+  errors: {
+    price: {
+      name: 'ValidatorError',
+      message: 'Path `price` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'price',
+      value: null
+    },
+    thumbnail: {
+      name: 'ValidatorError',
+      message: 'Path `thumbnail` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'thumbnail',
+      value: ''
+    },
+    description: {
+      name: 'ValidatorError',
+      message: 'Path `description` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'description',
+      value: ''
+    },
+    code: {
+      name: 'ValidatorError',
+      message: 'Path `code` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'code',
+      value: ''
+    }
+  },
+  _message: 'Product validation failed'
+}
+[2021-12-08T16:30:43.746] [ERROR] myError - ValidationError: Product validation failed: price: Path `price` is required., thumbnail: Path `thumbnail` is required., description: Path `description` is required., code: Path `code` is required.
+    at model.Document.invalidate (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\document.js:2870:32)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\document.js:2661:17
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\schematype.js:1267:9
+    at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+  errors: {
+    price: {
+      name: 'ValidatorError',
+      message: 'Path `price` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'price',
+      value: null
+    },
+    thumbnail: {
+      name: 'ValidatorError',
+      message: 'Path `thumbnail` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'thumbnail',
+      value: ''
+    },
+    description: {
+      name: 'ValidatorError',
+      message: 'Path `description` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'description',
+      value: ''
+    },
+    code: {
+      name: 'ValidatorError',
+      message: 'Path `code` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'code',
+      value: ''
+    }
+  },
+  _message: 'Product validation failed'
+}
+[2021-12-08T16:32:18.337] [ERROR] myError - ValidationError: Product validation failed: price: Path `price` is required., thumbnail: Path `thumbnail` is required., description: Path `description` is required., code: Path `code` is required.
+    at model.Document.invalidate (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\document.js:2870:32)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\document.js:2661:17
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\schematype.js:1267:9
+    at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+  errors: {
+    price: {
+      name: 'ValidatorError',
+      message: 'Path `price` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'price',
+      value: null
+    },
+    thumbnail: {
+      name: 'ValidatorError',
+      message: 'Path `thumbnail` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'thumbnail',
+      value: ''
+    },
+    description: {
+      name: 'ValidatorError',
+      message: 'Path `description` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'description',
+      value: ''
+    },
+    code: {
+      name: 'ValidatorError',
+      message: 'Path `code` is required.',
+      properties: [Object],
+      kind: 'required',
+      path: 'code',
+      value: ''
+    }
+  },
+  _message: 'Product validation failed'
+}

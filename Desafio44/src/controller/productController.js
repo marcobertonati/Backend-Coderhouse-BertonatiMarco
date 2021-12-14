@@ -38,7 +38,7 @@ const productController = (service) => {
       } catch (error) {
         loggerTrace.trace("Ingresó al catch");
         loggerError.error(error);
-        res.json(error);
+        res.status(400).json(error);
       }
     },
 
@@ -49,10 +49,10 @@ const productController = (service) => {
         const products = await service.getAllProducts();
 
         //Para SSR
-        // res.render("./pages/lista", { products });
+        res.render("./pages/lista", { products });
 
         //Para ReactJS
-        res.json(products);
+        // res.json(products);
       } catch (error) {
         loggerError.error(error);
         res.json(error);
