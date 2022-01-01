@@ -4,18 +4,19 @@
 
 const { PERSISTENCE } = require("../config/globals");
 const persistenceFactory = require("../dal/factory");
-let productModel = persistenceFactory.newPersistence(PERSISTENCE);
+let {persistenceProduct} = persistenceFactory.newPersistence(PERSISTENCE);
 
 module.exports = class {
   constructor() {
-    this.productModel = productModel;
+    this.productModel = persistenceProduct;
   }
   async createProduct(product) {
     return await this.productModel.create(product);
   }
 
   async getProduct(id) {
-    return await this.productModel.findById(id);
+    const data = await this.productModel.findById(id);
+    return data;
   }
 
   async getAllProducts() {
@@ -27,7 +28,11 @@ module.exports = class {
   }
 
   async deleteProduct(id) {
-    await this.productModel.findByIdAndDelete(id);
+    return await this.productModel.findByIdAndDelete(id);
+  }
+
+  async getByCategory(category) {
+    return await this.productModel.findByCategory(category);
   }
 
   // async getProductByTitle(title) {

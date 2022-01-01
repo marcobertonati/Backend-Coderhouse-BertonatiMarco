@@ -1,3 +1,6 @@
+const { PERSISTENCE } = require("../config/globals");
+const persistenceFactory = require("../dal/factory");
+
 /*Base de Datos MongoDB */
 const userModel = require("../dal/mongoose/schemas/userMongoose");
 

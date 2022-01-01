@@ -3,6 +3,10 @@ const LocalStrategy = require("passport-local").Strategy;
 const { createHash, isValidPassword } = require("./bcrypt/bcrypt");
 const userModel = require("../dal/mongoose/schemas/userMongoose");
 
+const { PERSISTENCE } = require("../config/globals");
+const persistenceFactory = require("../dal/factory");
+let { persistenceUser } = persistenceFactory.newPersistence(PERSISTENCE);
+
 passport.use(
   "local-login",
   new LocalStrategy(
@@ -16,7 +20,13 @@ passport.use(
       console.log("Entro a Passport Login");
       console.log(req.body);
       try {
-        const userFinded = await userModel.findOne({ email: req.body.email });
+        // const userFinded = await userModel.findOne({ email: req.body.email });
+        const userFinded = await persistenceUser.findUserByEmail({
+          email: req.body.email,
+        });
+        
+        console.log('Esto recibimos de userFinded')
+        console.log(userFinded);
 
         if (!userFinded) {
           console.log("No se encontró usuario");
@@ -35,8 +45,6 @@ passport.use(
             console.log("mensaje", "usuario o contraseña incorrecta")
           );
         }
-
-        console.log(userFinded);
 
         return done(null, userFinded);
       } catch (error) {
@@ -69,13 +77,17 @@ passport.use(
       //   }
       //   return done(null, user);
       // });
-      console.log("Ingresó a singup-local passport");
-
       try {
         console.log("Ingresó a authPassportLocal => Sign Up");
-        const userFinded = await userModel.findOne({ email: req.body.email });
+        // const userFinded = await userModel.findOne({ email: req.body.email });
+        const userFinded = await persistenceUser.findUserByEmail({
+          email: req.body.email,
+        });
+
+        console.log(userFinded);
 
         if (userFinded) {
+          console.log("Inegresó al if");
           return done(
             null,
             false,
@@ -93,9 +105,9 @@ passport.use(
             password: createHash(req.body.password),
           };
 
-          console.log(userToCreate);
-
-          await userModel.create(userToCreate);
+          // console.log(userToCreate);
+          // await userModel.create(userToCreate);
+          await persistenceUser.createUser(userToCreate);
 
           return done(null, userToCreate);
         }
@@ -117,7 +129,8 @@ passport.deserializeUser(async function (id, done) {
   // });
 
   try {
-    const userFinded = userModel.findById(id);
+    // const userFinded = userModel.findById(id);
+    const userFinded = persistenceUser.findUserById(id);
     return done(null, userFinded);
   } catch (err) {
     console.log(err);

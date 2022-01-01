@@ -4,15 +4,19 @@
           <thead>
             <tr>
               <th scope="col">#id</th>
-              <th scope="col">cantidad</th>
+              <th scope="col">nombre</th>
+                            <th scope="col">cantidad</th>
+
             </tr>
           </thead>
 
           <tbody>
             {{#each response}}
               <tr>
-                <td>{{this.id}}</td>
+                <td>{{this.product._id}}</td>
+                <td>{{this.product.title}}</td>
                 <td>{{this.quantity}}</td>
+
               </tr>
             {{/each}}
 

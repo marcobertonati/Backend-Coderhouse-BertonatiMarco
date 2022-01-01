@@ -55,10 +55,15 @@
 
   <div class="mb-3">
     <label for="password" class="form-label">Password:</label>
-    <input type="password" class="form-control" id="password" name="password" />
+    <input onchange="onHandleInputChange()" type="password" class="form-control" id="password" name="password" />
   </div>
 
-  <button class="btn btn-primary" id="btn-login" type="submit" class="btn btn-primary">Registrarme</button>
+  <div class="mb-3">
+    <label for="passwordConfirmed" class="form-label">Ingrese nuevamente su contraseña:</label>
+    <input onchange="onHandleInputChange()" type="password" class="form-control" id="passwordConfirmed" name="passwordConfirmed" />
+  </div>
+
+  <button disabled class="btn btn-primary" id="btn-signUp" type="submit" class="btn btn-primary">Registrarme</button>
 </form>
 
   {{!-- <a class="btn btn-primary" href="http://localhost:8080/auth/facebook"> Iniciar Facebook</a> --}}

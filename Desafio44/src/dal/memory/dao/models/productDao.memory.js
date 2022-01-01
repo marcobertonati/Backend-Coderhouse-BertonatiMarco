@@ -9,24 +9,18 @@ module.exports = class {
   async create(product) {
     await this.products.push(product);
     const productsDTOmemory = new DTOmemory(product);
-    console.log("Esto trae DTOmemory");
-    console.log(productsDTOmemory);
     return productsDTOmemory;
   }
 
   async findById(id) {
-    const result = this.products.filter((product) => product.id == id);
+    const result = this.products.filter((product) => product._id === id);
     const productsDTOmemory = new DTOmemory(result);
-    console.log("Esto trae DTOmemory");
-    console.log(productsDTOmemory);
     return await productsDTOmemory.data;
   }
 
   async find() {
     const result = await this.products;
     const productsDTOmemory = new DTOmemory(result);
-    console.log("Esto trae DTOmemory");
-    console.log(productsDTOmemory);
     return productsDTOmemory.data;
   }
 
@@ -64,17 +58,20 @@ module.exports = class {
     }; // Modificamos el producto
     this.products = newArray;
     const productsDTOmemory = new DTOmemory(this.products);
-    console.log("Esto trae DTOmemory");
-    console.log(productsDTOmemory);
     return productsDTOmemory.data[productFinded];
   }
 
   async findByIdAndDelete(id) {
     const results = this.products.filter((product) => product.id !== id);
     const productsDTOmemory = new DTOmemory(results);
-    console.log("Esto trae DTOmemory");
-    console.log(productsDTOmemory);
     await productsDTOmemory.data;
+  }
+
+  async findByCategory(category) {
+    console.log(category);
+    return await this.products.filter(
+      (product) => product.category === category
+    );
   }
 
   //   async getProductByTitle(title) {

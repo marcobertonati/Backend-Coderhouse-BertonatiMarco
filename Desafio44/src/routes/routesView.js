@@ -17,7 +17,7 @@ module.exports = (router) => {
   router
     /*Ruta por defecto si no está logueado */
     .get("/", checkAuthentication, (req, res, next) => {
-      res.render("./pages/login");
+      res.redirect("/productos/vista");
     })
 
     /*Vistas de productos */

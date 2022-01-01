@@ -12,5 +12,4 @@ const productSchema = new Schema({
 });
 
 const productModelMongoose = model("Product", productSchema);
-
 module.exports = { productModelMongoose, productSchema };

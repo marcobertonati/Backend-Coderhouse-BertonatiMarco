@@ -190,3 +190,18 @@ exports.getByStock = async (req, res, next) => {
     res.json(error);
   }
 };
+
+exports.getByCategory = async (req,res,next) => {
+  loggerTrace.trace("Ingreso a getByCategory");
+
+  try {
+    const category = req.params;
+    loggerDefault.info(`La categoria ingresada es ${category}`);
+
+    const productsRetrieved = await product.getByCategory(category);
+    res.json(productsRetrieved);
+  } catch (error) {
+    loggerError.error(error);
+    res.json(error);
+  }
+}

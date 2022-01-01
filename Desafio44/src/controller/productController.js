@@ -6,8 +6,6 @@ const {
 } = require("../logger/log4js");
 
 const productController = (service) => {
-  console.log("Esto trae service de productController:");
-  console.log(service);
   return {
     createProduct: async (req, res, next) => {
       loggerTrace.trace("Ingresó a createProduct");
@@ -188,6 +186,21 @@ const productController = (service) => {
           stockmin,
           stockmax
         );
+        res.json(productsRetrieved);
+      } catch (error) {
+        loggerError.error(error);
+        res.json(error);
+      }
+    },
+
+    getByCategory: async (req, res, next) => {
+      loggerTrace.trace("Ingreso a getByCategory");
+
+      try {
+        const category = req.params.category;
+        loggerDefault.info(`La categoria ingresada es ${category}`);
+
+        const productsRetrieved = await service.getByCategory(category);
         res.json(productsRetrieved);
       } catch (error) {
         loggerError.error(error);

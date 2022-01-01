@@ -16,18 +16,23 @@ const whatsAppTwilio = require("../services/twilio.whatsapp");
 const smsTwilio = require("../sms/twilio");
 
 exports.postCartSession = async (req, res, next) => {
-  const response = cartSession.addProductsToSession(req.body, req.session);
+  const response = await cartSession.addProductsToSession(
+    req.body,
+    req.session
+  );
   res.redirect("/api/cart/get-session");
 };
 
 exports.getCartSession = async (req, res, next) => {
-  const response = cartSession.getProductsFromSession(req.session.cartSession);
+  const response = await cartSession.getProductsFromSession(
+    req.session.cartSession
+  );
   // res.json(response);
+  console.log(response);
   res.render("./pages/checkout-cart", { response });
 };
 
 exports.createCart = async (req, res, next) => {
-  console.log("Entró a cartController => createCart");
   try {
     const cartBody = req.session.cartSession;
     const finalCart = {
@@ -74,7 +79,6 @@ exports.createCart = async (req, res, next) => {
 };
 
 exports.getProductOnCart = async (req, res, next) => {
-  console.log("Entró a cartController => getProductOnCart");
   try {
     const idCart = req.query.idCart;
     const idProduct = req.query.idProduct;
@@ -94,7 +98,6 @@ exports.getProductOnCart = async (req, res, next) => {
 };
 
 exports.deleteProductOnCart = async (req, res, next) => {
-  console.log("Entró a cartController => deleteProductOnCart");
   try {
     const idCartQuery = req.query.idCart;
     const idProductQuery = req.query.idProduct;

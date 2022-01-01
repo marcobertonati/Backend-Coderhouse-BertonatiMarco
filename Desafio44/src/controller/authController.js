@@ -48,7 +48,7 @@ exports.logIn = passportLocal.authenticate("local-login", {
 });
 
 exports.logInCallback = async (req, res, next) => {
-  res.redirect("/welcome");
+  res.redirect("/productos/vista");
 };
 
 /*Controlador de Logeo de FACEBOOK */
