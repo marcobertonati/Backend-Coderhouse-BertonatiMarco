@@ -10,7 +10,6 @@ const colours:String[] = [];
 
 
 app.get('/', async (req) => {
-    
     await req.respond({
         status:200,
         headers: new Headers({
@@ -19,8 +18,8 @@ app.get('/', async (req) => {
         body: ReactDOMServer.renderToString(
             <html>
                 <head>
-                <meta charSet="utf-8" />
-          <title style={{color:'white'}}>Desafio 47</title>
+                    <meta charSet="utf-8" />
+                    <title style={{color:'white'}}>Desafio 47</title>
                 </head>
                 <body style={{backgroundColor: 'black'}}>
                     <h1 style={{color:'white'}}>

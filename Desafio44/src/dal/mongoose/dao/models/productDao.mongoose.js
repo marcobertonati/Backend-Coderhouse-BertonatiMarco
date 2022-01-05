@@ -11,7 +11,9 @@ module.exports = class {
   }
 
   async findById(id) {
+    console.log(id);
     const result = await this.products.findById(id);
+    console.log(result);
     const productsDTOmongoose = DTOmongoose.geyById(result);
     return await productsDTOmongoose;
   }

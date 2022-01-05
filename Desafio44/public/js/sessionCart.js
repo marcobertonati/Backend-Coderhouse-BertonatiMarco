@@ -22,11 +22,7 @@ function addProducts() {
   const listOfProducts = [];
   const nodeListOfProducts = document.querySelectorAll(".quantity-product");
   const arrayOfProducts = Array.from(nodeListOfProducts);
-
-  console.log(arrayOfProducts);
-
   arrayOfProducts.forEach((product) => {
-    console.log(product);
     if (Number(product.textContent) > 0) {
       listOfProducts.push({
         id: product.id,

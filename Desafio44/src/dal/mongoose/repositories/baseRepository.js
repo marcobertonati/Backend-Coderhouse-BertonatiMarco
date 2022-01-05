@@ -4,7 +4,6 @@ class BaseRepository {
   }
 
   async getAll() {
-    console.log("Ingreso al getAll de baseRepository");
     const elements = await this.model.find();
     return elements;
   }

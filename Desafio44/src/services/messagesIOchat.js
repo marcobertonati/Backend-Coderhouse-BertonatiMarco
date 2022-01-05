@@ -6,7 +6,7 @@ const twilio = require("../sms/twilio");
 
 module.exports = (io) => {
   io.on("connection", async (socket) => {
-    console.log(`Usuario conectado ${socket.id}`);
+    // console.log(`Usuario conectado ${socket.id}`);
 
     /*Traigo todos los mensajes */
     try {
@@ -36,7 +36,7 @@ module.exports = (io) => {
 
     /*Evento desconectar */
     socket.on("disconnect", () => {
-      console.log(`El usuario ${socket.id} se desconectó`);
+      // console.log(`El usuario ${socket.id} se desconectó`);
     });
   });
 

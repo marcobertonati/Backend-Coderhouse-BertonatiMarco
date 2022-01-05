@@ -16,8 +16,9 @@ class DTOmongoose {
   }
 
   geyById(data) {
+    console.log(data);
     return {
-      id: data._id,
+      id: data.id,
       title: data.title,
       price: data.price,
       thumbnail: data.thumbnail,

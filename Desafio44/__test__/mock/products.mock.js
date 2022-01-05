@@ -1,6 +1,6 @@
 const response = [
   {
-    _id: "6144c8bc5dd28c2628026a33mock1",
+    id: "6144c8bc5dd28c2628026a33mock1",
     title: "Remera: Producto 1 de mock",
     price: 1000,
     thumbnail:
@@ -13,7 +13,7 @@ const response = [
     __v: 0,
   },
   {
-    _id: "6144c8bc5dd28c2628026a33mock2",
+    id: "6144c8bc5dd28c2628026a33mock2",
     title: "Pantalón: Producto 2 de mock",
     price: 1000,
     thumbnail:
@@ -26,7 +26,7 @@ const response = [
     __v: 0,
   },
   {
-    _id: "6144c8bc5dd28c2628026a33mock3",
+    id: "6144c8bc5dd28c2628026a33mock3",
     title: "Guantes: Producto 3 de mock",
     price: 1000,
     thumbnail: "https://m.media-amazon.com/images/I/81vH7bV7WpL._AC_SX425_.jpg",
@@ -38,7 +38,7 @@ const response = [
     __v: 0,
   },
   {
-    _id: "6144c8bc5dd28c2628026a33mock4",
+    id: "6144c8bc5dd28c2628026a33mock4",
     title: "Remera: Producto 4 de mock",
     price: 2000,
     thumbnail:
@@ -51,7 +51,7 @@ const response = [
     __v: 0,
   },
   {
-    _id: "6144c8bc5dd28c2628026a33mock5",
+    id: "6144c8bc5dd28c2628026a33mock5",
     title: "Remera: Producto 5 de mock",
     price: 3000,
     thumbnail:
@@ -64,7 +64,7 @@ const response = [
     __v: 0,
   },
   {
-    _id: "6144c8bc5dd28c2628026a33mock6",
+    id: "6144c8bc5dd28c2628026a33mock6",
     title: "Pantalón: Producto 6 de mock",
     price: 5000,
     thumbnail:

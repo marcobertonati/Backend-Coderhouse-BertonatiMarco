@@ -7,9 +7,7 @@ class MessageRepository extends BaseRepository {
   }
 
   async getAllMsg() {
-    console.log("Ingreso al getAllMsg de messageRepository");
     const messages = await this.model.find().lean();
-    console.log("Ingreso a MessageRepository");
     return messages;
   }
 }

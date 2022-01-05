@@ -19,7 +19,7 @@
     <tbody>
       {{#each products}}
         <tr>
-          <td>{{this._id}}</td>
+          <td>{{this.id}}</td>
           <td>{{this.title}}</td>
           <td>{{this.price}}</td>
           <td><img
@@ -34,14 +34,14 @@
 
             <button
               class="btn btn-primary btn-rest"
-              onclick="restQuantity('{{this._id}}')"
+              onclick="restQuantity('{{this.id}}')"
             >- </button>
 
-            <span id={{this._id}} class="quantity-product">0</span>
+            <span id={{this.id}} class="quantity-product">0</span>
 
             <button
               class="btn btn-primary btn-add"
-              onclick="addQuantity('{{this._id}}')"
+              onclick="addQuantity('{{this.id}}')"
             >+ </button>
 
           </td>

@@ -15,6 +15,8 @@ const whatsAppTwilio = require("../services/twilio.whatsapp");
 
 const smsTwilio = require("../sms/twilio");
 
+const chalk = require("chalk");
+
 exports.postCartSession = async (req, res, next) => {
   const response = await cartSession.addProductsToSession(
     req.body,
@@ -27,32 +29,55 @@ exports.getCartSession = async (req, res, next) => {
   const response = await cartSession.getProductsFromSession(
     req.session.cartSession
   );
-  // res.json(response);
-  console.log(response);
-  res.render("./pages/checkout-cart", { response });
+  // console.log("Esto trae response!");
+  // console.log(response.products[0]);
+  res.render("./pages/checkout-cart", { response: response.products });
 };
 
 exports.createCart = async (req, res, next) => {
   try {
-    const cartBody = req.session.cartSession;
+    const cartBody = req.session.cartSession.products;
+    console.log("ESTO TRAE COARTBODY");
+    console.log(cartBody);
+
+    console.log(cartBody.length);
+
+    /*
+    Ítems:  las órdenes deben poder tener productos surtidos, cada uno con su cantidad. Por ejemplo: remeras x 2 y gorra x 1
+    Número de orden: Se extrae de la cantidad de órdenes almacenadas
+    Fecha y hora
+    estado ( por defecto en ‘generada’)
+    Email de quién realizó la orden
+    */
+
     const finalCart = {
       productsOnCart: [],
+      orderNumber: Math.random(),
+      timestamp: new Date().toLocaleDateString(),
+      state: true,
+      email: req.session.passport.user.email,
     };
 
     for (i = 0; i < cartBody.length; i++) {
-      let productFinded = await product.getProduct(cartBody[i].id);
+      console.log(cartBody[i]);
+      let productFinded = await product.getProduct(cartBody[i].product.id);
+      // console.log(chalk.yellow("Producto encontrado: "));
+      // console.log(productFinded);
+
       finalCart.productsOnCart.push({
         product: productFinded,
         quantity: cartBody[i].quantity,
       });
     }
+
+    // console.log(finalCart.productsOnCart);
+
+    console.log("POR CREAR EL FINAL CART");
     const cartCreated = await cart.createCart(finalCart);
 
     const idUser = { _id: req.session.passport.user._id };
-    console.log("Esto tiene idUser");
-    console.log(idUser);
 
-    const cartAddToUser = await user.addCartToUser(idUser, finalCart);
+    // const cartAddToUser = await user.addCartToUser(idUser, finalCart);
 
     const emailSubject = `Nuevo pedido de: ${req.session.passport.user.name} @ mail: ${req.session.passport.user.email}`;
     const emailBody = createHtml.createHtml(cartCreated);

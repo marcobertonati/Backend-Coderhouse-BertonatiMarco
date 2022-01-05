@@ -8,7 +8,7 @@ const { cartModel } = require("../dal/mongoose/schemas/cartMongoose");
 module.exports = class {
   async createCart(cart) {
     console.log("Ingresó a cartService => createCart");
-    await cartJs.createCart(cart);
+    // await cartJs.createCart(cart);
     return await cartModel.create(cart);
   }
 
