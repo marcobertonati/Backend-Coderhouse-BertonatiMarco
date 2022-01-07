@@ -1,7 +1,9 @@
 /*Creo servidor */
 const express = require("express");
+
 /*Inicializamos express */
 const app = express();
+
 /*Le pasamos la constante app que creamos arriba */
 const http = require("http").Server(app);
 
@@ -36,37 +38,43 @@ app.use(
 
 /*Requiero passport */
 const passport = require("passport");
+
 /*Requiero Session*/
 const session = require("express-session");
+
 /*Requiero CookieParser */
 const cookieParser = require("cookie-parser");
+
 /*Requiero Mongo Store para guardar sesiones */
 const MongoStore = require("connect-mongo");
+
 /*Configuración para Mongo Atlas */
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+
 /*Establecemos que la sessión se guarde en MongoStore */
-app.use(
-  session({
-    store: MongoStore.create({
-      mongoUrl:
-        "mongodb+srv://marco-bertonati-session:u3TiWI9S5xBiAT39@cluster1.gplx5.mongodb.net/ecommerce?retryWrites=true&w=majority",
-      mongoOptions: advancedOptions,
-      ttl: 600,
-    }),
-    secret: "Soy un gran secreto",
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 180000,
-    },
-  })
-);
+
+const sessionMiddleware = session({
+  store: MongoStore.create({
+    mongoUrl:
+      "mongodb+srv://marco-bertonati-session:u3TiWI9S5xBiAT39@cluster1.gplx5.mongodb.net/ecommerce?retryWrites=true&w=majority",
+    mongoOptions: advancedOptions,
+    ttl: 600,
+  }),
+  secret: "Soy un gran secreto",
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 180000,
+  },
+});
+
+app.use(sessionMiddleware);
 app.use(cookieParser());
+
 
 /*Middleware Passport: SIEMPRE VAN ANTES QUE LAS RUTAS */
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 /*-----------------*/
 /*     ROUTER      */
@@ -120,14 +128,12 @@ app.set("view engine", "hbs");
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
 
-
 // Utilizamos el prefijo virtual '/static'
 app.use("/static", express.static(__dirname + "/public"));
 /*Sirve para ofrecer archivos staticos, ej:
 http://localhost:8080/static/css/style.css
 http://localhost:8080/static/js/index.js
 */
-
 
 /*Rutas del API: Productos*/
 app.use(routesProducts(routerProducts));
@@ -149,7 +155,7 @@ app.use(routesRandom(routerRandom));
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
 const socketConnection = require("./src/services/messagesIOchat");
-socketConnection(io);
+socketConnection(io, sessionMiddleware);
 
 /*GraphQL */
 const graphqlHTTP = require("./src/graphql/config/graphql.config");

@@ -2,7 +2,7 @@
 const { checkAuthentication } = require("../auth/checkAuth");
 
 /*Controladores de Productos */
-const { productController } = require("../controller");
+const { productController, messagesController } = require("../controller");
 
 /*Controladores de Mensajes de chat */
 const chatController = require("../controller/messagesChat");
@@ -25,6 +25,12 @@ module.exports = (router) => {
     .get("/productos/agregar", (req, res, next) => {
       res.render("./pages/agregar");
     })
+    .get(
+      "/productos/:category",
+      checkAuthentication,
+      productController.getByCategory
+    )
+    .get("/productos/detalle/:id", checkAuthentication, productController.getOne)
 
     /*Vistas de busquedad de productos por precio */
     .get("/buscar/precio?", checkAuthentication, productController.getByPrice)
@@ -37,6 +43,7 @@ module.exports = (router) => {
 
     /*Vistas de chat */
     .get("/chat-view", checkAuthentication, chatController.getAllMsgChat)
+    .get('/chat/:email', checkAuthentication, chatController.getMsgByEmail)
 
     /*Vistas de autenticación */
     .get("/login", (req, res, next) => {

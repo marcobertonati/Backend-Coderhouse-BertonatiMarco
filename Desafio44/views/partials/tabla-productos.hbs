@@ -13,6 +13,7 @@
         <th scope="col">Precio</th>
         <th scope="col">Icono/Imagen</th>
         <th scope="col">Cantidad a agregar</th>
+        <th scope="col">Más información</th>
       </tr>
     </thead>
 
@@ -45,6 +46,11 @@
             >+ </button>
 
           </td>
+
+          <td><a
+              class="btn btn-primary"
+              href="/productos/detalle/{{this.id}}"
+            >Detalles</a></td>
         </tr>
       {{/each}}
 

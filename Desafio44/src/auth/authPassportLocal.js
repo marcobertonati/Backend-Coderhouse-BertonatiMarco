@@ -24,9 +24,6 @@ passport.use(
         const userFinded = await persistenceUser.findUserByEmail({
           email: req.body.email,
         });
-        
-        console.log('Esto recibimos de userFinded')
-        console.log(userFinded);
 
         if (!userFinded) {
           console.log("No se encontró usuario");

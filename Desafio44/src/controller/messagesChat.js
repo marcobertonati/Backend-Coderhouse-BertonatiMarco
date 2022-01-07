@@ -21,9 +21,7 @@ exports.getAllMsgChat = async (req, res, next) => {
 
   try {
     const allMsgChat = await messageChat.getAllMessage();
-
     const historyChat = { id: 1, content: allMsgChat };
-
     const userSchema = new schema.Entity("author");
 
     /* Con este esquema con este atributo id lo que hace es crear la entidad author, donde cada autor el ID es su ALIAS: 
@@ -47,11 +45,10 @@ exports.getAllMsgChat = async (req, res, next) => {
     });
 
     const normalizedChat = normalize(historyChat, chatSchema);
-
     console.log(JSON.stringify(allMsgChat).length);
     console.log(JSON.stringify(normalizedChat).length);
 
-    //Sirve para cuando hay renderizado del lado del servidor
+    //Sirve para cuando hay renderizado del lado del cliente
     // res.json(normalizedChat)
 
     //Sirve para la petición HTTP
@@ -63,5 +60,13 @@ exports.getAllMsgChat = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     res.json(error);
+  }
+};
+
+exports.getMsgByEmail = async (req, res, next) => {
+  try {
+    res.render("./pages/chat-by-email", {layout: "chat-private"});
+  } catch (error) {
+    console.log(error);
   }
 };

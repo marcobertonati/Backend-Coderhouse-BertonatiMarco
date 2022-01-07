@@ -9,6 +9,7 @@ class DTOmongoose {
         timestamp: e.timestamp,
         description: e.description,
         code: e.code,
+        category: e.category,
         stock: e.stock,
       };
     });
@@ -25,6 +26,7 @@ class DTOmongoose {
       timestamp: data.timestamp,
       description: data.description,
       code: data.code,
+      category: data.category,
       stock: data.stock,
     };
   }

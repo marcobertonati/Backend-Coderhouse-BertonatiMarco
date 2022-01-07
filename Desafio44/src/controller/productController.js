@@ -64,14 +64,15 @@ const productController = (service) => {
         const id = req.params.id;
         loggerDefault.info(`El id ingresado es ${id}`);
         const productRetrieved = await service.getProduct(id);
-        res.json(productRetrieved);
+
+        const response = { 
+          productsFinded: productRetrieved,
+          founded: productRetrieved != undefined ? true : false
+         };
+        res.render("./pages/product-detail", { response });
       } catch (error) {
-        const errorMsg = {
-          message: "No se encontraron productos",
-          productFinded: false,
-        };
         loggerError.error(error);
-        res.json(errorMsg);
+        res.json(error);
       }
     },
 
@@ -198,10 +199,9 @@ const productController = (service) => {
 
       try {
         const category = req.params.category;
-        loggerDefault.info(`La categoria ingresada es ${category}`);
-
         const productsRetrieved = await service.getByCategory(category);
-        res.json(productsRetrieved);
+        const response = { productsFinded: productsRetrieved };
+        res.render("./pages/products-by-category", { response });
       } catch (error) {
         loggerError.error(error);
         res.json(error);

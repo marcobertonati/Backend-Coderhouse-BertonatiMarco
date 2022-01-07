@@ -2,6 +2,7 @@ const { productService } = require("./index");
 const chalk = require("chalk");
 
 module.exports = class {
+
   async addProductsToSession(cart, session) {
     console.log(chalk.bold.red("PRIMERA AGREGADA A CARRITO: Esto trae CART:"));
     console.log(cart);
@@ -25,8 +26,8 @@ module.exports = class {
           address: session.passport.user.address,
         };
 
-        console.log(chalk.bold.blueBright("Asi queda session.cartSession"));
-        console.log(session.cartSession);
+        // console.log(chalk.bold.blueBright("Asi queda session.cartSession"));
+        // console.log(session.cartSession);
 
         return session.cartSession;
       } else {
@@ -105,8 +106,8 @@ module.exports = class {
           address: session.passport.user.address,
         };
 
-        console.log(chalk.bold.yellow("Asi queda session.cartSession"));
-        console.log(session.cartSession);
+        // console.log(chalk.bold.yellow("Asi queda session.cartSession"));
+        // console.log(session.cartSession);
 
         // for (let i = 0; i < cart.length; i++) {
         //   let [productFinded] = await productService.getProduct(cart[i].id);

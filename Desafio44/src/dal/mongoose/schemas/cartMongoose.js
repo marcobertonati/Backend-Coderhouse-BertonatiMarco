@@ -16,10 +16,10 @@ const cartSchema = new Schema({
   productsOnCart: [productOnCartSchema],
   orderNumber: { type: Number, required: true },
   timestamp: { type: Date, default: new Date() },
-  state: { type: Boolean, required: true },
+  state: { type: String, required: true },
   email: { type: String, required: true, max: 40 },
 });
 
-const cartModel = model("Cart", cartSchema);
+const cartModel = model("Orders", cartSchema);
 
 module.exports = { cartModel, cartSchema };

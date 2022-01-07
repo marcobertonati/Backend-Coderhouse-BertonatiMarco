@@ -3,6 +3,7 @@ console.log("Session Cart working!");
 function addQuantity(id) {
   let quantity = document.getElementById(id);
   let quantityNumber = Number(quantity.textContent);
+
   let value = quantityNumber + 1;
   quantity.textContent = value;
 }
@@ -37,15 +38,7 @@ function addProducts() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(listOfProducts),
-    // redirect: "manual",
   }).then((data) => {
     location.replace("/carrito/vista");
   });
-
-  // location.href = "/carrito/vista";
 }
-
-// fetch('http://localhost:8080/test', {
-//   method: POST,
-//   body:
-// })

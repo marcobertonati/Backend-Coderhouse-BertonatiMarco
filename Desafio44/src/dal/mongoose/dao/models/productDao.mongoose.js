@@ -7,29 +7,57 @@ module.exports = class {
   }
 
   async create(product) {
-    return this.products.create(product);
+    try {
+      return this.products.create(product);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findById(id) {
-    console.log(id);
-    const result = await this.products.findById(id);
-    console.log(result);
-    const productsDTOmongoose = DTOmongoose.geyById(result);
-    return await productsDTOmongoose;
+    try {
+      const result = await this.products.findById(id);
+      const productsDTOmongoose = DTOmongoose.geyById(result);
+      return await productsDTOmongoose;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async find() {
-    const result = await this.products.find();
-    const productsDTOmemory = DTOmongoose.getAllProducts(result);
-    return productsDTOmemory;
+    try {
+      const result = await this.products.find();
+      const productsDTOmemory = DTOmongoose.getAllProducts(result);
+      return productsDTOmemory;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findByIdAndUpdate(id, productUpdated) {
-    return this.products.findByIdAndUpdate(id, productUpdated, { new: true });
+    try {
+      return this.products.findByIdAndUpdate(id, productUpdated, { new: true });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findByIdAndDelete(id) {
-    return this.products.findByIdAndDelete(id);
+    try {
+      return this.products.findByIdAndDelete(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async findByCategory(category) {
+    try {
+      const response = await this.products.find({ category: category }).lean();
+      const result = DTOmongoose.getAllProducts(response);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   //   async getProductByTitle(title) {

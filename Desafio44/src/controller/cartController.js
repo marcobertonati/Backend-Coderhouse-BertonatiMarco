@@ -14,6 +14,7 @@ const createHtml = require("../utils/ticketHTML");
 const whatsAppTwilio = require("../services/twilio.whatsapp");
 
 const smsTwilio = require("../sms/twilio");
+const {twilioSmsFinishBuy} = require('../sms/twilio')
 
 const chalk = require("chalk");
 
@@ -29,54 +30,36 @@ exports.getCartSession = async (req, res, next) => {
   const response = await cartSession.getProductsFromSession(
     req.session.cartSession
   );
-  // console.log("Esto trae response!");
-  // console.log(response.products[0]);
-  res.render("./pages/checkout-cart", { response: response.products });
+  res.render("./pages/checkout-cart", { layout: "checkout-cart" , response: response.products });
 };
 
 exports.createCart = async (req, res, next) => {
   try {
-    const cartBody = req.session.cartSession.products;
-    console.log("ESTO TRAE COARTBODY");
-    console.log(cartBody);
-
-    console.log(cartBody.length);
-
-    /*
-    Ítems:  las órdenes deben poder tener productos surtidos, cada uno con su cantidad. Por ejemplo: remeras x 2 y gorra x 1
-    Número de orden: Se extrae de la cantidad de órdenes almacenadas
-    Fecha y hora
-    estado ( por defecto en ‘generada’)
-    Email de quién realizó la orden
-    */
+    const cartBody = req.body;
+    
+    const orderNumber = await cart.getAllCarts();
 
     const finalCart = {
       productsOnCart: [],
-      orderNumber: Math.random(),
+      orderNumber: orderNumber.length + 1,
       timestamp: new Date().toLocaleDateString(),
-      state: true,
+      state: 'generated',
       email: req.session.passport.user.email,
     };
 
     for (i = 0; i < cartBody.length; i++) {
       console.log(cartBody[i]);
-      let productFinded = await product.getProduct(cartBody[i].product.id);
-      // console.log(chalk.yellow("Producto encontrado: "));
-      // console.log(productFinded);
-
+      let productFinded = await product.getProduct(cartBody[i].id);
       finalCart.productsOnCart.push({
         product: productFinded,
         quantity: cartBody[i].quantity,
       });
     }
 
-    // console.log(finalCart.productsOnCart);
-
-    console.log("POR CREAR EL FINAL CART");
     const cartCreated = await cart.createCart(finalCart);
 
-    const idUser = { _id: req.session.passport.user._id };
-
+    /* ESTO NO LO PIDE E FINAL*/
+    // const idUser = { _id: req.session.passport.user._id };
     // const cartAddToUser = await user.addCartToUser(idUser, finalCart);
 
     const emailSubject = `Nuevo pedido de: ${req.session.passport.user.name} @ mail: ${req.session.passport.user.email}`;
@@ -89,9 +72,9 @@ exports.createCart = async (req, res, next) => {
       html: emailBody,
     });
     await whatsAppTwilio(emailSubject, req.session.passport.user.number);
-    await smsTwilio(
+    await twilioSmsFinishBuy(
       req.session.passport.user.number,
-      "Hemos recibido su pedido  y se encuentra en proceso"
+      "hemos recibido su pedido y se encuentra en proceso ✅"
     );
 
     delete req.session.cartSession;

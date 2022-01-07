@@ -8,6 +8,7 @@ const productSchema = new Schema({
   timestamp: { type: String, required: true, max: 40 },
   description: { type: String, required: true, max: 255 },
   code: { type: String, required: true, max: 40 },
+  category: {type: String, required: true, max: 40},
   stock: { type: Number, required: true },
 });
 
