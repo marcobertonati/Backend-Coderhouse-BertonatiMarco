@@ -16,44 +16,38 @@ const productController = (service) => {
         loggerWarn.warn(
           `El usuario ingresó ${req.body.stock} como valor de stock. Se seteará en 0.`
         );
-
         req.body.stock = 0;
       }
-
-      /*Agrego la hora en que se agregó el producto */
       const timestamp = new Date().toLocaleString();
       req.body.timestamp = timestamp;
 
-      /*Chequeo el producto que agregamos */
-      loggerDefault.info(req.body);
-
       try {
-        loggerTrace.trace("Ingresó al try");
-        const productCreated = await service.createProduct(req.body);
-        res.json({ msg: "Product Created!", product: productCreated });
-        // res.render('./pages/agregar')
-        // res.redirect("/productos/agregar");
+        await service.createProduct(req.body);
+        res.status(201).redirect("/productos/agregar");
       } catch (error) {
-        loggerTrace.trace("Ingresó al catch");
         loggerError.error(error);
-        res.status(400).json(error);
+        const errorMsg = {
+          message: "No se cargó producto",
+          productCreated: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
       }
     },
 
     findAll: async (req, res, next) => {
       loggerTrace.trace("Ingresó a findAll");
-
       try {
         const products = await service.getAllProducts();
-
-        //Para SSR
-        res.render("./pages/lista", { products });
-
-        //Para ReactJS
-        // res.json(products);
+        res.status(200).render("./pages/lista", { products });
       } catch (error) {
         loggerError.error(error);
-        res.json(error);
+        const errorMsg = {
+          message: "No se encontraron productos",
+          productsFinded: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
       }
     },
 
@@ -65,14 +59,19 @@ const productController = (service) => {
         loggerDefault.info(`El id ingresado es ${id}`);
         const productRetrieved = await service.getProduct(id);
 
-        const response = { 
+        const response = {
           productsFinded: productRetrieved,
-          founded: productRetrieved != undefined ? true : false
-         };
-        res.render("./pages/product-detail", { response });
+          founded: productRetrieved != undefined ? true : false,
+        };
+        res.status(200).render("./pages/product-detail", { response });
       } catch (error) {
         loggerError.error(error);
-        res.json(error);
+        const errorMsg = {
+          message: `No se encontró producto con id ${id}`,
+          productFinded: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
       }
     },
 
@@ -87,14 +86,15 @@ const productController = (service) => {
           "El producto actualizado quedó de la siguiente manera: " +
             updateProduct
         );
-        res.json(updateProduct);
+        res.status(200).json(updateProduct);
       } catch (error) {
         loggerError.error(error);
         const errorMsg = {
-          message: "No se encontraron productos",
-          productFinded: false,
+          message: "No se pudo modificar producto",
+          productModify: false,
+          error: error,
         };
-        res.json(errorMsg);
+        res.status(400).json(errorMsg);
       }
     },
 
@@ -103,31 +103,55 @@ const productController = (service) => {
 
       try {
         const id = req.params.id;
-        loggerDefault.info(`El id ingresado es ${id}`);
         await service.deleteProduct(id);
-        res.json({ msg: "Product deleted!" });
+        res.status(200).json({ msg: "Product deleted!" });
       } catch (error) {
         loggerError.error(error);
         const errorMsg = {
-          message: "No se encontraron productos",
-          productFinded: false,
+          message: "No se pudo borrar producto",
+          productsFinded: false,
+          error: error,
         };
-        res.json(errorMsg);
+        res.status(400).json(errorMsg);
       }
     },
 
+    getByCategory: async (req, res, next) => {
+      loggerTrace.trace("Ingreso a getByCategory");
+
+      try {
+        const category = req.params.category;
+        const productsRetrieved = await service.getByCategory(category);
+        const response = { productsFinded: productsRetrieved };
+        res.status(200).render("./pages/products-by-category", { response });
+      } catch (error) {
+        loggerError.error(error);
+        const errorMsg = {
+          message: `No se encontraron productos con la categoria ${category}`,
+          productsFinded: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
+      }
+    },
+
+    // Los siguientes métodos no tienen un uso real en el cliente
     getByName: async (req, res, next) => {
       loggerTrace.trace("Ingreso a getOneByName");
 
       try {
         const title = req.params.title;
         loggerDefault.info(`El nombre del producto ingresado es ${title}`);
-
         const productsRetrieved = await service.getProductByTitle(title);
-        res.json(productsRetrieved);
+        res.status(200).json(productsRetrieved);
       } catch (error) {
         loggerError.error(error);
-        res.json(error);
+        const errorMsg = {
+          message: `No se encontraron productos con el título ${title}`,
+          productsFinded: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
       }
     },
 
@@ -137,12 +161,16 @@ const productController = (service) => {
       try {
         const code = req.params.code;
         loggerDefault.info(`El codigo del producto ingresado es ${code}`);
-
         const productsRetrieved = await service.getProductByCode(code);
-        res.json(productsRetrieved);
+        res.status(200).json(productsRetrieved);
       } catch (error) {
         loggerError.error(error);
-        res.json(error);
+        const errorMsg = {
+          message: `No se encontraron productos con code ${code}`,
+          productsFinded: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
       }
     },
 
@@ -158,7 +186,7 @@ const productController = (service) => {
           req.query.minvalue === undefined ||
           req.query.maxvalue === undefined
         ) {
-          res.render("./pages/search-products");
+          res.status(200).render("./pages/search-products");
         } else {
           const pricemin = parseInt(req.query.minvalue);
           const pricemax = parseInt(req.query.maxvalue);
@@ -166,11 +194,16 @@ const productController = (service) => {
             pricemin,
             pricemax
           );
-          res.render("./pages/products-finded", { productsRetrieved });
+          res.status(200).json(productsRetrieved);
         }
       } catch (error) {
         loggerError.error(error);
-        res.json(error);
+        const errorMsg = {
+          message: `No se encontraron productos con ese rango de valores`,
+          productsFinded: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
       }
     },
 
@@ -187,24 +220,15 @@ const productController = (service) => {
           stockmin,
           stockmax
         );
-        res.json(productsRetrieved);
+        res.status(200).json(productsRetrieved);
       } catch (error) {
         loggerError.error(error);
-        res.json(error);
-      }
-    },
-
-    getByCategory: async (req, res, next) => {
-      loggerTrace.trace("Ingreso a getByCategory");
-
-      try {
-        const category = req.params.category;
-        const productsRetrieved = await service.getByCategory(category);
-        const response = { productsFinded: productsRetrieved };
-        res.render("./pages/products-by-category", { response });
-      } catch (error) {
-        loggerError.error(error);
-        res.json(error);
+        const errorMsg = {
+          message: `No se encontraron productos con ese rango de stock`,
+          productsFinded: false,
+          error: error,
+        };
+        res.status(400).json(errorMsg);
       }
     },
   };

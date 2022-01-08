@@ -74,6 +74,8 @@ module.exports = class {
     );
   }
 
+  /*Etos metodos están en desarrollo ya que no tiene ninguna aplicación práctica para el cliente */
+  
   //   async getProductByTitle(title) {
   //     console.log("Ingresó a productService => getProductByTitle");
   //     return await productModel.find({ title: title });

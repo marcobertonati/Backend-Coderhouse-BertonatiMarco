@@ -16,7 +16,6 @@ const passportFacebook = require("../auth/authPassportFacebook");
 
 module.exports = (router) => {
   router
-    /*------------------------ */
     /*Rutas para passportLocal */
     // Rutas de registro
     .post("/api/signup", signUpLocal, signUpLocalCallback)
@@ -28,6 +27,9 @@ module.exports = (router) => {
     .get("/faillogin", (req, res, next) => {
       res.status(400).redirect("/error-login");
     })
+    //Rutas para deslogueo
+    .post("/api/logout", logOut)
+
 
     /*------------------------ */
     /*Rutas para passportFacebook: Funcionalidad pausada ya que estamos usando Passport Local */
@@ -39,10 +41,6 @@ module.exports = (router) => {
       }),
       logInCallbackFacebook
     )
-
-    /*------------------------ */
-    /*Rutas para deslogueo */
-    .post("/api/logout", logOut);
 
   return router;
 };

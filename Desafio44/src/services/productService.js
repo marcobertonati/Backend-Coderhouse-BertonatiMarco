@@ -1,10 +1,8 @@
-// /*Elegimos persistencia */
-// const { getPersistenceFactory } = require("../dal/factory");
-// const persistenceFactory = getPersistenceFactory();
+/* PERSISTENCE: dependiendo de como se inicie el servidor tomará: mongoDB o memory */
 
 const { PERSISTENCE } = require("../config/globals");
 const persistenceFactory = require("../dal/factory");
-let {persistenceProduct} = persistenceFactory.newPersistence(PERSISTENCE);
+let { persistenceProduct } = persistenceFactory.newPersistence(PERSISTENCE);
 
 module.exports = class {
   constructor() {
@@ -35,28 +33,21 @@ module.exports = class {
     return await this.productModel.findByCategory(category);
   }
 
-  // async getProductByTitle(title) {
-  //   console.log("Ingresó a productService => getProductByTitle");
-  //   return await productModel.find({ title: title });
-  // }
+  /* Los siguientes métodos no tienen un uso real en el cliente */
 
-  // async getProductByCode(code) {
-  //   console.log("Ingresó a productService => getProductByCode");
-  //   return await productModel.find({ code: code });
-  // }
+  async getProductByTitle(title) {
+    return await this.productModel.getProductByTitle(title);
+  }
 
-  // async getProductByPrice(pricemin, pricemax) {
-  //   return await productModel
-  //     .find({
-  //       $and: [{ price: { $gte: pricemin } }, { price: { $lte: pricemax } }],
-  //     })
-  //     .lean();
-  // }
+  async getProductByCode(code) {
+    return await this.productModel.getProductByCode(code);
+  }
 
-  // async getProductByStock(stockmin, stockmax) {
-  //   console.log("Ingresó a productService => getProductByStock");
-  //   return await productModel.find({
-  //     $and: [{ stock: { $gte: stockmin } }, { stock: { $lte: stockmax } }],
-  //   });
-  // }
+  async getProductByPrice(pricemin, pricemax) {
+    return await this.productModel.getProductByPrice(pricemin, pricemax);
+  }
+
+  async getProductByStock(stockmin, stockmax) {
+    return await this.productModel.find(stockmin, stockmax);
+  }
 };

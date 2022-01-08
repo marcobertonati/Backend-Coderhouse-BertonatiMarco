@@ -1,20 +1,20 @@
-<h2>SIGN UP</h2>
+<h2>Formulario de Registro:</h2>
 
 
 <form id="form-product" action="/api/signup" method="POST" class="container" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="name" class="form-label">Nombre:</label>
-    <input type="text" class="form-control" id="name" name="name" />
+    <input required type="text" class="form-control" id="name" name="name" />
   </div>
 
   <div class="mb-3">
     <label for="lastname" class="form-label">Apellido:</label>
-    <input type="text" class="form-control" id="lastname" name="lastname" />
+    <input required type="text" class="form-control" id="lastname" name="lastname" />
   </div>
 
   <div class="mb-3">
     <label for="age" class="form-label">Edad:</label>
-    <input type="text" class="form-control" id="age" name="age" />
+    <input required type="text" class="form-control" id="age" name="age" />
   </div>
 
   <div class="mb-3">
@@ -25,45 +25,37 @@
       <option id='prefix-number' value="{{2}}">{{0}}</option>
       {{/each}}
     </select>
-    <input type="text" class="form-control" id="number" name="number" />
+    <input required type="text" class="form-control" id="number" name="number" />
   </div>
   
   <div class="mb-3">
     <label for="address" class="form-label">Dirección:</label>
-    <input type="text" class="form-control" id="address" name="address" />
+    <input required type="text" class="form-control" id="address" name="address" />
   </div>
 
   <div class="mb-3">
     <label for="email" class="form-label">Email:</label>
-    <input type="email" class="form-control" id="email" name="email" />
+    <input required type="email" class="form-control" id="email" name="email" />
   </div>
-
-  {{!-- <div class="mb-3">
-    <label for="avatar" class="form-label">URL avatar:</label>
-    <input type="text" class="form-control" id="avatar" name="avatar" />
-  </div> --}}
 
   <div class="mb-3">
     <label for="avatar" class="form-label">URL avatar:</label>
-    <input type="file" class="form-control" id="avatar" name="avatar" />
+    <input required type="file" class="form-control" id="avatar" name="avatar" />
+    <p>Recuerda utilizar un URL que finalice en .jpg</p>
   </div>
 
-    {{!-- <div class="mb-3">
-    <label for="avatar" class="form-label">Avatar/Foto de Perfil</label>
-    <input type="file" class="form-control" id="avatar" name="avatar" />
-  </div> --}}
 
   <div class="mb-3">
     <label for="password" class="form-label">Password:</label>
-    <input onchange="onHandleInputChange()" type="password" class="form-control" id="password" name="password" />
+    <input required onchange="onHandleInputChange()" type="password" class="form-control" id="password" name="password" />
   </div>
 
   <div class="mb-3">
     <label for="passwordConfirmed" class="form-label">Ingrese nuevamente su contraseña:</label>
-    <input onchange="onHandleInputChange()" type="password" class="form-control" id="passwordConfirmed" name="passwordConfirmed" />
+    <input required onchange="onHandleInputChange()" type="password" class="form-control" id="passwordConfirmed" name="passwordConfirmed" />
   </div>
 
-  <button disabled class="btn btn-primary" id="btn-signUp" type="submit" class="btn btn-primary">Registrarme</button>
+  <button disabled class="btn btn-primary" id="btn-signUp" type="submit" class="btn btn-primary">¡Registrarme!</button>
 </form>
 
   {{!-- <a class="btn btn-primary" href="http://localhost:8080/auth/facebook"> Iniciar Facebook</a> --}}

@@ -14,14 +14,25 @@
 
   <div class="col">
 
-    <img
-      class="img-fluid"
-      src="{{data.user.avatar}}"
-      alt=""
-      srcset="{{data.user.avatar}}"
-    />
+    <img class="img-fluid" src="{{data.user.avatar}}" alt="" srcset="{{data.user.avatar}}" />
 
   </div>
 
 </div>
+  {{#if data.user.admin}}
+
+<div class="row">
+  <div class="col">
+    <h5>Perfil de Administrador</h5>
+    <h6>Herramientas disponibles:</h6>
+    <a class="btn btn-secondary" href="/productos/agregar">Agregar Productos a la tienda</a>
+    <a class="btn btn-secondary" href="/info">Información del servidor</a>
+
+    <h6>En desarrollo:</h6>
+    <a class="btn btn-secondary" href="/welcome">Borrar productos de la tienda</a>
+    <a class="btn btn-secondary" href="/welcome">Modificar Productos de la tienda</a>
+  </div>
+</div>
+{{/if}}
+
 </div>

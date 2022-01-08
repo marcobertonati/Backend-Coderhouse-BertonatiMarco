@@ -1,5 +1,7 @@
 const { productModelMongoose } = require("../../schemas/productsMongoose");
 const DTOmongoose = require("../../dto/dto.mongoose");
+const mongoose = require("mongoose");
+/*Creo que en este constructor deberia hacer la conexión a la base de datos*/
 
 module.exports = class {
   constructor() {
@@ -18,7 +20,7 @@ module.exports = class {
     try {
       const result = await this.products.findById(id);
       const productsDTOmongoose = DTOmongoose.geyById(result);
-      return await productsDTOmongoose;
+      return productsDTOmongoose;
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +46,7 @@ module.exports = class {
 
   async findByIdAndDelete(id) {
     try {
-      return this.products.findByIdAndDelete(id);
+      return this.products.findOneAndDelete({ _id: id });
     } catch (error) {
       console.log(error);
     }
@@ -60,28 +62,25 @@ module.exports = class {
     }
   }
 
-  //   async getProductByTitle(title) {
-  //     console.log("Ingresó a productService => getProductByTitle");
-  //     return await productModel.find({ title: title });
-  //   }
+  async getProductByTitle(title) {
+    return await this.products.find({ title: title });
+  }
 
-  //   async getProductByCode(code) {
-  //     console.log("Ingresó a productService => getProductByCode");
-  //     return await productModel.find({ code: code });
-  //   }
+  async getProductByCode(code) {
+    return await this.products.find({ code: code });
+  }
 
-  //   async getProductByPrice(pricemin, pricemax) {
-  //     return await productModel
-  //       .find({
-  //         $and: [{ price: { $gte: pricemin } }, { price: { $lte: pricemax } }],
-  //       })
-  //       .lean();
-  //   }
+  async getProductByPrice(pricemin, pricemax) {
+    return await this.products
+      .find({
+        $and: [{ price: { $gte: pricemin } }, { price: { $lte: pricemax } }],
+      })
+      .lean();
+  }
 
-  //   async getProductByStock(stockmin, stockmax) {
-  //     console.log("Ingresó a productService => getProductByStock");
-  //     return await productModel.find({
-  //       $and: [{ stock: { $gte: stockmin } }, { stock: { $lte: stockmax } }],
-  //     });
-  //   }
+  async getProductByStock(stockmin, stockmax) {
+    return await this.products.find({
+      $and: [{ stock: { $gte: stockmin } }, { stock: { $lte: stockmax } }],
+    });
+  }
 };

@@ -1,8 +1,8 @@
-/*Controladores de Auth */
+/*Controladores de Auth para proteger views */
 const { checkAuthentication } = require("../auth/checkAuth");
 
 /*Controladores de Productos */
-const { productController, messagesController } = require("../controller");
+const { productController } = require("../controller");
 
 /*Controladores de Mensajes de chat */
 const chatController = require("../controller/messagesChat");
@@ -22,7 +22,7 @@ module.exports = (router) => {
 
     /*Vistas de productos */
     .get("/productos/vista", checkAuthentication, productController.findAll)
-    .get("/productos/agregar", (req, res, next) => {
+    .get("/productos/agregar",checkAuthentication, (req, res, next) => {
       res.render("./pages/agregar");
     })
     .get(
@@ -30,7 +30,11 @@ module.exports = (router) => {
       checkAuthentication,
       productController.getByCategory
     )
-    .get("/productos/detalle/:id", checkAuthentication, productController.getOne)
+    .get(
+      "/productos/detalle/:id",
+      checkAuthentication,
+      productController.getOne
+    )
 
     /*Vistas de busquedad de productos por precio */
     .get("/buscar/precio?", checkAuthentication, productController.getByPrice)
@@ -43,11 +47,11 @@ module.exports = (router) => {
 
     /*Vistas de chat */
     .get("/chat-view", checkAuthentication, chatController.getAllMsgChat)
-    .get('/chat/:email', checkAuthentication, chatController.getMsgByEmail)
+    .get("/chat/:email", checkAuthentication, chatController.getMsgByEmail)
 
     /*Vistas de autenticación */
     .get("/login", (req, res, next) => {
-      res.render("./pages/login");
+      res.render("./pages/login", {layout: "login-signup.hbs"});
     })
     .get("/signup", signUpController.signUp)
 

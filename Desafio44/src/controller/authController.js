@@ -1,8 +1,4 @@
 /*Controladores de rutas AUTH */
-
-const userModel = require("../dal/mongoose/schemas/userMongoose");
-userModel;
-
 const mailingService = require("../services/mailingService");
 const passportLocal = require("../auth/authPassportLocal");
 const passportFacebook = require("../auth/authPassportFacebook");
@@ -30,16 +26,15 @@ exports.signUpLocalCallback = async (req, res, next) => {
     - avatar ${req.body.avatar}`,
 
     // Sirve para agregar archivos adjuntos
-    // attachments: [
-    //   {
-    //     // filename and content type is derived from path
-    //     path: req.session.passport.user.photo,
-    //   },
-    // ],
+    attachments: [
+      {
+        // filename and content type is derived from path
+        path: req.session.passport.user.photo,
+      },
+    ],
   };
   mailingService.mailingEthereal(mailOptions);
   mailingService.mailingGmail(mailOptions);
-
   res.redirect("/login");
 };
 
@@ -51,6 +46,7 @@ exports.logInCallback = async (req, res, next) => {
   res.redirect("/productos/vista");
 };
 
+/*Funcionalidad pausada que estamos utilizando estrategia local */
 /*Controlador de Logeo de FACEBOOK */
 exports.logInFacebook = async (req, res, next) => {
   passportFacebook.authenticate("facebook");
@@ -85,11 +81,11 @@ exports.logOut = async (req, res, next) => {
     from: "Servidor de Node.js",
     to: ["df2euol6wwi5u2ix@ethereal.email", req.session.passport.user.email],
     subject: `El usuario ${req.session.passport.user.email} se deslogueo el día ${date} a las ${time}`,
-    html: `<h2>${req.session.passport.user.firstName} ${req.session.passport.user.lastName} se ha deslogueado el día ${date} a las ${time}</h2>`,
+    html: `<h2>${req.session.passport.user.name} ${req.session.passport.user.lastname} se ha deslogueado el día ${date} a las ${time}</h2>`,
     attachments: [
       {
         // filename and content type is derived from path
-        path: req.session.passport.user.photo,
+        path: req.session.passport.user.avatar,
       },
     ],
   };

@@ -2,7 +2,6 @@ const { productService } = require("./index");
 const chalk = require("chalk");
 
 module.exports = class {
-
   async addProductsToSession(cart, session) {
     console.log(chalk.bold.red("PRIMERA AGREGADA A CARRITO: Esto trae CART:"));
     console.log(cart);
@@ -25,9 +24,6 @@ module.exports = class {
           products: cartCompleted,
           address: session.passport.user.address,
         };
-
-        // console.log(chalk.bold.blueBright("Asi queda session.cartSession"));
-        // console.log(session.cartSession);
 
         return session.cartSession;
       } else {
@@ -58,7 +54,6 @@ module.exports = class {
         //   }
         // }
 
-        
         // console.log(
         //   chalk.bold.underline.red("PROXIMAS AGREGADAS A CARRITO: Esto trae CART:")
         // );
@@ -70,20 +65,21 @@ module.exports = class {
         // console.log(chalk.bold.red("Esto trae CART SESSION:"));
         // console.log(session.cartSession.products[0]);
 
+        // console.log("Esto viene en cart");
+        // console.log(cart);
+        // console.log("Y esto viene en cartSession");
+        // console.log(session.cartSession.products);
+
         for (let index = 0; index < cart.length; index++) {
           const productFinded = session.cartSession.products.findIndex(
             (element) => element.product.id == cart[index].id
           );
 
-          // console.log(chalk.green("Esto trae productfinded"));
-          // console.log(productFinded);
-
           if (productFinded > -1) {
             session.cartSession.products[productFinded] = {
               product: session.cartSession.products[productFinded].product,
-              quantity:
-                session.cartSession.products[productFinded].quantity +
-                cart[index].quantity,
+              quantity: cart[index].quantity,
+
             };
           } else {
             let productFinded = await productService.getProduct(cart[index].id);
@@ -94,20 +90,17 @@ module.exports = class {
           }
         }
 
-        // console.log("Asi quedó newCart");
-        // console.log(newCart);
-        // console.log("Asi quedó newProductFinded");
-        // console.log(newProductsFinded);
+        const finalCartSession = session.cartSession.products.filter(
+          (e) => e.quantity != 0
+        );
 
         session.cartSession = {
           email: session.passport.user.email,
           timestamp: new Date().toLocaleDateString(),
-          products: session.cartSession.products,
+          products: finalCartSession,
           address: session.passport.user.address,
         };
 
-        // console.log(chalk.bold.yellow("Asi queda session.cartSession"));
-        // console.log(session.cartSession);
 
         // for (let i = 0; i < cart.length; i++) {
         //   let [productFinded] = await productService.getProduct(cart[i].id);

@@ -1,6 +1,4 @@
 const express = require("express");
-
-
 /*Router */
 /*Requerimos las rutas que va a ofrecer nuestra aplicación */
 const routesProducts = require("./routesProducts");
@@ -13,25 +11,19 @@ const routesAuth = require("./routesAuth");
 const routerAuth = express.Router();
 const routesProcessInfo = require("./routesProcessInfo");
 const routerProcessInfo = express.Router();
-const routesRandom = require("./routesRandom");
-const routerRandom = express.Router();
+
 
 /*Rutas a las view */
 const routesView = require("./routesView");
 const routerViews = express.Router();
 
-/*Rutas a las view via IO */
-const routesIoChat = require("./routesIOChat");
-const routerIoChat = express.Router();
 
-module.exports = routesConfig = () => {
+module.exports = routesConfig = (app) => {
     
-routesProducts(routerProducts)
-routesCart(routerCart),
-routesMessagesChat(routerMessagesChat);
-routesAuth(routerAuth);
-routesIoChat(routerIoChat);
-routesView(routerViews);
-routesProcessInfo(routerProcessInfo);
-routesRandom(routerRandom);
+app.use(routesProducts(routerProducts))
+app.use(routesCart(routerCart)),
+app.use(routesMessagesChat(routerMessagesChat));
+app.use(routesAuth(routerAuth));
+app.use(routesView(routerViews));
+app.use(routesProcessInfo(routerProcessInfo));
 };

@@ -14,7 +14,7 @@ const createHtml = require("../utils/ticketHTML");
 const whatsAppTwilio = require("../services/twilio.whatsapp");
 
 const smsTwilio = require("../sms/twilio");
-const {twilioSmsFinishBuy} = require('../sms/twilio')
+const { twilioSmsFinishBuy } = require("../sms/twilio");
 
 const chalk = require("chalk");
 
@@ -30,20 +30,25 @@ exports.getCartSession = async (req, res, next) => {
   const response = await cartSession.getProductsFromSession(
     req.session.cartSession
   );
-  res.render("./pages/checkout-cart", { layout: "checkout-cart" , response: response.products });
+  console.log("Esto trae GetCartSession");
+  console.log(response);
+  res.render("./pages/checkout-cart", {
+    layout: "checkout-cart",
+    response: response.products,
+  });
 };
 
 exports.createCart = async (req, res, next) => {
   try {
     const cartBody = req.body;
-    
+
     const orderNumber = await cart.getAllCarts();
 
     const finalCart = {
       productsOnCart: [],
       orderNumber: orderNumber.length + 1,
       timestamp: new Date().toLocaleDateString(),
-      state: 'generated',
+      state: "generated",
       email: req.session.passport.user.email,
     };
 

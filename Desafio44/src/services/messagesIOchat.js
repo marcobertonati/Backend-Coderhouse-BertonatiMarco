@@ -13,6 +13,7 @@ module.exports = (io, sessionMiddleware) => {
 
   io.on("connection", async (socket) => {
     console.log(`Usuario conectado ${socket.id}`);
+
     /*Traigo todos los mensajes */
     try {
       const allMsgChat = await persistenceMessages.getAllMsg();
@@ -52,35 +53,41 @@ module.exports = (io, sessionMiddleware) => {
     });
 
     socket.on("add-quantity", async (data) => {
-      console.log(data);
-      console.log(socket.request.session.cartSession.products);
-      const indexProduct =
-        socket.request.session.cartSession.products.findIndex(
-          (element) => element.product.id == data.id
-        );
-      console.log("🙌 SE AGREGÓ CANTIDAD");
-      console.log(data.quantity);
-      console.log(socket.request.session.cartSession.products[indexProduct]);
-      socket.request.session.cartSession.products[indexProduct].quantity =
-        data.quantity;
+      socket.request.session.save(function (err) {
+        console.log(data);
+        // console.log(socket.request.session);
+        // console.log(socket.request.session.cartSession.products);
+        const indexProduct =
+          socket.request.session.cartSession.products.findIndex(
+            (element) => element.product.id == data.id
+          );
+        console.log("🙌 SE AGREGÓ CANTIDAD");
+        console.log(data.quantity);
+        console.log(socket.request.session.cartSession.products[indexProduct]);
+        socket.request.session.cartSession.products[indexProduct].quantity =
+          data.quantity;
         console.log("ASI QUEDO EL PRODUCTO:");
-      console.log(socket.request.session.cartSession.products[indexProduct])
+        console.log(socket.request.session.cartSession.products[indexProduct]);
+      });
     });
 
     socket.on("rest-quantity", async (data) => {
-      console.log(data);
-      console.log(socket.request.session.cartSession.products);
-      const indexProduct =
-        socket.request.session.cartSession.products.findIndex(
-          (element) => element.product.id == data.id
-        );
-      console.log("🙌 SE RESTO CANTIDAD");
-      console.log(data.quantity);
-      console.log(socket.request.session.cartSession.products[indexProduct]);
-      socket.request.session.cartSession.products[indexProduct].quantity =
-        data.quantity;
-      console.log("ASI QUEDO EL PRODUCTO:");
-      console.log(socket.request.session.cartSession.products[indexProduct])
+      socket.request.session.save(function (err) {
+        console.log(data);
+        // console.log(socket.request.session);
+        // console.log(socket.request.session.cartSession.products);
+        const indexProduct =
+          socket.request.session.cartSession.products.findIndex(
+            (element) => element.product.id == data.id
+          );
+        console.log("🙌 SE AGREGÓ CANTIDAD");
+        console.log(data.quantity);
+        console.log(socket.request.session.cartSession.products[indexProduct]);
+        socket.request.session.cartSession.products[indexProduct].quantity =
+          data.quantity;
+        console.log("ASI QUEDO EL PRODUCTO:");
+        console.log(socket.request.session.cartSession.products[indexProduct]);
+      });
     });
 
     /*Evento desconectar */

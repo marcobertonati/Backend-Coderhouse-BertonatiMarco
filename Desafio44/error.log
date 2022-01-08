@@ -2172,3 +2172,271 @@
     at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
     at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
     at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:335:12)
+[2022-01-08T01:40:05.340] [ERROR] myError - CastError: Cast to ObjectId failed for value "61731f6d2f8ebcd148693b93\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"61731f6d2f8ebcd148693b93\\n"',
+  kind: 'ObjectId',
+  value: '61731f6d2f8ebcd148693b93\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T01:44:06.032] [ERROR] myError - CastError: Cast to ObjectId failed for value "61731f6d2f8ebcd148693b93\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"61731f6d2f8ebcd148693b93\\n"',
+  kind: 'ObjectId',
+  value: '61731f6d2f8ebcd148693b93\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T01:44:31.549] [ERROR] myError - CastError: Cast to ObjectId failed for value "61731f6d2f8ebcd148693b93\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"61731f6d2f8ebcd148693b93\\n"',
+  kind: 'ObjectId',
+  value: '61731f6d2f8ebcd148693b93\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T01:46:19.632] [ERROR] myError - CastError: Cast to ObjectId failed for value "61731f6d2f8ebcd148693b93\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"61731f6d2f8ebcd148693b93\\n"',
+  kind: 'ObjectId',
+  value: '61731f6d2f8ebcd148693b93\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T01:48:12.702] [ERROR] myError - CastError: Cast to ObjectId failed for value "{ id: '61731f6d2f8ebcd148693b93\n' }" (type Object) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: `"{ id: '61731f6d2f8ebcd148693b93\\n' }"`,
+  kind: 'ObjectId',
+  value: { id: '61731f6d2f8ebcd148693b93\n' },
+  path: '_id',
+  reason: {},
+  valueType: 'Object'
+}
+[2022-01-08T01:53:27.324] [ERROR] myError - CastError: Cast to ObjectId failed for value "false" (type boolean) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"false"',
+  kind: 'ObjectId',
+  value: false,
+  path: '_id',
+  reason: {},
+  valueType: 'boolean'
+}
+[2022-01-08T01:55:27.632] [ERROR] myError - CastError: Cast to ObjectId failed for value "false" (type boolean) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"false"',
+  kind: 'ObjectId',
+  value: false,
+  path: '_id',
+  reason: {},
+  valueType: 'boolean'
+}
+[2022-01-08T01:56:25.626] [ERROR] myError - CastError: Cast to ObjectId failed for value "61731f6d2f8ebcd148693b93\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"61731f6d2f8ebcd148693b93\\n"',
+  kind: 'ObjectId',
+  value: '61731f6d2f8ebcd148693b93\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T02:04:09.191] [ERROR] myError - CastError: Cast to ObjectId failed for value "61731f6d2f8ebcd148693b93\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"61731f6d2f8ebcd148693b93\\n"',
+  kind: 'ObjectId',
+  value: '61731f6d2f8ebcd148693b93\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T02:04:46.080] [ERROR] myError - CastError: Cast to ObjectId failed for value "61731f6d2f8ebcd148693b93\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"61731f6d2f8ebcd148693b93\\n"',
+  kind: 'ObjectId',
+  value: '61731f6d2f8ebcd148693b93\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T02:05:42.671] [ERROR] myError - CastError: Cast to ObjectId failed for value "618c38b37240d27a48434ae0\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"618c38b37240d27a48434ae0\\n"',
+  kind: 'ObjectId',
+  value: '618c38b37240d27a48434ae0\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T02:06:35.781] [ERROR] myError - CastError: Cast to ObjectId failed for value "618c38b37240d27a48434ae0\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"618c38b37240d27a48434ae0\\n"',
+  kind: 'ObjectId',
+  value: '618c38b37240d27a48434ae0\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T02:11:43.455] [ERROR] myError - CastError: Cast to ObjectId failed for value "{ _id: '618c38b37240d27a48434ae0\n' }" (type Object) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: `"{ _id: '618c38b37240d27a48434ae0\\n' }"`,
+  kind: 'ObjectId',
+  value: { _id: '618c38b37240d27a48434ae0\n' },
+  path: '_id',
+  reason: {},
+  valueType: 'Object'
+}
+[2022-01-08T02:11:50.524] [ERROR] myError - CastError: Cast to ObjectId failed for value "{ _id: '618c38b37240d27a48434ae0\n' }" (type Object) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: `"{ _id: '618c38b37240d27a48434ae0\\n' }"`,
+  kind: 'ObjectId',
+  value: { _id: '618c38b37240d27a48434ae0\n' },
+  path: '_id',
+  reason: {},
+  valueType: 'Object'
+}
+[2022-01-08T02:12:43.362] [ERROR] myError - CastError: Cast to ObjectId failed for value "618c38b37240d27a48434ae0\n" (type string) at path "_id" for model "Product"
+    at model.Query.exec (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4543:21)
+    at model.Query.Query.then (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\mongoose\lib\query.js:4642:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  stringValue: '"618c38b37240d27a48434ae0\\n"',
+  kind: 'ObjectId',
+  value: '618c38b37240d27a48434ae0\n',
+  path: '_id',
+  reason: {},
+  valueType: 'string'
+}
+[2022-01-08T16:34:03.441] [ERROR] myError - ReferenceError: productModel is not defined
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:39:5)
+    at getByName (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:145:49)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:410:3)
+[2022-01-08T16:34:53.806] [ERROR] myError - ReferenceError: productModel is not defined
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:39:5)
+    at getByName (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:145:49)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:410:3)
+[2022-01-08T16:35:45.736] [ERROR] myError - ReferenceError: productModel is not defined
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\dal\mongoose\dao\models\productDao.mongoose.js:67:7)
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:39:36)
+    at getByName (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:145:49)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:365:14)
+[2022-01-08T16:36:13.340] [ERROR] myError - ReferenceError: productModel is not defined
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\dal\mongoose\dao\models\productDao.mongoose.js:67:7)
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:39:36)
+    at getByName (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:145:49)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:365:14)
+[2022-01-08T16:38:15.293] [ERROR] myError - TypeError: Cannot read property 'find' of undefined
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\dal\mongoose\dao\models\productDao.mongoose.js:67:38)
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:39:36)
+    at getByName (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:145:49)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:365:14)
+[2022-01-08T16:38:35.598] [ERROR] myError - TypeError: Cannot read property 'find' of undefined
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\dal\mongoose\dao\models\productDao.mongoose.js:67:38)
+    at module.exports.getProductByTitle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:39:36)
+    at getByName (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:145:49)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:354:14)
+    at param (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:365:14)
+[2022-01-08T16:49:37.154] [ERROR] myError - TypeError: this.productModel.getProductByPrice(...).lean is not a function
+    at module.exports.getProductByPrice (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:47:74)
+    at getByPrice (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:193:51)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:174:3)
+[2022-01-08T16:50:11.419] [ERROR] myError - TypeError: this.productModel.getProductByPrice(...).lean is not a function
+    at module.exports.getProductByPrice (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:47:74)
+    at getByPrice (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:193:51)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:174:3)
+[2022-01-08T16:50:45.502] [ERROR] myError - TypeError: this.productModel.getProductByPrice(...).lean is not a function
+    at module.exports.getProductByPrice (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\services\productService.js:47:74)
+    at getByPrice (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\src\controller\productController.js:193:51)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:335:12)
+    at next (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (D:\Cursos\Programación\Programacion-Backend\Desafios\Desafio44\node_modules\express\lib\router\index.js:174:3)

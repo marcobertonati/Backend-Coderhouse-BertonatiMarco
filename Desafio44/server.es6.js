@@ -71,7 +71,6 @@ const sessionMiddleware = session({
 app.use(sessionMiddleware);
 app.use(cookieParser());
 
-
 /*Middleware Passport: SIEMPRE VAN ANTES QUE LAS RUTAS */
 app.use(passport.initialize());
 app.use(passport.session());
@@ -91,20 +90,11 @@ const routesAuth = require("./src/routes/routesAuth");
 const routerAuth = express.Router();
 const routesProcessInfo = require("./src/routes/routesProcessInfo");
 const routerProcessInfo = express.Router();
-const routesRandom = require("./src/routes/routesRandom");
-const routerRandom = express.Router();
-
 /*Rutas a las view */
 const routesView = require("./src/routes/routesView");
 const routerViews = express.Router();
 
-/*Rutas a las view via IO */
-const routesIoChat = require("./src/routes/routesIOChat");
-const routerIoChat = express.Router();
 
-/*Importamos rutas */
-// const routesConfig = require("./src/routes/index");
-// app.use(routesConfig);
 
 /*Body Parser: YA NO SE USA */
 const bodyParser = require("body-parser");
@@ -123,8 +113,10 @@ app.engine(
     partialsDir: `./views/partials/`, // Donde se van a encontrar los partials
   })
 );
+
 // Estableciendo el motor de plantilla que se utiliza
 app.set("view engine", "hbs");
+
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
 
@@ -135,22 +127,25 @@ http://localhost:8080/static/css/style.css
 http://localhost:8080/static/js/index.js
 */
 
-/*Rutas del API: Productos*/
-app.use(routesProducts(routerProducts));
-/*Rutas del API: Cart*/
-app.use(routesCart(routerCart));
-/*Rutas del API: Mensaje de chat*/
-app.use(routesMessagesChat(routerMessagesChat));
-/*Rutas del API: Ruta de session*/
-app.use(routesAuth(routerAuth));
-/*Rutas IO chat*/
-app.use(routesIoChat(routerIoChat));
-/*Rutas del views productos, agregar y chat*/
-app.use(routesView(routerViews));
-/*Rutas de ProcessInfo */
-app.use(routesProcessInfo(routerProcessInfo));
-/*Rutas de Random */
-app.use(routesRandom(routerRandom));
+// /*Rutas del API: Productos*/
+// app.use(routesProducts(routerProducts));
+// /*Rutas del API: Cart*/
+// app.use(routesCart(routerCart));
+// /*Rutas del API: Mensaje de chat*/
+// app.use(routesMessagesChat(routerMessagesChat));
+// /*Rutas del API: Ruta de session*/
+// app.use(routesAuth(routerAuth));
+// /*Rutas IO chat*/
+// // app.use(routesIoChat(routerIoChat));
+// /*Rutas del views productos, agregar y chat*/
+// app.use(routesView(routerViews));
+// /*Rutas de ProcessInfo */
+// app.use(routesProcessInfo(routerProcessInfo));
+
+/*Importamos rutas */
+/*el app.use de todas las rutas deberá ir al final de toda la configuración del código */
+const routesConfig = require("./src/routes/index");
+routesConfig(app);
 
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
@@ -161,5 +156,8 @@ socketConnection(io, sessionMiddleware);
 const graphqlHTTP = require("./src/graphql/config/graphql.config");
 app.use("/graphql", graphqlHTTP);
 
+app.get("*", (req, res, next) => {
+  res.status(404).render("./pages/not-founded");
+});
 /*Exportamos servidor */
 module.exports = http;
