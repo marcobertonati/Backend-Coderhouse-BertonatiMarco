@@ -1,6 +1,5 @@
 /*Requerimos persistencia del servicio a fin de que si es en memoria no envie mail ni mensaje de texto */
 const { PERSISTENCE } = require("../config/globals");
-
 const { productService } = require("../services/index");
 
 /*Servicios de mensajería y mailing */
@@ -33,12 +32,12 @@ const orderController = (service) => {
 
         const orderCreated = await service.createOrder(finalCart);
 
-        /* ESTO NO LO PIDE EL FINAL PERO ME GUSTARÍA DESARROLLARLO*/
+        /* Funcionalidad para cargar orden a la base de datos de la persona que solicitó la orden: funcionalidad en desarrollo*/
         // const idUser = { _id: req.session.passport.user._id };
         // const cartAddToUser = await user.addCartToUser(idUser, finalCart);
 
 
-        /*Si está en memoria no se ejecutaran estos servicios a fin de evitar spam y gasto de saldo */
+        /*Si está en MEMORY no se ejecutaran estos servicios a fin de evitar spam y gasto de saldo */
         if (PERSISTENCE === "mongodb") {
           const emailSubject = `Nuevo pedido de: ${req.session.passport.user.name} @ mail: ${req.session.passport.user.email}`;
 
@@ -60,6 +59,7 @@ const orderController = (service) => {
         delete req.session.cartSession;
 
         res.render("./pages/welcome");
+        
       } catch (error) {
         console.log(error);
         const errorMsg = {

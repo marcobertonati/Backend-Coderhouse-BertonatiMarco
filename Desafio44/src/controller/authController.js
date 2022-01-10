@@ -1,7 +1,7 @@
 /*Controladores de rutas AUTH */
 const mailingService = require("../services/mailingService");
 const passportLocal = require("../auth/authPassportLocal");
-const passportFacebook = require("../auth/authPassportFacebook");
+const passportFacebook = require("../auth/authPassportFacebook"); // Funcionalidad en pausa ya que estamos ejecutando toda la app bajo passportLocal
 
 /*Controlador de Local-Passport */
 exports.signUpLocal = passportLocal.authenticate("signup-local", {
@@ -68,6 +68,7 @@ exports.logOut = async (req, res, next) => {
   res.clearCookie("isRegistered");
   res.redirect("/goodbye");
 };
+
 
 
 /*Funcionalidad pausada que estamos utilizando estrategia local */

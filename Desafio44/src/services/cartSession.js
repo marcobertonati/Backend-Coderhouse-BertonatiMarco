@@ -2,7 +2,6 @@ const { productService } = require("./index");
 
 module.exports = class {
   async addProductsToSession(cart, session) {
-
     try {
       if (!session.cartSession) {
         const cartCompleted = [];
@@ -24,7 +23,6 @@ module.exports = class {
 
         return session.cartSession;
       } else {
-
         for (let index = 0; index < cart.length; index++) {
           const productFinded = session.cartSession.products.findIndex(
             (element) => element.product.id == cart[index].id
@@ -34,7 +32,6 @@ module.exports = class {
             session.cartSession.products[productFinded] = {
               product: session.cartSession.products[productFinded].product,
               quantity: cart[index].quantity,
-
             };
           } else {
             let productFinded = await productService.getProduct(cart[index].id);
@@ -45,6 +42,7 @@ module.exports = class {
           }
         }
 
+        /*Filtramos de todo el cart solo aquellos que tengan quantity > 0 */
         const finalCartSession = session.cartSession.products.filter(
           (e) => e.quantity != 0
         );
@@ -59,12 +57,18 @@ module.exports = class {
       }
     } catch (error) {
       console.log(error);
+      const errorMsg = {
+        message: "No se agregaron productos a la session",
+        sesionFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
     }
   }
 
   getProductsFromSession = (productsOnCart) => {
     if (!productsOnCart) {
-      return "No hay productos";
+      return "No hay productos en la session.";
     } else {
       return productsOnCart;
     }

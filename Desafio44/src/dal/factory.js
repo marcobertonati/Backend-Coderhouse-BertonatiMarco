@@ -1,8 +1,9 @@
-let _persistenceFactoryInstance = null;
-
 class PersistenceFactory {
   newPersistence = (type) => {
     switch (type) {
+
+      
+      /* PERSISTENCIA EN MEMORIA */
       case "memory":
         console.log("[Persistence] : Memory");
         const persistenceMemoryProduct = require("../dal/memory/dao/models/productDao.memory");
@@ -19,6 +20,8 @@ class PersistenceFactory {
           persistenceMessages: messagesRepository,
         };
 
+
+      /* PERSISTENCIA EN MONGO DB */
       case "mongodb":
         console.log("[Persistence] : MongoDB");
         const persistenceMongoDBProduct = require("../dal/mongoose/dao/models/productDao.mongoose");
@@ -35,6 +38,8 @@ class PersistenceFactory {
           persistenceMessages: messagesRepositoryMoongose,
         };
 
+
+      /* PERSISTENCIA EN DEFAULT: MEMORIA */
       default:
         console.log("[Persistence] : Default => Memory");
         const persistenceDefaultProduct = require("../dal/memory/dao/models/productDao.memory");
@@ -51,12 +56,5 @@ class PersistenceFactory {
     }
   };
 }
-
-// exports.getPersistenceFactory = () => {
-//   if (_persistenceFactoryInstance === null) {
-//     _persistenceFactoryInstance = new PersistenceFactory();
-//   }
-//   return _persistenceFactoryInstance;
-// };
 
 module.exports = new PersistenceFactory();

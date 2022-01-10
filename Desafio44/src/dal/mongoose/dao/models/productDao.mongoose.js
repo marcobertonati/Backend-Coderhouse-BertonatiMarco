@@ -62,24 +62,40 @@ module.exports = class {
   }
 
   async getProductByTitle(title) {
-    return await this.products.find({ title: title });
+    try {
+      return await this.products.find({ title: title });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async getProductByCode(code) {
-    return await this.products.find({ code: code });
+    try {
+      return await this.products.find({ code: code });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async getProductByPrice(pricemin, pricemax) {
-    return await this.products
-      .find({
-        $and: [{ price: { $gte: pricemin } }, { price: { $lte: pricemax } }],
-      })
-      .lean();
+    try {
+      return await this.products
+        .find({
+          $and: [{ price: { $gte: pricemin } }, { price: { $lte: pricemax } }],
+        })
+        .lean();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async getProductByStock(stockmin, stockmax) {
-    return await this.products.find({
-      $and: [{ stock: { $gte: stockmin } }, { stock: { $lte: stockmax } }],
-    });
+    try {
+      return await this.products.find({
+        $and: [{ stock: { $gte: stockmin } }, { stock: { $lte: stockmax } }],
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

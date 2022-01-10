@@ -37,7 +37,7 @@ module.exports = (router) => {
       productController.getOne
     )
 
-    /*Vistas de busquedad de productos por precio */
+    /*Vistas de busquedad de productos por precio: Funcionalidad en desarrollo */
     .get("/buscar/precio?", checkAuthentication, productController.getByPrice)
 
     /*Vistas de carrito */

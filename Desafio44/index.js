@@ -3,31 +3,18 @@ require("dotenv").config({
   path: path.resolve(__dirname, process.env.NODE_ENV + ".env"),
 });
 
+/*El servidor SIEMPRE va a requerir una conección a la base de datos */
 const { getConnection } = require("./src/dal/mongoose/db/connectionMongo");
+
 
 const http = require("./server.es6");
 const cluster = require("cluster");
 const numCPUs = require("os").cpus().length;
 const { IS_CLUSTER, PORT } = require("./src/config/globals");
 
-/*En nuestra linea de comandamos tenemos
-primer argumento: FORK o CLUSTER
-segundo argument: port
-tercer argumento: facebook client
-cuarto argumento: facebook secret
-*/
-
-// getConnection()
-//   .then((msg) => {
-//     console.log(msg);
-//     http.listen(PORT, () =>
-//       console.log(`Working on ${PORT} and procces id ${process.pid}!`)
-//     );
-//   })
-//   .catch((err) => console.log(err));
 
 if (IS_CLUSTER.toLowerCase() === "true") {
-  console.log("Servidor iniciado en modo CLUSTER");
+  console.log("Server mode: CLUSTER");
 
   if (cluster.isMaster) {
     for (let i = 0; i < numCPUs; i++) {
@@ -52,7 +39,7 @@ if (IS_CLUSTER.toLowerCase() === "true") {
       .catch((err) => console.log(err));
   }
 } else {
-  console.log("Servidor iniciado en modo FORK");
+  console.log("Server mode: FORK");
   getConnection()
     .then((msg) => {
       console.log(msg);

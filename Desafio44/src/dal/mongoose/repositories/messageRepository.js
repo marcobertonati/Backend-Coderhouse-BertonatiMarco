@@ -7,13 +7,21 @@ class MessageRepository extends BaseRepository {
   }
 
   async getAllMsg() {
-    const messages = await this.model.find().lean();
-    return messages;
+    try {
+      const messages = await this.model.find().lean();
+      return messages;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async getMsgByEmail(email) {
-    const response = await this.model.find({"author.id": email});
-    return response;
+    try {
+      const response = await this.model.find({ "author.id": email });
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

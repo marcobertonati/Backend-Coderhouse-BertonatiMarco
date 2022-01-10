@@ -26,6 +26,6 @@ module.exports = routesConfig = (app) => {
   app.use(routesView(routerViews));
   app.use(routesProcessInfo(routerProcessInfo));
 
-  /*La ruta de MessagesChat es solo de prueba, ya qe todo el chat de maneja desde socket.io: \src\services\messagesIOchat.js */
+  /*La ruta de MessagesChat es solo de prueba de fucionamiento, ya qe todo el chat de maneja desde socket.io: \src\services\messagesIOchat.js */
   app.use(routesMessagesChat(routerMessagesChat));
 };

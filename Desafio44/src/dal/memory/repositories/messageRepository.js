@@ -7,8 +7,12 @@ class MessageRepository extends BaseRepository {
   }
 
   async getAllMsg() {
-    const messages = await this.model;
-    return messages;
+    try {
+      const messages = await this.model;
+      return messages;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

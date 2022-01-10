@@ -30,7 +30,6 @@ module.exports = (router) => {
     //Rutas para deslogueo
     .post("/api/logout", logOut)
 
-
     /*------------------------ */
     /*Rutas para passportFacebook: Funcionalidad pausada ya que estamos usando Passport Local */
     .get("/auth/facebook", logInFacebook)
@@ -40,7 +39,7 @@ module.exports = (router) => {
         failureRedirect: "/login",
       }),
       logInCallbackFacebook
-    )
+    );
 
   return router;
 };

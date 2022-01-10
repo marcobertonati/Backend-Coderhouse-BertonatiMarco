@@ -21,7 +21,7 @@ app.use(cors());
 const compression = require("compression");
 app.use(compression());
 
-/*Requiero Multer*/
+/*Requiero Multer para manejo de archivos*/
 const multer = require("multer");
 const storageMulter = multer.diskStorage({
   destination: "public/avatar",
@@ -36,7 +36,7 @@ app.use(
   }).single("avatar")
 );
 
-/*Requiero passport */
+/*Requiero passport para AUTH */
 const passport = require("passport");
 
 /*Requiero Session*/

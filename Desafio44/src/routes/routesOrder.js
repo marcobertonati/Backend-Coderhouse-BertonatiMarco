@@ -1,4 +1,3 @@
-/*requiero controladores de ordenes */
 const { orderController } = require("../controller");
 
 module.exports = (router) => {

@@ -4,28 +4,48 @@ class BaseRepository {
   }
 
   async getAll() {
-    const elements = await this.model.find();
-    return elements;
+    try {
+      const elements = await this.model.find();
+      return elements;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async getById(id) {
-    const element = await this.model.findById(id);
-    return element;
+    try {
+      const element = await this.model.findById(id);
+      return element;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async create(element) {
-    const elementCreated = await this.model.create(element);
-    return elementCreated;
+    try {
+      const elementCreated = await this.model.create(element);
+      return elementCreated;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async delete(id) {
-    const elementDeleted = await this.model.findByIdAndDelete(id);
-    return elementDeleted;
+    try {
+      const elementDeleted = await this.model.findByIdAndDelete(id);
+      return elementDeleted;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async update(id, payload) {
-    const elementUpdated = await this.model.findByIdAndUpdate(id, payload);
-    return elementUpdated;
+    try {
+      const elementUpdated = await this.model.findByIdAndUpdate(id, payload);
+      return elementUpdated;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

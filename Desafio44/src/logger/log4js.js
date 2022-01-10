@@ -16,9 +16,9 @@ log4js.configure({
 
 const loggers = {
   loggerDefault: log4js.getLogger(),
-  loggerError: log4js.getLogger('myError'),
-  loggerWarn: log4js.getLogger('myWarn'),
-  loggerTrace: log4js.getLogger('myTrace'),
-}
+  loggerError: log4js.getLogger("myError"),
+  loggerWarn: log4js.getLogger("myWarn"),
+  loggerTrace: log4js.getLogger("myTrace"),
+};
 
-module.exports= loggers;
+module.exports = loggers;

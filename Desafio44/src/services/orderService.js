@@ -8,10 +8,29 @@ module.exports = class {
   }
 
   async createOrder(order) {
-    return await this.orderModel.create(order);
+    try {
+      return await this.orderModel.create(order);
+    } catch (error) {
+      console.log(error);
+      const errorMsg = {
+        message: `No se creo orden.`,
+        orderCreated: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async getAllOrders() {
-    return await this.orderModel.find();
+    try {
+      return await this.orderModel.find();
+    } catch (error) {
+      const errorMsg = {
+        message: `No se encontró ordenes.`,
+        orderFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 };

@@ -9,46 +9,135 @@ module.exports = class {
     this.productModel = persistenceProduct;
   }
   async createProduct(product) {
-    return await this.productModel.create(product);
+    try {
+      return await this.productModel.create(product);
+    } catch (error) {
+      const errorMsg = {
+        message: "No se cargó producto",
+        productCreated: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async getProduct(id) {
-    const data = await this.productModel.findById(id);
-    console.log(data);
-    return data;
+    try {
+      const data = await this.productModel.findById(id);
+      return data;
+    } catch (error) {
+      const errorMsg = {
+        message: `No se encontró producto con id ${id}`,
+        productFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async getAllProducts() {
-    return await this.productModel.find();
+    try {
+      return await this.productModel.find();
+    } catch (error) {
+      const errorMsg = {
+        message: "No se encontraron productos",
+        productsFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async updateProduct(id, productUpdated) {
-    return await this.productModel.findByIdAndUpdate(id, productUpdated);
+    try {
+      return await this.productModel.findByIdAndUpdate(id, productUpdated);
+    } catch (error) {
+      const errorMsg = {
+        message: "No se pudo modificar producto",
+        productModify: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async deleteProduct(id) {
-    return await this.productModel.findByIdAndDelete(id);
+    try {
+      return await this.productModel.findByIdAndDelete(id);
+    } catch (error) {
+      const errorMsg = {
+        message: "No se pudo borrar producto",
+        productsFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async getByCategory(category) {
-    return await this.productModel.findByCategory(category);
+    try {
+      return await this.productModel.findByCategory(category);
+    } catch (error) {
+      const errorMsg = {
+        message: `No se encontraron productos con la categoria ${category}`,
+        productsFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   /* Los siguientes métodos no tienen un uso real en el cliente */
 
   async getProductByTitle(title) {
-    return await this.productModel.getProductByTitle(title);
+    try {
+      return await this.productModel.getProductByTitle(title);
+    } catch (error) {
+      const errorMsg = {
+        message: `No se encontraron productos con el título ${title}`,
+        productsFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async getProductByCode(code) {
-    return await this.productModel.getProductByCode(code);
+    try {
+      return await this.productModel.getProductByCode(code);
+    } catch (error) {
+      const errorMsg = {
+        message: `No se encontraron productos con code ${code}`,
+        productsFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async getProductByPrice(pricemin, pricemax) {
-    return await this.productModel.getProductByPrice(pricemin, pricemax);
+    try {
+      return await this.productModel.getProductByPrice(pricemin, pricemax);
+    } catch (error) {
+      const errorMsg = {
+        message: `No se encontraron productos con ese rango de valores`,
+        productsFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 
   async getProductByStock(stockmin, stockmax) {
-    return await this.productModel.find(stockmin, stockmax);
+    try {
+      return await this.productModel.find(stockmin, stockmax);
+    } catch (error) {
+      const errorMsg = {
+        message: `No se encontraron productos con ese rango de stock`,
+        productsFinded: false,
+        error: error,
+      };
+      res.status(400).json(errorMsg);
+    }
   }
 };

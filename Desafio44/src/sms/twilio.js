@@ -1,6 +1,3 @@
-// const accountSid = "ACbb5223e76909088545d87f37deee0df5";
-// const authToken = "fd10f37d9d071a52976fbbb7e2e74b8c";
-
 const {
   TWILIO_ACCOUNT_SID,
   TWILIO_AUTH_TOKEN,

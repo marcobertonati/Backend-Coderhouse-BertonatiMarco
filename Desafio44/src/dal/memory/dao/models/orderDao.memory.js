@@ -6,12 +6,19 @@ module.exports = class {
   }
 
   async create(order) {
-    const orderToPush = order;
-    await this.orders.push(order);
+    try {
+      await this.orders.push(order);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async find() {
-    const response = await this.orders;
-    return response;
+    try {
+      const response = await this.orders;
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

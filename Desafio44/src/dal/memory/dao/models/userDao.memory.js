@@ -6,20 +6,31 @@ module.exports = class {
   }
 
   async findUserByEmail({ email }) {
-    console.log(this.users);
-    const [result] = await this.users.filter((user) => user.email == email);
-    if (!result) {
-      return false;
+    try {
+      const [result] = await this.users.filter((user) => user.email == email);
+      if (!result) {
+        return false;
+      }
+      return result;
+    } catch (error) {
+      console.log(error);
     }
-    return result;
   }
 
   async findUserById(id) {
-    const result = await this.users.filter((user) => user._id == id);
-    return result;
+    try {
+      const result = await this.users.filter((user) => user._id == id);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async createUser(userToCreate) {
-    return await this.users.push(userToCreate);
+    try {
+      return await this.users.push(userToCreate);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

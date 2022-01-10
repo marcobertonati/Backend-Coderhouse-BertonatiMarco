@@ -52,43 +52,6 @@ module.exports = (io, sessionMiddleware) => {
       }
     });
 
-    socket.on("add-quantity", async (data) => {
-      socket.request.session.save(function (err) {
-        console.log(data);
-        // console.log(socket.request.session);
-        // console.log(socket.request.session.cartSession.products);
-        const indexProduct =
-          socket.request.session.cartSession.products.findIndex(
-            (element) => element.product.id == data.id
-          );
-        console.log("🙌 SE AGREGÓ CANTIDAD");
-        console.log(data.quantity);
-        console.log(socket.request.session.cartSession.products[indexProduct]);
-        socket.request.session.cartSession.products[indexProduct].quantity =
-          data.quantity;
-        console.log("ASI QUEDO EL PRODUCTO:");
-        console.log(socket.request.session.cartSession.products[indexProduct]);
-      });
-    });
-
-    socket.on("rest-quantity", async (data) => {
-      socket.request.session.save(function (err) {
-        console.log(data);
-        // console.log(socket.request.session);
-        // console.log(socket.request.session.cartSession.products);
-        const indexProduct =
-          socket.request.session.cartSession.products.findIndex(
-            (element) => element.product.id == data.id
-          );
-        console.log("🙌 SE AGREGÓ CANTIDAD");
-        console.log(data.quantity);
-        console.log(socket.request.session.cartSession.products[indexProduct]);
-        socket.request.session.cartSession.products[indexProduct].quantity =
-          data.quantity;
-        console.log("ASI QUEDO EL PRODUCTO:");
-        console.log(socket.request.session.cartSession.products[indexProduct]);
-      });
-    });
 
     /*Evento desconectar */
     socket.on("disconnect", () => {
