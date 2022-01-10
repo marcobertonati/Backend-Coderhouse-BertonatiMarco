@@ -3,7 +3,6 @@ console.log("Session Cart working!");
 function addQuantity(id) {
   let quantity = document.getElementById(id);
   let quantityNumber = Number(quantity.textContent);
-
   let value = quantityNumber + 1;
   quantity.textContent = value;
 }

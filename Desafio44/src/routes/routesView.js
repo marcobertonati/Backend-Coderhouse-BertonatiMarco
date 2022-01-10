@@ -1,5 +1,6 @@
 /*Controladores de Auth para proteger views */
 const { checkAuthentication } = require("../auth/checkAuth");
+const { isAdmin } = require("../auth/isAdmin");
 
 /*Controladores de Productos */
 const { productController } = require("../controller");
@@ -22,7 +23,7 @@ module.exports = (router) => {
 
     /*Vistas de productos */
     .get("/productos/vista", checkAuthentication, productController.findAll)
-    .get("/productos/agregar",checkAuthentication, (req, res, next) => {
+    .get("/productos/agregar", checkAuthentication, (req, res, next) => {
       res.render("./pages/agregar");
     })
     .get(
@@ -51,7 +52,7 @@ module.exports = (router) => {
 
     /*Vistas de autenticación */
     .get("/login", (req, res, next) => {
-      res.render("./pages/login", {layout: "login-signup.hbs"});
+      res.render("./pages/login", { layout: "login-signup.hbs" });
     })
     .get("/signup", signUpController.signUp)
 
@@ -70,6 +71,31 @@ module.exports = (router) => {
     })
     .get("/error-signup", (req, res, next) => {
       res.render("./pages/error-signup");
+    })
+
+    /*Vista de configuración del servidor */
+    .get("/server-config", isAdmin, (req, res, next) => {
+      const {
+        MONGO_URI,
+        PORT,
+        PERSISTENCE,
+        EXPIRATION_SESSION,
+        GMAIL_USER,
+        GMAIL_USER_PASS,
+      } = require("../config/globals");
+      const data = {
+        mongoUri: MONGO_URI,
+        port: PORT,
+        persistence: PERSISTENCE,
+        expirationSession: EXPIRATION_SESSION,
+        gmailUser: GMAIL_USER,
+        gmailPass: GMAIL_USER_PASS,
+      };
+
+      res.status(200).render("./pages/server-config", {
+        layout: "server-config.hbs",
+        data,
+      });
     });
   return router;
 };

@@ -46,6 +46,30 @@ exports.logInCallback = async (req, res, next) => {
   res.redirect("/productos/vista");
 };
 
+/*Controlador de deslogeo */
+exports.logOut = async (req, res, next) => {
+  const date = new Date().toLocaleDateString();
+  const time = new Date().toLocaleTimeString();
+  const mailOptions = {
+    from: "Servidor de Node.js",
+    to: ["df2euol6wwi5u2ix@ethereal.email", req.session.passport.user.email],
+    subject: `El usuario ${req.session.passport.user.email} se deslogueo el día ${date} a las ${time}`,
+    html: `<h2>${req.session.passport.user.name} ${req.session.passport.user.lastname} se ha deslogueado el día ${date} a las ${time}</h2>`,
+    attachments: [
+      {
+        // filename and content type is derived from path
+        path: req.session.passport.user.avatar,
+      },
+    ],
+  };
+  mailingService.mailingEthereal(mailOptions);
+  mailingService.mailingGmail(mailOptions);
+  req.session.destroy();
+  res.clearCookie("isRegistered");
+  res.redirect("/goodbye");
+};
+
+
 /*Funcionalidad pausada que estamos utilizando estrategia local */
 /*Controlador de Logeo de FACEBOOK */
 exports.logInFacebook = async (req, res, next) => {
@@ -73,25 +97,3 @@ exports.logInCallbackFacebook = async (req, res, next) => {
   res.redirect("/welcome");
 };
 
-/*Controlador de deslogeo */
-exports.logOut = async (req, res, next) => {
-  const date = new Date().toLocaleDateString();
-  const time = new Date().toLocaleTimeString();
-  const mailOptions = {
-    from: "Servidor de Node.js",
-    to: ["df2euol6wwi5u2ix@ethereal.email", req.session.passport.user.email],
-    subject: `El usuario ${req.session.passport.user.email} se deslogueo el día ${date} a las ${time}`,
-    html: `<h2>${req.session.passport.user.name} ${req.session.passport.user.lastname} se ha deslogueado el día ${date} a las ${time}</h2>`,
-    attachments: [
-      {
-        // filename and content type is derived from path
-        path: req.session.passport.user.avatar,
-      },
-    ],
-  };
-  mailingService.mailingEthereal(mailOptions);
-  mailingService.mailingGmail(mailOptions);
-  req.session.destroy();
-  res.clearCookie("isRegistered");
-  res.redirect("/goodbye");
-};

@@ -7,8 +7,6 @@ function prefixSelected() {
   let phoneInput = (document.getElementById(
     "number"
   ).value = `+${valueOfPrefixSelected}9`);
-
-  console.log(phoneInput);
 }
 
 const selectPrefix = document.getElementById("select-prefix");

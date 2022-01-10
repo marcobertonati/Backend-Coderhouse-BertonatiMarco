@@ -52,19 +52,22 @@ const MongoStore = require("connect-mongo");
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 /*Establecemos que la sessión se guarde en MongoStore */
-
+const {
+  MONGO_URI,
+  SECRET_SESSION,
+  EXPIRATION_SESSION,
+} = require("./src/config/globals");
 const sessionMiddleware = session({
   store: MongoStore.create({
-    mongoUrl:
-      "mongodb+srv://marco-bertonati-session:u3TiWI9S5xBiAT39@cluster1.gplx5.mongodb.net/ecommerce?retryWrites=true&w=majority",
+    mongoUrl: MONGO_URI,
     mongoOptions: advancedOptions,
     ttl: 600,
   }),
-  secret: "Soy un gran secreto",
+  secret: SECRET_SESSION,
   resave: true,
   saveUninitialized: true,
   cookie: {
-    maxAge: 180000,
+    maxAge: Number(EXPIRATION_SESSION),
   },
 });
 
@@ -75,34 +78,16 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-/*-----------------*/
-/*     ROUTER      */
-/*-----------------*/
-
-/*Requerimos las rutas que va a ofrecer nuestra aplicación */
-const routesProducts = require("./src/routes/routesProducts");
-const routerProducts = express.Router();
-const routesCart = require("./src/routes/routesCart");
-const routerCart = express.Router();
-const routesMessagesChat = require("./src/routes/routesMessagesChat");
-const routerMessagesChat = express.Router();
-const routesAuth = require("./src/routes/routesAuth");
-const routerAuth = express.Router();
-const routesProcessInfo = require("./src/routes/routesProcessInfo");
-const routerProcessInfo = express.Router();
-/*Rutas a las view */
-const routesView = require("./src/routes/routesView");
-const routerViews = express.Router();
-
-
-
-/*Body Parser: YA NO SE USA */
+/*Body Parser */
 const bodyParser = require("body-parser");
-// /*Uso de Middlewares*/
+/*Uso de Middlewares*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 // app.use(express.json()); // Por algun motivo extraño el express.json() no me estaría funcionando
 
+/*---------------------*/
+/* MOTOR DE PLANTILLAS */
+/*---------------------*/
 /*Configuración del motor de plantilla*/
 app.engine(
   "hbs",
@@ -113,51 +98,40 @@ app.engine(
     partialsDir: `./views/partials/`, // Donde se van a encontrar los partials
   })
 );
-
 // Estableciendo el motor de plantilla que se utiliza
 app.set("view engine", "hbs");
-
 // Estableciendo el directorio donde se encuentran los archivos de plantillas
 app.set("views", "./views");
 
+/*---------------------*/
+/* ARCHIVOS ESTÁTICOS  */
+/*---------------------*/
 // Utilizamos el prefijo virtual '/static'
 app.use("/static", express.static(__dirname + "/public"));
-/*Sirve para ofrecer archivos staticos, ej:
+/*Rutas para probar que archivos sirve:
 http://localhost:8080/static/css/style.css
 http://localhost:8080/static/js/index.js
 */
 
-// /*Rutas del API: Productos*/
-// app.use(routesProducts(routerProducts));
-// /*Rutas del API: Cart*/
-// app.use(routesCart(routerCart));
-// /*Rutas del API: Mensaje de chat*/
-// app.use(routesMessagesChat(routerMessagesChat));
-// /*Rutas del API: Ruta de session*/
-// app.use(routesAuth(routerAuth));
-// /*Rutas IO chat*/
-// // app.use(routesIoChat(routerIoChat));
-// /*Rutas del views productos, agregar y chat*/
-// app.use(routesView(routerViews));
-// /*Rutas de ProcessInfo */
-// app.use(routesProcessInfo(routerProcessInfo));
-
+/*-----------------*/
+/*     ROUTER      */
+/*-----------------*/
 /*Importamos rutas */
-/*el app.use de todas las rutas deberá ir al final de toda la configuración del código */
+/*El app.use de todas las rutas deberá ir al final de toda la configuración del código */
 const routesConfig = require("./src/routes/index");
 routesConfig(app);
-
 /*Socket.io: Chat */
 /*Requiero la funcion socketIo que lo que contiene adentro es toda la conexión IO. Le paso por parametro el io que es basicamente la que establece la conexión. */
 const socketConnection = require("./src/services/messagesIOchat");
 socketConnection(io, sessionMiddleware);
-
 /*GraphQL */
 const graphqlHTTP = require("./src/graphql/config/graphql.config");
 app.use("/graphql", graphqlHTTP);
-
+/* Todas las rutas que no sean matcheadas por el servidor renderizará un html 404 */
 app.get("*", (req, res, next) => {
   res.status(404).render("./pages/not-founded");
 });
+
+/*--------------------*/
 /*Exportamos servidor */
 module.exports = http;

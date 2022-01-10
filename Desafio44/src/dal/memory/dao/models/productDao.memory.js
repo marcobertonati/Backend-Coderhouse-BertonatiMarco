@@ -1,5 +1,6 @@
 const mockProduct = require("../../../../../__test__/mock/products.mock.js");
-const DTOmemory = require("../../dto/dto.memory");
+const DTO = require("../../dto/dto.memory");
+const DTOmemory = new DTO();
 
 module.exports = class {
   constructor() {
@@ -13,15 +14,16 @@ module.exports = class {
   }
 
   async findById(id) {
-    const result = this.products.filter((product) => product._id === id);
-    const productsDTOmemory = new DTOmemory(result);
-    return await productsDTOmemory.data;
+    const [result] = this.products.filter((product) => product.id == id);
+    console.log(result);
+    const productsDTOmemory = DTOmemory.geyById(result);
+    return await productsDTOmemory;
   }
 
   async find() {
     const result = await this.products;
-    const productsDTOmemory = new DTOmemory(result);
-    return productsDTOmemory.data;
+    const productsDTOmemory = DTOmemory.getAllProducts(result);
+    return productsDTOmemory;
   }
 
   async findByIdAndUpdate(id, productUpdated) {
@@ -68,14 +70,15 @@ module.exports = class {
   }
 
   async findByCategory(category) {
-    console.log(category);
-    return await this.products.filter(
+    const response = await this.products.filter(
       (product) => product.category === category
     );
+    const result = DTOmemory.getAllProducts(response);
+    return result;
   }
 
   /*Etos metodos están en desarrollo ya que no tiene ninguna aplicación práctica para el cliente */
-  
+
   //   async getProductByTitle(title) {
   //     console.log("Ingresó a productService => getProductByTitle");
   //     return await productModel.find({ title: title });

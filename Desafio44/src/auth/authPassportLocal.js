@@ -17,7 +17,6 @@ passport.use(
     },
     async function (req, username, password, done) {
       try {
-        
         const userFinded = await persistenceUser.findUserByEmail({
           email: req.body.email,
         });
@@ -58,7 +57,6 @@ passport.use(
       passwordField: "password",
     },
     async function (req, username, password, done) {
-     
       try {
         const userFinded = await persistenceUser.findUserByEmail({
           email: req.body.email,
@@ -93,17 +91,11 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  // done(null, user.email);
   done(null, user);
 });
 
 passport.deserializeUser(async function (id, done) {
-  // userModel.findById(id, function (err, user) {
-  //   done(err, user);
-  // });
-
   try {
-    // const userFinded = userModel.findById(id);
     const userFinded = persistenceUser.findUserById(id);
     return done(null, userFinded);
   } catch (err) {

@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
 const { productSchema } = require("./productsMongoose");
 
 const productOnCartSchema = new Schema({

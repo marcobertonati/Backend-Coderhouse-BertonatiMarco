@@ -1,10 +1,9 @@
 const { processInfo } = require("../utils/processInfo");
+const { isAdmin } = require("../auth/isAdmin");
 
 module.exports = (router) => {
-  router.get("/info", (req, res, next) => {
-    // console.log(processInfo);
-    res.render('./pages/server-info', { processInfo });
+  router.get("/info", isAdmin, (req, res, next) => {
+    res.render("./pages/server-info", { processInfo });
   });
-
   return router;
 };

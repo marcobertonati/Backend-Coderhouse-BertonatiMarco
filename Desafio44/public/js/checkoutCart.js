@@ -6,7 +6,6 @@ function addQuantity(id) {
   let quantityNumber = Number(quantity.textContent);
   let value = quantityNumber + 1;
   quantity.textContent = value;
-  // socket.emit("add-quantity", { id: id, quantity: value });
   addProducts();
 }
 
@@ -24,7 +23,6 @@ function restQuantity(id) {
   } else {
     let value = quantityNumber - 1;
     quantity.textContent = value;
-    // socket.emit("rest-quantity", { id: id, quantity: value });
     addProducts();
   }
 }
@@ -45,7 +43,7 @@ function buyCart() {
     alert("¡No hay productos en su carrito!");
   } else {
     alert("¡Pedido realizado!");
-    fetch("/api/cart/create", {
+    fetch("/api/order/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +69,6 @@ function addProducts() {
       });
     }
   });
-  console.log(listOfProducts);
 
   fetch("/api/cart/post-session", {
     method: "POST",

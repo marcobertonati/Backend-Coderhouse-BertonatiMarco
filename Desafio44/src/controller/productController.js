@@ -39,6 +39,7 @@ const productController = (service) => {
       loggerTrace.trace("Ingresó a findAll");
       try {
         const products = await service.getAllProducts();
+ 
         res.status(200).render("./pages/lista", { products });
       } catch (error) {
         loggerError.error(error);

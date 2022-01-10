@@ -1,6 +1,5 @@
 const MessagesChatService = require("../services/messagesChat");
 const messageChat = new MessagesChatService();
-const util = require("util");
 
 const { normalize, schema } = require("normalizr");
 

@@ -14,6 +14,7 @@ module.exports = class {
 
   async getProduct(id) {
     const data = await this.productModel.findById(id);
+    console.log(data);
     return data;
   }
 

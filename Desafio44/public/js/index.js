@@ -3,14 +3,10 @@ console.log("Index.js funcionando");
 
 /*Evento que escucha el cliente para construir el board del chat */
 socket.on("list-msg-chat", (data) => {
-  console.log('Se ejecutó "list-msg-chat"');
-
   if (data.length <= 0) {
-    console.log("Se ejecutó el if");
     const boardChat = document.getElementById("chat-board");
     boardChat.innerHTML = `<h6> No hay mensajes de chat </h6>`;
   } else {
-    console.log(data);
     const boardChat = document.getElementById("chat-board");
     boardChat.innerHTML = ``;
     data.forEach((chat) => {
@@ -21,7 +17,6 @@ socket.on("list-msg-chat", (data) => {
 
 /*Esta función manda el mensaje de chat al servidor */
 function sendMsgChat() {
-  console.log("Entro a funcion send msg");
   let emailUser = document.getElementById("email").value;
 
   if (emailUser === "") {
@@ -44,7 +39,6 @@ function sendMsgChat() {
     };
 
     socket.emit("msg-chat", chatMsg);
-    console.log("Se guardó mensaje en la bas de datos");
     document.getElementById("message-chat").value = "";
   }
 }

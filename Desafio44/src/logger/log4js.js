@@ -22,4 +22,3 @@ const loggers = {
 }
 
 module.exports= loggers;
-// module.exports = log4js;
